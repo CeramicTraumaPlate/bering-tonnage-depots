@@ -206,9 +206,9 @@ def _generate_once(plan, network, existing, ctx):
                         and not any(c[0] == h and c[1] == key for c in chosen)):
                     chosen.append((h, key, m & ok))
                     remaining -= m & ok
-        while remaining:
-            best = max(options, key=lambda o: len(o[2] & remaining), default=None)
-            if best is None or not best[2] & remaining:
+        while _real(remaining):
+            best = max(options, key=lambda o: _gain(o[2], remaining), default=None)
+            if best is None or not _real(best[2] & remaining):
                 break
             chosen.append(best)
             remaining -= best[2]
@@ -219,7 +219,8 @@ def _generate_once(plan, network, existing, ctx):
             chosen.append((h, (PORT, d, None), {d}))
         dropped_at: dict[str, set[str]] = defaultdict(set)  # dest -> depots where it goes off
         for h, _, cov in chosen:
-            actual[h] |= cov
+            if not is_stand_in(rid):  # a future route's cargo doesn't earn anyone a Collect today
+                actual[h] |= cov
             for d in cov:
                 dropped_at[d].add(h)
         # Cargo for a ship-less route's ports may be loaded only if a Store here drops it at a
@@ -459,7 +460,9 @@ def _cover(want: set[str], candidates, allowed: set[str], preferred=(),
 
     Candidates are ((filter, target, except_cargo), ports). `preferred` (rules
     already in the game) are taken first wherever they're valid and still useful.
-    On equal coverage the earlier candidate wins."""
+    Stand-in ports (future-proofing) never earn a rule of their own: they only break
+    ties between rules that cover the same real ports. On equal coverage the earlier
+    candidate wins."""
     remaining = set(want)
     chosen = []
     for key, m in preferred:
@@ -467,14 +470,25 @@ def _cover(want: set[str], candidates, allowed: set[str], preferred=(),
             chosen.append(key)
             remaining -= set(m)
     valid = [(key, set(m)) for key, m in candidates if set(m) <= allowed and set(m) & want]
-    while remaining:
-        best = max(valid, key=lambda km: len(km[1] & remaining), default=None)
-        if best is None or not best[1] & remaining:
+    while _real(remaining):
+        best = max(valid, key=lambda km: _gain(km[1], remaining), default=None)
+        if best is None or not _real(best[1] & remaining):
             break
         chosen.append(best[0])
         remaining -= best[1]
     chosen = [(k[0], k[1], k[2] if len(k) > 2 else None) for k in chosen]
     return chosen + [(PORT, d, None) for d in sorted(remaining) if not no_port(d)]
+
+
+def _real(ports) -> set[str]:
+    return {d for d in ports if not is_stand_in(d)}
+
+
+def _gain(m, remaining) -> tuple[int, int]:
+    """Real ports a rule still covers, then stand-in ports (future routes) as the tie-break."""
+    got = m & remaining
+    real = _real(got)
+    return (len(real), len(got) - len(real))
 
 
 # --------------------------------------------------------------------------- evaluation

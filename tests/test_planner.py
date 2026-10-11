@@ -299,9 +299,9 @@ class SelfUpdatingRules(unittest.TestCase):
                               future_proof=False)
             self.assertEqual((final.add, final.remove), ([], []))
 
-    def test_future_proofed_network_takes_new_feeders_almost_for_free_day705(self):
-        """After the one-time switch, a new feeder at Tokyo or Hakata costs the existing routes at
-        most 2 changes (two-depot routes can't load it with one self-updating rule), and stays correct."""
+    def test_new_feeders_after_the_korea_route_stay_correct_day705(self):
+        """After entering everything, a new feeder at Tokyo or Hakata costs the existing routes only
+        a few changes (rules are kept minimal; self-updating ones only win ties), and stays correct."""
         import copy
         from atd.export_parser import load_export
         from atd.model import COLLECT, ONWARDS_PORTS, Route, Stop
@@ -323,7 +323,7 @@ class SelfUpdatingRules(unittest.TestCase):
                 n2.routes.append(Route("route_new", stops, True, "NEW"))
                 p2 = make_plan(plan_routes(n2, direct_first=False), n2, load_record(path), compact=True)
                 others = [c for c in p2.add + p2.remove if c.loc[0] != "route_new"]
-                self.assertLessEqual(len(others), 2, (hub, others))
+                self.assertLessEqual(len(others), 5, (hub, others))
                 n3 = apply(n2, p2)
                 self.assertEqual(verify_compact(plan_routes(n3, direct_first=False), n3, existing_rules(n3)), [])
 
@@ -384,6 +384,19 @@ class Release104(unittest.TestCase):
             ("port_tokyo", STORE, ONWARDS_PORTS, "port_tokyo", (), (ROUTE_PORTS, THIS_ROUTE)),
             ("port_tokyo", COLLECT, ROUTE_PORTS, THIS_ROUTE, (), None)]))
         self.assertTrue(all(c.loc[0] == "route_4" for c in plan.add))
+
+
+    def test_triangle_of_feeders_needs_only_each_routes_second_hub_day375(self):
+        """v1.0.4, day 375: three Feeder-template routes meet in a triangle (Tokyo, Hakata,
+        Tomakomai). Each needs the template's three rules for its other hub, and nothing for
+        routes that don't exist yet: future-proofing only breaks ties."""
+        from atd.export_parser import load_export
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v2_104_day375.json").network
+        plan = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True)
+        self.assertEqual(len(plan.add), 9, plan.add)
+        self.assertEqual(plan.remove, [])
+        for rid in ("route_5", "route_6", "route_7"):
+            self.assertEqual(sum(1 for c in plan.add if c.loc[0] == rid), 3, rid)
 
 
 if __name__ == "__main__":

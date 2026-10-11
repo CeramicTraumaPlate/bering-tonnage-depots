@@ -87,16 +87,10 @@ From "Bering Tonnage Design Patterns" by Susul (CC BY-SA 3.0); one player's expe
 
 ## Adding routes later: what it costs
 
-Rules are always future-proofed: they're planned as if a new feeder already joined every hub, so wherever the game's filters allow it, existing routes pick up routes added later without changes. That costs about 20% more rules than the bare minimum. Measured on four saved games (2026-10-11):
+Rules are kept to the minimum your network needs today. Where a self-updating rule (`Onwards Ports | <hub>`) does the same job as one naming a route, the self-updating one is used, so routes you add later are picked up where that's free.
 
-| | Before | Future-proofed |
-| --- | --- | --- |
-| Changes on existing routes when a feeder joins a hub | 3-25 (105 over 13 cases) | 0-2 (16 over 13 cases) |
-| Rules on the busiest route | 9-13 | 11-14 |
-
-- **A new route at an existing hub** needs its own rules (about 4-6 beyond the Feeder template) and 0-2 on other routes. The 0-2 are on routes with two depots: a Global Load can only be excepted at one port, so one self-updating Load can't serve both.
+- **A new route at an existing hub** needs its own rules (about 2-4 beyond the Feeder template) and usually 2-5 on routes that are more than one hub away from it, because the game's Onwards Ports only reaches one hub.
 - **A new hub** (a depot that becomes a meeting point) needs a few rules on the routes that can reach it, once.
-- **Switching an existing game over** is a one-time round of extra rules (17 on the day-705 game), with nothing to remove.
 - **Rule limit:** 40 rules per route, stops and Global Rules together. The overlay warns from 32, and points out Load rules that a route template repeated on every stop: as Global Rules they take one each.
 
 ## License
