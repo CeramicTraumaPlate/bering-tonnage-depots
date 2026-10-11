@@ -366,5 +366,25 @@ class ShiplessRoute(unittest.TestCase):
             self.assertEqual(verify_compact(plan_routes(n, direct_first=False), n, existing_rules(n)), [])
 
 
+
+class Release104(unittest.TestCase):
+    def test_feeder_with_another_hub_gets_the_meeting_hubs_rules(self):
+        """v1.0.4, day 48: JP N was drawn as a Feeder for Tomakomai but meets JP S at Tokyo,
+        so it needs exactly the Feeder template's three rules for Tokyo."""
+        from atd.export_parser import load_export
+        from atd.model import COLLECT, ONWARDS_PORTS
+        ex = load_export(Path(__file__).parent / "fixtures" / "export_v2_104_day48.json")
+        self.assertTrue(ex.tested)
+        n = ex.network
+        plan = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True)
+        got = sorted((c.loc[1] or "", c.rule.action, c.rule.filter, c.rule.target, c.rule.except_at, c.rule.except_cargo)
+                     for c in plan.add)
+        self.assertEqual(got, sorted([
+            ("", LOAD, ONWARDS_PORTS, "port_tokyo", ("port_tokyo",), None),
+            ("port_tokyo", STORE, ONWARDS_PORTS, "port_tokyo", (), (ROUTE_PORTS, THIS_ROUTE)),
+            ("port_tokyo", COLLECT, ROUTE_PORTS, THIS_ROUTE, (), None)]))
+        self.assertTrue(all(c.loc[0] == "route_4" for c in plan.add))
+
+
 if __name__ == "__main__":
     unittest.main()

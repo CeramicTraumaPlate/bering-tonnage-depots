@@ -9,3 +9,7 @@ loader/
 docs/
 *.zip
 gomod/
+# Other local experiments, not part of the overlay
+btlua/
+inject/
+tools/
