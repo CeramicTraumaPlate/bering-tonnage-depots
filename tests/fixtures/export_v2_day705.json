@@ -1,0 +1,691 @@
+{
+  "format": "Bering Tonnage route data",
+  "export_version": 2,
+  "release": "1.0.3",
+  "save_version": 205,
+  "date": "2028-09-14",
+  "day": 705,
+  "start_region": "japan_pacific",
+  "economic_difficulty": "medium",
+  "company": {
+    "rank": "Elite Carrier",
+    "balance": 1675458,
+    "brand_reputation": 3,
+    "licenses": [
+      "jp",
+      "kr"
+    ]
+  },
+  "finance": {
+    "currency": "USD",
+    "notes": [
+      "All durations are game days. Null means unavailable, not zero.",
+      "Operational statistics cover each entity's recorded lifetime, including previous ships, speeds and rules. Older saves may lack early history. Use revenue and days from the same operational_stats object, not the separate legacy total_revenue counter. Average load is distance-weighted while sailing.",
+      "Current costs quote the assigned ship's present state, not historical spending or a whole-route daily average. Fuel is zero when not sailing; mooring is zero when not docked. Registry continues while a route is idle. Costs exclude maintenance, canal fees, fulfilment fees, salaries, interest and discretionary purchases.",
+      "Leg costs quote fuel and speed outside ice at the configured leg speeds. Stop mooring quotes use the assigned ship's full capacity, not its cargo load. Neither quote includes leg distances or time spent sailing, loading, waiting or repairing.",
+      "Company daily accounts contain available records from the last 30 days; the current day is partial. These are company totals, not costs allocated to routes. Operating profit excludes loan interest, proceeds and repayments; net_after_interest deducts interest but still excludes financing principal and discretionary purchases.",
+      "loan_repayments is the total loan payment, including the interest already reported in loan_interest. Subtract that interest component to find principal repaid; do not subtract both fields when calculating cash flow.",
+      "Historical costs per route were not recorded. Route profitability requires an explicitly labelled estimate with assumptions about operating time, current versus past configuration and excluded costs. Do not report lifetime revenue minus current cost as measured profit."
+    ],
+    "company_daily_accounts": [
+      {
+        "day": 676,
+        "cargo_revenue": 132057,
+        "mooring_fees": 2896,
+        "fleet_admin": 3572,
+        "fleet_fuel": 25845,
+        "maintenance": 97136,
+        "partial": false,
+        "operating_profit": 2608,
+        "net_after_interest": 2608
+      },
+      {
+        "day": 677,
+        "cargo_revenue": 75495,
+        "mooring_fees": 3300,
+        "fleet_admin": 3572,
+        "fleet_fuel": 27869,
+        "partial": false,
+        "operating_profit": 40754,
+        "net_after_interest": 40754
+      },
+      {
+        "day": 678,
+        "cargo_revenue": 37835,
+        "mooring_fees": 3211,
+        "fleet_admin": 3572,
+        "fleet_fuel": 17868,
+        "partial": false,
+        "operating_profit": 13184,
+        "net_after_interest": 13184
+      },
+      {
+        "day": 679,
+        "cargo_revenue": 140343,
+        "mooring_fees": 3060,
+        "fleet_admin": 3572,
+        "fleet_fuel": 44004,
+        "partial": false,
+        "operating_profit": 89707,
+        "net_after_interest": 89707
+      },
+      {
+        "day": 680,
+        "cargo_revenue": 69309,
+        "mooring_fees": 2998,
+        "fleet_admin": 3572,
+        "fleet_fuel": 24521,
+        "partial": false,
+        "operating_profit": 38218,
+        "net_after_interest": 38218
+      },
+      {
+        "day": 681,
+        "cargo_revenue": 189495,
+        "mooring_fees": 227,
+        "fleet_admin": 3572,
+        "fleet_fuel": 44910,
+        "maintenance": 278056,
+        "partial": false,
+        "operating_profit": -137270,
+        "net_after_interest": -137270
+      },
+      {
+        "day": 682,
+        "cargo_revenue": 187086,
+        "mooring_fees": 14618,
+        "fleet_admin": 3572,
+        "fleet_fuel": 27335,
+        "partial": false,
+        "operating_profit": 141561,
+        "net_after_interest": 141561
+      },
+      {
+        "day": 683,
+        "cargo_revenue": 35247,
+        "mooring_fees": 14436,
+        "fleet_admin": 3572,
+        "fleet_fuel": 11821,
+        "partial": false,
+        "operating_profit": 5418,
+        "net_after_interest": 5418
+      },
+      {
+        "day": 684,
+        "cargo_revenue": 67091,
+        "mooring_fees": 14403,
+        "fleet_admin": 3572,
+        "fleet_fuel": 28034,
+        "partial": false,
+        "operating_profit": 21082,
+        "net_after_interest": 21082
+      },
+      {
+        "day": 685,
+        "cargo_revenue": 88534,
+        "mooring_fees": 14413,
+        "fleet_admin": 3572,
+        "fleet_fuel": 16483,
+        "partial": false,
+        "operating_profit": 54066,
+        "net_after_interest": 54066
+      },
+      {
+        "day": 686,
+        "cargo_revenue": 173696,
+        "mooring_fees": 615,
+        "fleet_admin": 3572,
+        "fleet_fuel": 34054,
+        "partial": false,
+        "operating_profit": 135455,
+        "net_after_interest": 135455
+      },
+      {
+        "day": 687,
+        "cargo_revenue": 0,
+        "mooring_fees": 685,
+        "fleet_admin": 3572,
+        "fleet_fuel": 13571,
+        "partial": false,
+        "operating_profit": -17828,
+        "net_after_interest": -17828
+      },
+      {
+        "day": 688,
+        "cargo_revenue": 191635,
+        "mooring_fees": 102,
+        "fleet_admin": 3572,
+        "fleet_fuel": 48238,
+        "partial": false,
+        "operating_profit": 139723,
+        "net_after_interest": 139723
+      },
+      {
+        "day": 689,
+        "cargo_revenue": 96758,
+        "mooring_fees": 752,
+        "fleet_admin": 3572,
+        "fleet_fuel": 40126,
+        "partial": false,
+        "operating_profit": 52308,
+        "net_after_interest": 52308
+      },
+      {
+        "day": 690,
+        "cargo_revenue": 163002,
+        "mooring_fees": 378,
+        "fleet_admin": 3572,
+        "fleet_fuel": 33750,
+        "partial": false,
+        "operating_profit": 125302,
+        "net_after_interest": 125302
+      },
+      {
+        "day": 691,
+        "cargo_revenue": 247831,
+        "mooring_fees": 258,
+        "fleet_admin": 3572,
+        "fleet_fuel": 33054,
+        "partial": false,
+        "operating_profit": 210947,
+        "net_after_interest": 210947
+      },
+      {
+        "day": 692,
+        "cargo_revenue": 43320,
+        "mooring_fees": 485,
+        "fleet_admin": 3572,
+        "fleet_fuel": 24975,
+        "board_salaries": 49000,
+        "partial": false,
+        "operating_profit": -34712,
+        "net_after_interest": -34712
+      },
+      {
+        "day": 693,
+        "cargo_revenue": 42654,
+        "mooring_fees": 125,
+        "fleet_admin": 3572,
+        "fleet_fuel": 36072,
+        "partial": false,
+        "operating_profit": 2885,
+        "net_after_interest": 2885
+      },
+      {
+        "day": 694,
+        "cargo_revenue": 68338,
+        "mooring_fees": 185,
+        "fleet_admin": 3572,
+        "fleet_fuel": 49557,
+        "partial": false,
+        "operating_profit": 15024,
+        "net_after_interest": 15024
+      },
+      {
+        "day": 695,
+        "cargo_revenue": 21930,
+        "mooring_fees": 125,
+        "fleet_admin": 3572,
+        "fleet_fuel": 28824,
+        "partial": false,
+        "operating_profit": -10591,
+        "net_after_interest": -10591
+      },
+      {
+        "day": 696,
+        "cargo_revenue": 112618,
+        "mooring_fees": 278,
+        "fleet_admin": 3572,
+        "fleet_fuel": 49611,
+        "partial": false,
+        "operating_profit": 59157,
+        "net_after_interest": 59157
+      },
+      {
+        "day": 697,
+        "cargo_revenue": 69179,
+        "mooring_fees": 503,
+        "fleet_admin": 3572,
+        "fleet_fuel": 26923,
+        "partial": false,
+        "operating_profit": 38181,
+        "net_after_interest": 38181
+      },
+      {
+        "day": 698,
+        "cargo_revenue": 60902,
+        "mooring_fees": 195,
+        "fleet_admin": 3572,
+        "fleet_fuel": 29473,
+        "partial": false,
+        "operating_profit": 27662,
+        "net_after_interest": 27662
+      },
+      {
+        "day": 699,
+        "cargo_revenue": 63542,
+        "mooring_fees": 545,
+        "fleet_admin": 3572,
+        "fleet_fuel": 32590,
+        "partial": false,
+        "operating_profit": 26835,
+        "net_after_interest": 26835
+      },
+      {
+        "day": 700,
+        "cargo_revenue": 79190,
+        "mooring_fees": 0,
+        "fleet_admin": 3572,
+        "fleet_fuel": 43818,
+        "partial": false,
+        "operating_profit": 31800,
+        "net_after_interest": 31800
+      },
+      {
+        "day": 701,
+        "cargo_revenue": 115133,
+        "mooring_fees": 558,
+        "fleet_admin": 3572,
+        "fleet_fuel": 55379,
+        "partial": false,
+        "operating_profit": 55624,
+        "net_after_interest": 55624
+      },
+      {
+        "day": 702,
+        "cargo_revenue": 176266,
+        "mooring_fees": 133,
+        "fleet_admin": 3572,
+        "fleet_fuel": 36048,
+        "partial": false,
+        "operating_profit": 136513,
+        "net_after_interest": 136513
+      },
+      {
+        "day": 703,
+        "cargo_revenue": 118572,
+        "mooring_fees": 600,
+        "fleet_admin": 3572,
+        "fleet_fuel": 53359,
+        "partial": false,
+        "operating_profit": 61041,
+        "net_after_interest": 61041
+      },
+      {
+        "day": 704,
+        "cargo_revenue": 82042,
+        "mooring_fees": 637,
+        "fleet_admin": 3572,
+        "fleet_fuel": 23963,
+        "partial": false,
+        "operating_profit": 53870,
+        "net_after_interest": 53870
+      },
+      {
+        "day": 705,
+        "cargo_revenue": 55661,
+        "mooring_fees": 196,
+        "fleet_admin": 3572,
+        "fleet_fuel": 42397,
+        "partial": true,
+        "operating_profit": 9496,
+        "net_after_interest": 9496
+      }
+    ]
+  },
+  "fleet_maintenance": "Ships below 66% condition are repaired to 100% at the nearest shipyard. Monthly repair budget unlimited.",
+  "ships": [
+    {
+      "name": "MV Saltwind [ship_1]",
+      "vessel": "Handysize, 700 TEU, built 2008 by Haruna Zosen Co., Ltd. HFO propulsion. Flag Japan.",
+      "status": "Docked at Tomakomai [port_tomakomai]. Speed 100%. Condition 71%.",
+      "route": "JP N [route_1], stop 3 of 3",
+      "cargo_teu": 402,
+      "cargo_teu_by_destination": {
+        "Fushiki-Toyama [port_fushiki_toyama]": 13,
+        "Hakata [port_hakata]": 128,
+        "Kobe [port_kobe]": 7,
+        "Nagoya [port_nagoya]": 8,
+        "Niigata [port_niigata]": 57,
+        "Sendai-Shiogama [port_sendai]": 49,
+        "Shimizu [port_shimizu]": 96,
+        "Tokyo [port_tokyo]": 44
+      },
+      "operational_stats": {
+        "revenue": 24178209,
+        "delivered_teu": 73677,
+        "delivery_ops": 6679,
+        "dispatches": 346,
+        "arrivals": 346,
+        "route_stops": 335,
+        "observed_days": 703.89,
+        "active_days": 703.67,
+        "sailing_days": 350.57,
+        "distance_km": 312009.28,
+        "teu_km": 184075361.51,
+        "capacity_teu_km": 218406494.44,
+        "revenue_per_active_day": 34360.15,
+        "revenue_per_observed_day": 34349.47,
+        "revenue_per_delivered_teu": 328.16,
+        "average_load_percent": 84.28,
+        "uptime_percent": 99.97
+      },
+      "current_costs": {
+        "registry_per_day": 702,
+        "fuel_per_day": 0,
+        "mooring_per_day": 60,
+        "total_per_day": 762
+      }
+    },
+    {
+      "name": "MV Grey Current [ship_2]",
+      "vessel": "Handysize, 1,200 TEU, built 2025 by Haruna Zosen Co., Ltd. MDO propulsion. Flag Cambodia.",
+      "status": "Sailing to Tokyo [port_tokyo]. Speed 100%. Condition 70%.",
+      "route": "JP S [route_2], stop 1 of 5",
+      "cargo_teu": 1200,
+      "cargo_teu_by_destination": {
+        "Kobe [port_kobe]": 93,
+        "Nagoya [port_nagoya]": 124,
+        "Sendai-Shiogama [port_sendai]": 108,
+        "Shimizu [port_shimizu]": 704,
+        "Tokyo [port_tokyo]": 171
+      },
+      "operational_stats": {
+        "revenue": 27611982,
+        "delivered_teu": 118899,
+        "delivery_ops": 10122,
+        "dispatches": 402,
+        "arrivals": 401,
+        "route_stops": 398,
+        "observed_days": 703.89,
+        "active_days": 703.67,
+        "sailing_days": 242.6,
+        "distance_km": 215914.49,
+        "teu_km": 234251716.24,
+        "capacity_teu_km": 259097393.33,
+        "revenue_per_active_day": 39239.96,
+        "revenue_per_observed_day": 39227.76,
+        "revenue_per_delivered_teu": 232.23,
+        "average_load_percent": 90.41,
+        "uptime_percent": 99.97
+      },
+      "current_costs": {
+        "registry_per_day": 520,
+        "fuel_per_day": 17716,
+        "mooring_per_day": 0,
+        "total_per_day": 18236
+      }
+    },
+    {
+      "name": "MV Meridian [ship_3]",
+      "vessel": "Panamax, 4,200 TEU, built 2022 by Mokpo Heavy Industries. MDO propulsion. Flag Marshall Islands.",
+      "status": "Docked at Tomakomai [port_tomakomai]. Speed 100%. Condition 94%.",
+      "route": "JP W [route_3], stop 4 of 4",
+      "cargo_teu": 1304,
+      "cargo_teu_by_destination": {
+        "Busan [port_busan]": 22,
+        "Fushiki-Toyama [port_fushiki_toyama]": 182,
+        "Hakata [port_hakata]": 197,
+        "Kobe [port_kobe]": 17,
+        "Nagoya [port_nagoya]": 18,
+        "Niigata [port_niigata]": 18,
+        "Sendai-Shiogama [port_sendai]": 649,
+        "Shimizu [port_shimizu]": 112,
+        "Tokyo [port_tokyo]": 89
+      },
+      "operational_stats": {
+        "revenue": 4944887,
+        "delivered_teu": 21907,
+        "delivery_ops": 3786,
+        "dispatches": 107,
+        "arrivals": 107,
+        "route_stops": 102,
+        "observed_days": 171.87,
+        "active_days": 170.89,
+        "sailing_days": 110.94,
+        "distance_km": 89862.3,
+        "teu_km": 68508644.85,
+        "capacity_teu_km": 377421660,
+        "revenue_per_active_day": 28936.65,
+        "revenue_per_observed_day": 28771.09,
+        "revenue_per_delivered_teu": 225.72,
+        "average_load_percent": 18.15,
+        "uptime_percent": 99.43
+      },
+      "current_costs": {
+        "registry_per_day": 2090,
+        "fuel_per_day": 0,
+        "mooring_per_day": 360,
+        "total_per_day": 2450
+      }
+    },
+    {
+      "name": "MS Eclipse [ship_4]",
+      "vessel": "Handysize, 900 TEU, built 2014 by Mokpo Heavy Industries. HFO propulsion. Flag Liberia.",
+      "status": "Docked at Busan [port_busan]. Speed 100%. Condition 86%.",
+      "route": "ROK [route_4], stop 2 of 4",
+      "cargo_teu": 7,
+      "cargo_teu_by_destination": {
+        "Tokyo [port_tokyo]": 7
+      },
+      "operational_stats": {
+        "revenue": 328652,
+        "delivered_teu": 1309,
+        "delivery_ops": 501,
+        "dispatches": 38,
+        "arrivals": 38,
+        "route_stops": 37,
+        "observed_days": 29.59,
+        "active_days": 25.16,
+        "sailing_days": 20.22,
+        "distance_km": 17992.83,
+        "teu_km": 1195386.19,
+        "capacity_teu_km": 16193550,
+        "revenue_per_active_day": 13063.35,
+        "revenue_per_observed_day": 11106.23,
+        "revenue_per_delivered_teu": 251.07,
+        "average_load_percent": 7.38,
+        "uptime_percent": 85.02
+      },
+      "current_costs": {
+        "registry_per_day": 260,
+        "fuel_per_day": 0,
+        "mooring_per_day": 153,
+        "total_per_day": 413
+      }
+    }
+  ],
+  "routes": [
+    {
+      "name": "JP N [route_1]",
+      "ship": "MV Saltwind [ship_1]",
+      "status": "Loading",
+      "legs": [
+        "All legs at 100% speed, 890 km/day, fuel $10,878 per sailing day."
+      ],
+      "global_rules": [
+        "Load All for Onwards Ports: Tomakomai [port_tomakomai], except at Port: Tomakomai [port_tomakomai]."
+      ],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Mooring $133/day. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Sendai-Shiogama [port_sendai], Japan. Mooring $70/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Tomakomai [port_tomakomai], Japan. Mooring $60/day. Store All for Route Ports: JP W [route_3]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ],
+      "total_revenue": 24178209,
+      "total_delivered_teu": 73677,
+      "operational_stats": {
+        "revenue": 24178209,
+        "delivered_teu": 73677,
+        "delivery_ops": 6679,
+        "dispatches": 346,
+        "arrivals": 346,
+        "route_stops": 335,
+        "observed_days": 703.67,
+        "active_days": 703.67,
+        "sailing_days": 350.57,
+        "distance_km": 312009.28,
+        "teu_km": 184075361.51,
+        "capacity_teu_km": 218406494.44,
+        "revenue_per_active_day": 34360.15,
+        "revenue_per_observed_day": 34360.15,
+        "revenue_per_delivered_teu": 328.16,
+        "average_load_percent": 84.28,
+        "uptime_percent": 100
+      }
+    },
+    {
+      "name": "JP S [route_2]",
+      "ship": "MV Grey Current [ship_2]",
+      "status": "In Transit",
+      "legs": [
+        "All legs at 100% speed, 890 km/day, fuel $17,716 per sailing day."
+      ],
+      "global_rules": [
+        "Load All for Route Ports: JP W [route_3], except at Port: Hakata [port_hakata]."
+      ],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Mooring $228/day. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Shimizu [port_shimizu], Japan. Mooring $125/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Nagoya [port_nagoya], Japan. Mooring $156/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Kobe [port_kobe], Japan. Mooring $182/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "5. Hakata [port_hakata], Japan. Mooring $136/day. Store All for Route Ports: JP W [route_3]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ],
+      "total_revenue": 27611982,
+      "total_delivered_teu": 118899,
+      "operational_stats": {
+        "revenue": 27611982,
+        "delivered_teu": 118899,
+        "delivery_ops": 10122,
+        "dispatches": 402,
+        "arrivals": 401,
+        "route_stops": 398,
+        "observed_days": 703.67,
+        "active_days": 703.67,
+        "sailing_days": 242.6,
+        "distance_km": 215914.49,
+        "teu_km": 234251716.24,
+        "capacity_teu_km": 259097393.33,
+        "revenue_per_active_day": 39239.96,
+        "revenue_per_observed_day": 39239.96,
+        "revenue_per_delivered_teu": 232.23,
+        "average_load_percent": 90.41,
+        "uptime_percent": 100
+      }
+    },
+    {
+      "name": "JP W [route_3]",
+      "ship": "MV Meridian [ship_3]",
+      "status": "Loading",
+      "legs": [
+        "All legs at 100% speed, 810 km/day, fuel $28,935 per sailing day."
+      ],
+      "global_rules": [
+        "Load All for Onwards Ports: Tomakomai [port_tomakomai], except at Port: Tomakomai [port_tomakomai]."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $479/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $464/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Niigata [port_niigata], Japan. Mooring $378/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "4. Tomakomai [port_tomakomai], Japan. Mooring $360/day. Store All for Route Ports: JP N [route_1]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ],
+      "total_revenue": 4944887,
+      "total_delivered_teu": 21907,
+      "operational_stats": {
+        "revenue": 4944887,
+        "delivered_teu": 21907,
+        "delivery_ops": 3786,
+        "dispatches": 107,
+        "arrivals": 107,
+        "route_stops": 102,
+        "observed_days": 560.84,
+        "active_days": 170.89,
+        "sailing_days": 110.94,
+        "distance_km": 89862.3,
+        "teu_km": 68508644.85,
+        "capacity_teu_km": 377421660,
+        "revenue_per_active_day": 28936.65,
+        "revenue_per_observed_day": 8816.98,
+        "revenue_per_delivered_teu": 225.72,
+        "average_load_percent": 18.15,
+        "uptime_percent": 30.47
+      }
+    },
+    {
+      "name": "ROK [route_4]",
+      "ship": "MS Eclipse [ship_4]",
+      "status": "Loading",
+      "legs": [
+        "All legs at 100% speed, 890 km/day, fuel $13,986 per sailing day."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $102/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Busan [port_busan], South Korea. Mooring $153/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Jeju [port_jeju], South Korea. Mooring $79/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "4. Incheon [port_incheon], South Korea. Mooring $123/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ],
+      "total_revenue": 328652,
+      "total_delivered_teu": 1309,
+      "operational_stats": {
+        "revenue": 328652,
+        "delivered_teu": 1309,
+        "delivery_ops": 501,
+        "dispatches": 38,
+        "arrivals": 38,
+        "route_stops": 37,
+        "observed_days": 102.89,
+        "active_days": 25.16,
+        "sailing_days": 20.22,
+        "distance_km": 17992.83,
+        "teu_km": 1195386.19,
+        "capacity_teu_km": 16193550,
+        "revenue_per_active_day": 13063.35,
+        "revenue_per_observed_day": 3194.05,
+        "revenue_per_delivered_teu": 251.07,
+        "average_load_percent": 7.38,
+        "uptime_percent": 24.45
+      }
+    }
+  ],
+  "depots": [
+    {
+      "port": "Hakata [port_hakata]",
+      "country": "Japan",
+      "level": 2,
+      "capacity_teu": 2000,
+      "stored_teu": 741,
+      "stored_teu_by_destination": {
+        "Fushiki-Toyama [port_fushiki_toyama]": 191,
+        "Kobe [port_kobe]": 16,
+        "Niigata [port_niigata]": 197,
+        "Shimizu [port_shimizu]": 11,
+        "Tokyo [port_tokyo]": 21,
+        "Tomakomai [port_tomakomai]": 305
+      }
+    },
+    {
+      "port": "Tokyo [port_tokyo]",
+      "country": "Japan",
+      "level": 3,
+      "capacity_teu": 10000,
+      "stored_teu": 813,
+      "stored_teu_by_destination": {
+        "Hakata [port_hakata]": 323,
+        "Kobe [port_kobe]": 57,
+        "Nagoya [port_nagoya]": 56,
+        "Shimizu [port_shimizu]": 377
+      }
+    },
+    {
+      "port": "Tomakomai [port_tomakomai]",
+      "country": "Japan",
+      "level": 1,
+      "capacity_teu": 500,
+      "stored_teu": 247,
+      "stored_teu_by_destination": {
+        "Fushiki-Toyama [port_fushiki_toyama]": 10,
+        "Hakata [port_hakata]": 54,
+        "Niigata [port_niigata]": 183
+      }
+    }
+  ]
+}

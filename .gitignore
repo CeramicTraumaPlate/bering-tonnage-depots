@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+records/
+exports/
+loader/build/
+loader/backups/
+# Not published: local experiments and notes
+loader/
+docs/
+*.zip
+gomod/

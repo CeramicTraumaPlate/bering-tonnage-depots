@@ -1,0 +1,9 @@
+# Auto-Transfer Depots settings. Defaults work with no changes.
+[settings]
+auto_transfer = true      # false: plan removal of every managed rule
+max_transfers = 3         # longest chain of depots a path may use
+disabled_depots = []      # port ids never used as transfer points, e.g. ["port_tokyo"]
+disabled_routes = []      # route ids the advisor ignores and never touches, e.g. ["route_4"]
+dry_run = false
+compact = true            # short Route Ports rules; false = one rule per destination
+overlay_only_with_game = true   # hide the overlay unless Bering Tonnage is the active window

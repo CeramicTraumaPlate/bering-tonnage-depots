@@ -1,0 +1,400 @@
+{
+ "format": "Bering Tonnage route data",
+ "export_version": 2,
+ "release": "1.0.3",
+ "save_version": 205,
+ "date": "2039-06-22",
+ "day": 4639,
+ "start_region": "japan_pacific",
+ "_comment": "Real export from v1.0.3, trimmed to ships (vessel, cargo), routes (legs, rules) and depots. Rules complete; HK-TW-JP can't keep up (31,494 TEU waiting in Tokyo, legs at 10-20% speed).",
+ "ships": [
+  {
+   "name": "MV Saltwind [ship_1]",
+   "vessel": "Handysize, 700 TEU, built 2008 by Haruna Zosen Co., Ltd. LNG propulsion. Flag Japan.",
+   "status": "Docked at Fushiki-Toyama [port_fushiki_toyama]. Speed 90%. Condition 95%.",
+   "route": "JP W [route_2], stop 6 of 6",
+   "cargo_teu": 473,
+   "cargo_teu_by_destination": {
+    "Busan [port_busan]": 50,
+    "Hakata [port_hakata]": 163,
+    "Jeju [port_jeju]": 12,
+    "Kaohsiung [port_kaohsiung]": 8,
+    "Kobe [port_kobe]": 26,
+    "Nagoya [port_nagoya]": 21,
+    "Naha [port_naha]": 56,
+    "Niigata [port_niigata]": 6,
+    "Sendai-Shiogama [port_sendai]": 20,
+    "Shimizu [port_shimizu]": 81,
+    "Tokyo [port_tokyo]": 6,
+    "Tomakomai [port_tomakomai]": 24
+   }
+  },
+  {
+   "name": "MV Grey Current [ship_2]",
+   "vessel": "Handysize, 1,200 TEU, built 2025 by Haruna Zosen Co., Ltd. LNG propulsion. Flag Cambodia.",
+   "status": "Sailing to Sendai-Shiogama [port_sendai]. Speed 70%. Condition 94%.",
+   "route": "JP N [route_1], stop 2 of 4",
+   "cargo_teu": 1000,
+   "cargo_teu_by_destination": {
+    "Fushiki-Toyama [port_fushiki_toyama]": 105,
+    "Niigata [port_niigata]": 57,
+    "Sendai-Shiogama [port_sendai]": 437,
+    "Tomakomai [port_tomakomai]": 401
+   }
+  },
+  {
+   "name": "MV Pioneer [ship_3]",
+   "vessel": "Panamax, 3,200 TEU, built 2019 by Sejong Ocean Systems. MDO propulsion. Flag Marshall Islands.",
+   "status": "Docked at Tomakomai [port_tomakomai]. Speed 50%. Condition 68%.",
+   "route": "JP W 2 [route_4], stop 4 of 6",
+   "cargo_teu": 576,
+   "cargo_teu_by_destination": {
+    "Busan [port_busan]": 5,
+    "Fushiki-Toyama [port_fushiki_toyama]": 31,
+    "Hakata [port_hakata]": 66,
+    "Hong Kong [port_hong_kong]": 4,
+    "Kaohsiung [port_kaohsiung]": 11,
+    "Kobe [port_kobe]": 22,
+    "Manila [port_manila]": 3,
+    "Nagoya [port_nagoya]": 19,
+    "Naha [port_naha]": 50,
+    "Sendai-Shiogama [port_sendai]": 200,
+    "Shimizu [port_shimizu]": 53,
+    "Tokyo [port_tokyo]": 39,
+    "Tomakomai [port_tomakomai]": 73
+   }
+  },
+  {
+   "name": "MV Prosperity [ship_4]",
+   "vessel": "Handysize, 900 TEU, built 2012 by Great Lakes Marine Corp.. HFO propulsion. Flag Bahamas.",
+   "status": "Docked at Tomakomai [port_tomakomai]. Speed 60%. Condition 69%.",
+   "route": "JP N 2 [route_5], stop 3 of 4",
+   "cargo_teu": 630,
+   "cargo_teu_by_destination": {
+    "Hakata [port_hakata]": 61,
+    "Hong Kong [port_hong_kong]": 17,
+    "Kaohsiung [port_kaohsiung]": 18,
+    "Kobe [port_kobe]": 26,
+    "Manila [port_manila]": 2,
+    "Nagoya [port_nagoya]": 39,
+    "Naha [port_naha]": 95,
+    "Sendai-Shiogama [port_sendai]": 184,
+    "Shimizu [port_shimizu]": 130,
+    "Tokyo [port_tokyo]": 58
+   }
+  },
+  {
+   "name": "Duque [ship_5]",
+   "vessel": "Panamax, 3,200 TEU, built 2024 by Sejong Ocean Systems. MDO propulsion. Flag Panama.",
+   "status": "Docked at Shimizu [port_shimizu]. Speed 100%. Condition 70%.",
+   "route": "JP S [route_3], stop 6 of 8",
+   "cargo_teu": 2044,
+   "cargo_teu_by_destination": {
+    "Fushiki-Toyama [port_fushiki_toyama]": 200,
+    "Hakata [port_hakata]": 687,
+    "Kobe [port_kobe]": 423,
+    "Nagoya [port_nagoya]": 383,
+    "Niigata [port_niigata]": 216,
+    "Tokyo [port_tokyo]": 52,
+    "Tomakomai [port_tomakomai]": 83
+   }
+  },
+  {
+   "name": "MS Argonaut [ship_6]",
+   "vessel": "Panamax, 3,400 TEU, built 2025 by Haruna Zosen Co., Ltd. MDO propulsion. Flag Marshall Islands.",
+   "status": "Sailing to Naha [port_naha]. Speed 10%. Condition 84%.",
+   "route": "HK-TW-JP Route [route_6], stop 3 of 6",
+   "cargo_teu": 2922,
+   "cargo_teu_by_destination": {
+    "Busan [port_busan]": 2067,
+    "Fushiki-Toyama [port_fushiki_toyama]": 111,
+    "Hakata [port_hakata]": 115,
+    "Hong Kong [port_hong_kong]": 59,
+    "Kobe [port_kobe]": 7,
+    "Nagoya [port_nagoya]": 18,
+    "Niigata [port_niigata]": 61,
+    "Sendai-Shiogama [port_sendai]": 91,
+    "Shimizu [port_shimizu]": 151,
+    "Tokyo [port_tokyo]": 107,
+    "Tomakomai [port_tomakomai]": 135
+   }
+  },
+  {
+   "name": "San Antonio [ship_7]",
+   "vessel": "Panamax, 3,200 TEU, built 2019 by Sejong Ocean Systems. MDO propulsion. Flag Panama.",
+   "status": "Docked at Tokyo [port_tokyo]. Speed 60%. Condition 72%.",
+   "route": "ROK [route_7], stop 4 of 6",
+   "cargo_teu": 334,
+   "cargo_teu_by_destination": {
+    "Fushiki-Toyama [port_fushiki_toyama]": 12,
+    "Hong Kong [port_hong_kong]": 31,
+    "Kaohsiung [port_kaohsiung]": 36,
+    "Nagoya [port_nagoya]": 3,
+    "Niigata [port_niigata]": 18,
+    "Sendai-Shiogama [port_sendai]": 137,
+    "Shimizu [port_shimizu]": 93,
+    "Tomakomai [port_tomakomai]": 4
+   }
+  },
+  {
+   "name": "제주 [ship_8]",
+   "vessel": "Panamax, 3,200 TEU, built 2036 by Sejong Ocean Systems. MDO propulsion. Flag India.",
+   "status": "Sailing to Cebu [port_cebu]. Speed 60%. Condition 74%.",
+   "route": "PH-HK Route [route_8], stop 2 of 6",
+   "cargo_teu": 212,
+   "cargo_teu_by_destination": {
+    "Busan [port_busan]": 61,
+    "Hong Kong [port_hong_kong]": 41,
+    "Jeju [port_jeju]": 21,
+    "Kaohsiung [port_kaohsiung]": 79,
+    "Niigata [port_niigata]": 9,
+    "Shimizu [port_shimizu]": 1
+   }
+  }
+ ],
+ "routes": [
+  {
+   "name": "JP N [route_1]",
+   "ship": "MV Grey Current [ship_2]",
+   "status": "In Transit",
+   "legs": [
+    "Stop 3 to stop 4 at 90% speed, 801 km/day, fuel $11,280 per sailing day.",
+    "Stop 4 to stop 1 at 90% speed, 801 km/day, fuel $11,280 per sailing day.",
+    "Other legs at 70% speed, 623 km/day, fuel $6,097 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Tokyo [port_tokyo], except at Port: Tokyo [port_tokyo].",
+    "Load All for Port: Fushiki-Toyama [port_fushiki_toyama], except at Port: Tomakomai [port_tomakomai].",
+    "Load All for Port: Niigata [port_niigata], except at Port: Tomakomai [port_tomakomai].",
+    "Load All for Onwards Ports: Hong Kong [port_hong_kong], except at Port: Tokyo [port_tokyo]."
+   ],
+   "stops": [
+    "1. Tokyo [port_tokyo], Japan. Mooring $228/day. Store All for Route Ports: JP S [route_3]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Store All for Route Ports: HK-TW-JP Route [route_6]. Collect All for Port: Fushiki-Toyama [port_fushiki_toyama]. Collect All for Port: Niigata [port_niigata]. Store All for Route Ports: ROK [route_7]. Store All for Onwards Ports: Hong Kong [port_hong_kong].",
+    "2. Sendai-Shiogama [port_sendai], Japan. Mooring $120/day. Load All for Route Ports: This Route.",
+    "3. Tomakomai [port_tomakomai], Japan. Mooring $103/day. Store All for Route Ports: JP W [route_2]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Collect All for Route Ports: HK-TW-JP Route [route_6].",
+    "4. Sendai-Shiogama [port_sendai], Japan. Mooring $120/day. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "JP N 2 [route_5]",
+   "ship": "MV Prosperity [ship_4]",
+   "status": "Loading",
+   "legs": [
+    "Stop 3 to stop 4 at 50% speed, 445 km/day, fuel $2,972 per sailing day.",
+    "Other legs at 60% speed, 534 km/day, fuel $4,117 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Tomakomai [port_tomakomai], except at Port: Tomakomai [port_tomakomai].",
+    "Load All for Onwards Ports: Tokyo [port_tokyo], except at Port: Tokyo [port_tokyo].",
+    "Load All for Onwards Ports: Hong Kong [port_hong_kong], except at Port: Tokyo [port_tokyo]."
+   ],
+   "stops": [
+    "1. Tokyo [port_tokyo], Japan. Mooring $171/day. Store All for Onwards Ports: Hong Kong [port_hong_kong]. Store All for Route Ports: ROK [route_7]. Store All for Route Ports: JP S [route_3]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Store All for Route Ports: HK-TW-JP Route [route_6]. Collect All for Port: Fushiki-Toyama [port_fushiki_toyama]. Collect All for Port: Niigata [port_niigata].",
+    "2. Sendai-Shiogama [port_sendai], Japan. Mooring $90/day. Load All for Route Ports: This Route.",
+    "3. Tomakomai [port_tomakomai], Japan. Mooring $77/day. Store All for Route Ports: JP W [route_2]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Collect All for Route Ports: HK-TW-JP Route [route_6].",
+    "4. Sendai-Shiogama [port_sendai], Japan. Mooring $90/day. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "JP W [route_2]",
+   "ship": "MV Saltwind [ship_1]",
+   "status": "Loading",
+   "legs": [
+    "All legs at 90% speed, 801 km/day, fuel $6,580 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Tomakomai [port_tomakomai], except at Port: Tomakomai [port_tomakomai].",
+    "Load All for Route Ports: JP S [route_3], except at Port: Hakata [port_hakata].",
+    "Load All for Route Ports: HK-TW-JP Route [route_6], except at Port: Hakata [port_hakata].",
+    "Load All for Route Ports: ROK [route_7], except at Port: Hakata [port_hakata].",
+    "Load All for Onwards Ports: Hong Kong [port_hong_kong], except at Port: Hakata [port_hakata]."
+   ],
+   "stops": [
+    "1. Hakata [port_hakata], Japan. Mooring $79/day. Store All for Route Ports: ROK [route_7]. Store All for Route Ports: JP S [route_3]. Store All for Route Ports: HK-TW-JP Route [route_6]. Store All for Onwards Ports: Hong Kong [port_hong_kong]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $77/day. Load All for Route Ports: This Route.",
+    "3. Niigata [port_niigata], Japan. Mooring $63/day. Load All for Route Ports: This Route.",
+    "4. Tomakomai [port_tomakomai], Japan. Mooring $60/day. Store All for Route Ports: JP N [route_1]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "5. Niigata [port_niigata], Japan. Mooring $63/day. Load All for Route Ports: This Route.",
+    "6. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $77/day. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "JP W 2 [route_4]",
+   "ship": "MV Pioneer [ship_3]",
+   "status": "Unloading",
+   "legs": [
+    "Stop 1 to stop 2 at 80% speed, 648 km/day, fuel $12,363 per sailing day.",
+    "Other legs at 50% speed, 405 km/day, fuel $4,685 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Tomakomai [port_tomakomai], except at Port: Tomakomai [port_tomakomai].",
+    "Load All for Route Ports: JP S [route_3], except at Port: Hakata [port_hakata].",
+    "Load All for Route Ports: HK-TW-JP Route [route_6], except at Port: Hakata [port_hakata].",
+    "Load All for Route Ports: ROK [route_7], except at Port: Hakata [port_hakata].",
+    "Load All for Onwards Ports: Hong Kong [port_hong_kong], except at Port: Hakata [port_hakata]."
+   ],
+   "stops": [
+    "1. Hakata [port_hakata], Japan. Mooring $365/day. Store All for Route Ports: ROK [route_7]. Store All for Route Ports: JP S [route_3]. Store All for Route Ports: HK-TW-JP Route [route_6]. Store All for Onwards Ports: Hong Kong [port_hong_kong]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $354/day. Load All for Route Ports: This Route.",
+    "3. Niigata [port_niigata], Japan. Mooring $288/day. Load All for Route Ports: This Route.",
+    "4. Tomakomai [port_tomakomai], Japan. Mooring $274/day. Store All for Route Ports: JP N [route_1]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "5. Niigata [port_niigata], Japan. Mooring $288/day. Load All for Route Ports: This Route.",
+    "6. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $354/day. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "JP S [route_3]",
+   "ship": "Duque [ship_5]",
+   "status": "Loading",
+   "legs": [
+    "All legs at 100% speed, 810 km/day, fuel $22,046 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Hakata [port_hakata], except at Port: Hakata [port_hakata].",
+    "Load All for Port: Sendai-Shiogama [port_sendai], except at Port: Tokyo [port_tokyo].",
+    "Load All for Route Ports: HK-TW-JP Route [route_6], except at Port: Tokyo [port_tokyo].",
+    "Load All for Onwards Ports: Tokyo [port_tokyo], except at Port: Tokyo [port_tokyo].",
+    "Load All for Onwards Ports: Hong Kong [port_hong_kong], except at Port: Tokyo [port_tokyo]."
+   ],
+   "stops": [
+    "1. Hakata [port_hakata], Japan. Mooring $365/day. Store All for Route Ports: JP W [route_2]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Collect All for Route Ports: HK-TW-JP Route [route_6]. Collect All for Route Ports: ROK [route_7]. Collect All for Onwards Ports: Hong Kong [port_hong_kong].",
+    "2. Kobe [port_kobe], Japan. Mooring $485/day. Load All for Route Ports: This Route.",
+    "3. Nagoya [port_nagoya], Japan. Mooring $417/day. Load All for Route Ports: This Route.",
+    "4. Shimizu [port_shimizu], Japan. Mooring $334/day. Load All for Route Ports: This Route.",
+    "5. Tokyo [port_tokyo], Japan. Mooring $608/day. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Store All for Onwards Ports: Hong Kong [port_hong_kong]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "6. Shimizu [port_shimizu], Japan. Mooring $334/day. Load All for Route Ports: This Route.",
+    "7. Nagoya [port_nagoya], Japan. Mooring $417/day. Load All for Route Ports: This Route.",
+    "8. Kobe [port_kobe], Japan. Mooring $485/day. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "HK-TW-JP Route [route_6]",
+   "ship": "MS Argonaut [ship_6]",
+   "status": "In Transit",
+   "legs": [
+    "Stop 1 to stop 2 at 20% speed, 162 km/day, fuel $2,511 per sailing day.",
+    "Stop 2 to stop 3 at 10% speed, 81 km/day, fuel $2,363 per sailing day.",
+    "Other legs at 40% speed, 324 km/day, fuel $3,692 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Hakata [port_hakata], except at Port: Tokyo [port_tokyo].",
+    "Load All for Onwards Ports: Tokyo [port_tokyo], except at Port: Tokyo [port_tokyo].",
+    "Load All for Onwards Ports: Hong Kong [port_hong_kong], except at Port: Hong Kong [port_hong_kong]."
+   ],
+   "stops": [
+    "1. Hong Kong [port_hong_kong], Hong Kong. Mooring $714/day. Store All for Route Ports: PH-HK Route [route_8]. Collect All for Onwards Ports: Tokyo [port_tokyo]. Collect All for Onwards Ports: Hakata [port_hakata]. Load All for Route Ports: This Route.",
+    "2. Kaohsiung [port_kaohsiung], Taiwan. Mooring $476/day. Load All for Route Ports: This Route.",
+    "3. Naha [port_naha], Japan. Mooring $358/day. Load All for Route Ports: This Route.",
+    "4. Tokyo [port_tokyo], Japan. Mooring $646/day. Store All for Port: Sendai-Shiogama [port_sendai]. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Hong Kong [port_hong_kong]. Load All for Route Ports: This Route. Store All for Onwards Ports: Hakata [port_hakata]. Store All for Route Ports: JP W [route_2]. Store All for Route Ports: ROK [route_7].",
+    "5. Naha [port_naha], Japan. Mooring $358/day. Load All for Route Ports: This Route.",
+    "6. Kaohsiung [port_kaohsiung], Taiwan. Mooring $476/day. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "ROK [route_7]",
+   "ship": "San Antonio [ship_7]",
+   "status": "Unloading",
+   "legs": [
+    "Stop 1 to stop 2 at 70% speed, 567 km/day, fuel $9,010 per sailing day.",
+    "Stop 2 to stop 3 at 70% speed, 567 km/day, fuel $9,010 per sailing day.",
+    "Other legs at 60% speed, 486 km/day, fuel $6,490 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Tokyo [port_tokyo], except at Port: Tokyo [port_tokyo].",
+    "Load All for Onwards Ports: Hakata [port_hakata], except at Port: Tokyo [port_tokyo].",
+    "Load All for Onwards Ports: Hong Kong [port_hong_kong], except at Port: Tokyo [port_tokyo]."
+   ],
+   "stops": [
+    "1. Incheon [port_incheon], South Korea. Mooring $438/day. Load All for Route Ports: This Route.",
+    "2. Jeju [port_jeju], South Korea. Mooring $282/day. Load All for Route Ports: This Route.",
+    "3. Busan [port_busan], South Korea. Mooring $544/day. Load All for Route Ports: This Route.",
+    "4. Tokyo [port_tokyo], Japan. Mooring $608/day. Store All for Onwards Ports: Hong Kong [port_hong_kong]. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Store All for Onwards Ports: Hakata [port_hakata]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "5. Busan [port_busan], South Korea. Mooring $544/day. Load All for Route Ports: This Route.",
+    "6. Jeju [port_jeju], South Korea. Mooring $282/day. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "PH-HK Route [route_8]",
+   "ship": "제주 [ship_8]",
+   "status": "In Transit",
+   "legs": [
+    "All legs at 60% speed, 486 km/day, fuel $6,490 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Tokyo [port_tokyo], except at Port: Hong Kong [port_hong_kong].",
+    "Load All for Onwards Ports: Hakata [port_hakata], except at Port: Hong Kong [port_hong_kong]."
+   ],
+   "stops": [
+    "1. Davao [port_davao], Philippines. Mooring $276/day. Load All for Route Ports: This Route.",
+    "2. Cebu [port_cebu], Philippines. Mooring $250/day. Load All for Route Ports: This Route.",
+    "3. Manila [port_manila], Philippines. Mooring $307/day. Load All for Route Ports: This Route.",
+    "4. Hong Kong [port_hong_kong], Hong Kong. Mooring $672/day. Store All for Onwards Ports: Tokyo [port_tokyo]. Store All for Onwards Ports: Hakata [port_hakata]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "5. Manila [port_manila], Philippines. Mooring $307/day. Load All for Route Ports: This Route.",
+    "6. Cebu [port_cebu], Philippines. Mooring $250/day. Load All for Route Ports: This Route."
+   ]
+  }
+ ],
+ "depots": [
+  {
+   "port": "Hakata [port_hakata]",
+   "country": "Japan",
+   "level": 3,
+   "capacity_teu": 10000,
+   "stored_teu": 908,
+   "stored_teu_by_destination": {
+    "Busan [port_busan]": 86,
+    "Jeju [port_jeju]": 22,
+    "Kaohsiung [port_kaohsiung]": 35,
+    "Kobe [port_kobe]": 97,
+    "Manila [port_manila]": 9,
+    "Nagoya [port_nagoya]": 81,
+    "Naha [port_naha]": 235,
+    "Shimizu [port_shimizu]": 306,
+    "Tokyo [port_tokyo]": 37
+   }
+  },
+  {
+   "port": "Hong Kong [port_hong_kong]",
+   "country": "Hong Kong",
+   "level": 3,
+   "capacity_teu": 10000,
+   "stored_teu": 207,
+   "stored_teu_by_destination": {
+    "Busan [port_busan]": 154,
+    "Hakata [port_hakata]": 2,
+    "Kaohsiung [port_kaohsiung]": 43,
+    "Tokyo [port_tokyo]": 4,
+    "Tomakomai [port_tomakomai]": 4
+   }
+  },
+  {
+   "port": "Tokyo [port_tokyo]",
+   "country": "Japan",
+   "level": 4,
+   "capacity_teu": 50000,
+   "stored_teu": 31963,
+   "stored_teu_by_destination": {
+    "Busan [port_busan]": 422,
+    "Cebu [port_cebu]": 423,
+    "Davao [port_davao]": 341,
+    "Hong Kong [port_hong_kong]": 3160,
+    "Jeju [port_jeju]": 47,
+    "Kaohsiung [port_kaohsiung]": 9059,
+    "Manila [port_manila]": 2943,
+    "Naha [port_naha]": 15568
+   }
+  },
+  {
+   "port": "Tomakomai [port_tomakomai]",
+   "country": "Japan",
+   "level": 4,
+   "capacity_teu": 50000,
+   "stored_teu": 643,
+   "stored_teu_by_destination": {
+    "Fushiki-Toyama [port_fushiki_toyama]": 153,
+    "Hakata [port_hakata]": 187,
+    "Niigata [port_niigata]": 303
+   }
+  }
+ ]
+}

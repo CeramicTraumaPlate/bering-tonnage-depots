@@ -1,0 +1,242 @@
+{
+  "record_version": 2,
+  "save": "default",
+  "release": "1.0.3",
+  "game_day": 705,
+  "start_region": "japan_pacific",
+  "managed": [
+    {
+      "route": "route_2",
+      "port": "port_hakata",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Port",
+        "target": "port_sendai",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_hakata",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "This Route",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_hakata",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_3",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_hakata",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_4",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_4",
+      "port": "port_hakata",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_tokyo",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_tokyo",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_4",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_tokyo",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_4",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_tomakomai",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "This Route",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_tomakomai",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_3",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_3",
+      "port": "port_tomakomai",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "This Route",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_3",
+      "port": "port_tomakomai",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_1",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_4",
+        "except_at": [
+          "port_tokyo"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_tomakomai",
+        "except_at": [
+          "port_tomakomai"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_hakata",
+        "except_at": [
+          "port_hakata"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "route_3",
+        "except_at": [
+          "port_hakata"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_3",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_tomakomai",
+        "except_at": [
+          "port_tomakomai"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_4",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_tokyo",
+        "except_at": [
+          "port_hakata"
+        ],
+        "except_cargo": null
+      }
+    }
+  ]
+}

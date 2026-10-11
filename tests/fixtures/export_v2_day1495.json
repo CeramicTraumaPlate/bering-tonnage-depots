@@ -1,0 +1,103 @@
+{
+  "format": "Bering Tonnage route data",
+  "export_version": 2,
+  "release": "1.0.3",
+  "save_version": 205,
+  "date": "2030-11-12",
+  "day": 1495,
+  "start_region": "japan_pacific",
+  "economic_difficulty": "medium",
+  "_comment": "Real export from v1.0.3, trimmed: finance, operational_stats and costs removed. Shows Collect, Store, Global Rules, 'except at Port:' and 'except <filter>:' wording.",
+  "ships": [
+    {
+      "name": "MV Saltwind [ship_1]",
+      "status": "Docked at Tokyo [port_tokyo]. Speed 100%. Condition 69%.",
+      "route": "JP E [route_2], stop 1 of 4",
+      "cargo_teu": 453,
+      "cargo_teu_by_destination": {"Sendai-Shiogama [port_sendai]": 157, "Tomakomai [port_tomakomai]": 296}
+    },
+    {
+      "name": "MV Grey Current [ship_2]",
+      "status": "Docked at Tokyo [port_tokyo]. Speed 100%. Condition 77%.",
+      "route": "JP S [route_1], stop 5 of 8",
+      "cargo_teu": 708,
+      "cargo_teu_by_destination": {"Hakata [port_hakata]": 329, "Kobe [port_kobe]": 126, "Nagoya [port_nagoya]": 122, "Shimizu [port_shimizu]": 131}
+    },
+    {
+      "name": "포항 [ship_3]",
+      "status": "Sailing to Fushiki-Toyama [port_fushiki_toyama]. Speed 90%. Condition 89%.",
+      "route": "JP W [route_3], stop 2 of 6",
+      "cargo_teu": 252,
+      "cargo_teu_by_destination": {"Fushiki-Toyama [port_fushiki_toyama]": 65, "Niigata [port_niigata]": 111, "Tomakomai [port_tomakomai]": 76}
+    },
+    {
+      "name": "SS Gallant [ship_4]",
+      "status": "Sailing to Naha [port_naha]. Speed 40%. Condition 82%.",
+      "route": "HK-TW-JP Route [route_4], stop 5 of 6",
+      "cargo_teu": 235,
+      "cargo_teu_by_destination": {"Hong Kong [port_hong_kong]": 17, "Kaohsiung [port_kaohsiung]": 28, "Kobe [port_kobe]": 9, "Nagoya [port_nagoya]": 20, "Naha [port_naha]": 58, "Sendai-Shiogama [port_sendai]": 21, "Shimizu [port_shimizu]": 65, "Tomakomai [port_tomakomai]": 17}
+    }
+  ],
+  "routes": [
+    {
+      "name": "JP S [route_1]",
+      "ship": "MV Grey Current [ship_2]",
+      "status": "Loading",
+      "global_rules": ["Load All for Route Ports: This Route."],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $136/day. Load All for Route Ports: This Route.",
+        "2. Kobe [port_kobe], Japan. Mooring $182/day. Load All for Route Ports: This Route.",
+        "3. Nagoya [port_nagoya], Japan. Mooring $156/day. Load All for Route Ports: This Route.",
+        "4. Shimizu [port_shimizu], Japan. Mooring $125/day. Load All for Route Ports: This Route.",
+        "5. Tokyo [port_tokyo], Japan. Mooring $228/day. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "6. Shimizu [port_shimizu], Japan. Mooring $125/day. Load All for Route Ports: This Route.",
+        "7. Nagoya [port_nagoya], Japan. Mooring $156/day. Load All for Route Ports: This Route.",
+        "8. Kobe [port_kobe], Japan. Mooring $182/day. Load All for Route Ports: This Route."
+      ]
+    },
+    {
+      "name": "JP E [route_2]",
+      "ship": "MV Saltwind [ship_1]",
+      "status": "Loading",
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Mooring $133/day. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Sendai-Shiogama [port_sendai], Japan. Mooring $70/day. Load All for Route Ports: This Route.",
+        "3. Tomakomai [port_tomakomai], Japan. Mooring $60/day. Load All for Route Ports: This Route.",
+        "4. Sendai-Shiogama [port_sendai], Japan. Mooring $70/day. Load All for Route Ports: This Route."
+      ]
+    },
+    {
+      "name": "JP W [route_3]",
+      "ship": "포항 [ship_3]",
+      "status": "In Transit",
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $51/day. Load All for Route Ports: This Route.",
+        "2. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $49/day. Load All for Route Ports: This Route.",
+        "3. Niigata [port_niigata], Japan. Mooring $40/day. Load All for Route Ports: This Route.",
+        "4. Tomakomai [port_tomakomai], Japan. Mooring $38/day. Load All for Route Ports: This Route.",
+        "5. Niigata [port_niigata], Japan. Mooring $40/day. Load All for Route Ports: This Route.",
+        "6. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $49/day. Load All for Route Ports: This Route."
+      ]
+    },
+    {
+      "name": "HK-TW-JP Route [route_4]",
+      "ship": "SS Gallant [ship_4]",
+      "status": "In Transit",
+      "global_rules": ["Load All for Onwards Ports: Tokyo [port_tokyo], except at Port: Tokyo [port_tokyo]."],
+      "stops": [
+        "1. Hong Kong [port_hong_kong], Hong Kong. Mooring $378/day. Load All for Route Ports: This Route.",
+        "2. Kaohsiung [port_kaohsiung], Taiwan. Mooring $252/day. Load All for Route Ports: This Route.",
+        "3. Naha [port_naha], Japan. Mooring $189/day. Load All for Route Ports: This Route.",
+        "4. Tokyo [port_tokyo], Japan. Mooring $342/day. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Load All for Route Ports: This Route.",
+        "5. Naha [port_naha], Japan. Mooring $189/day. Load All for Route Ports: This Route.",
+        "6. Kaohsiung [port_kaohsiung], Taiwan. Mooring $252/day. Load All for Route Ports: This Route."
+      ]
+    }
+  ],
+  "depots": [
+    {"port": "Hakata [port_hakata]", "country": "Japan", "level": 1, "capacity_teu": 500, "stored_teu": 0},
+    {"port": "Hong Kong [port_hong_kong]", "country": "Hong Kong", "level": 1, "capacity_teu": 500, "stored_teu": 0},
+    {"port": "Tokyo [port_tokyo]", "country": "Japan", "level": 1, "capacity_teu": 500, "stored_teu": 0},
+    {"port": "Tomakomai [port_tomakomai]", "country": "Japan", "level": 1, "capacity_teu": 500, "stored_teu": 0}
+  ]
+}
