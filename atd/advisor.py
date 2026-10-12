@@ -38,10 +38,13 @@ RETIRED = {"future_proof"}  # always on now; ignored if an old atd.toml still ha
 
 
 def load_settings(path: Path | None) -> dict:
+    """Settings from `path`, then from atd.local.toml next to it (your own, never uploaded)."""
     settings = dict(DEFAULTS)
-    if path and path.exists():
-        with open(path, "rb") as f:
-            settings.update({k: v for k, v in tomllib.load(f).get("settings", {}).items() if k not in RETIRED})
+    files = [path, path.with_name("atd.local.toml")] if path else []
+    for f_path in files:
+        if f_path.exists():
+            with open(f_path, "rb") as f:
+                settings.update({k: v for k, v in tomllib.load(f).get("settings", {}).items() if k not in RETIRED})
     unknown = set(settings) - set(DEFAULTS)
     if unknown:
         raise SystemExit(f"Unknown setting(s) in {path}: {', '.join(sorted(unknown))}")
