@@ -23,7 +23,7 @@ import os
 import tkinter as tk
 from pathlib import Path
 
-from .advisor import load_settings
+from .advisor import load_settings, recursive_routes
 from . import nudges
 from .export_parser import parse_export
 from .planner import is_other_game, load_record, make_plan, record_meta, save_record
@@ -157,7 +157,8 @@ class Overlay:
             new_game_note = (f"New game or older save detected: started a fresh memory file "
                              f"(the old one is kept as records/{kept.name})")
         plan = make_plan(routing, net, load_record(self.record_path), s["auto_transfer"],
-                         set(s["disabled_routes"]), s["compact"], adopt=adopt)
+                         set(s["disabled_routes"]), s["compact"], adopt=adopt,
+                         recursive_templates=recursive_routes(net, s["recursive_templates"]))
         self.record_path.parent.mkdir(parents=True, exist_ok=True)
         save_record(self.record_path, plan.record, {"save": self.save, "release": export.release,
                                                      "game_day": export.meta.get("day"),

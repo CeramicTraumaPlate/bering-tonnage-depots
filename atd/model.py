@@ -36,6 +36,9 @@ class Rule:
     except_at: tuple[str, ...] = ()
     except_cargo: tuple[str, str] | None = None
     raw: str | None = field(default=None, compare=False)
+    # Recursive Onwards Ports (made by a route template with that option on). The export
+    # doesn't say, so the planner sets it when told to assume it ("recursive templates").
+    recursive: bool = field(default=False, compare=False)
 
     @property
     def parsed(self) -> bool:

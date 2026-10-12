@@ -13,7 +13,9 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .model import LOAD, PORT, ROUTE_PORTS, STORE, THIS_ROUTE, Network, Rule
+from dataclasses import replace
+
+from .model import LOAD, ONWARDS_PORTS, PORT, ROUTE_PORTS, STORE, THIS_ROUTE, Network, Rule
 from .routing import RoutingPlan
 from .rules import (Loc, collectors_of, evaluate_stop, existing_rules, generate, generate_compact, merge,
                     rule_destinations, stop_locations, verify_compact)
@@ -114,8 +116,12 @@ def make_plan(
     compact: bool = False,
     adopt: bool = False,
     future_proof: bool = True,
+    recursive_templates: bool | set[str] = False,
 ) -> Plan:
     """compact=True expects a routing plan made with direct_first=False.
+
+    recursive_templates: True, or the ids of the routes, whose own Onwards Ports rules came
+    from a route template with Recursive Onwards Ports on.
 
     adopt=True: one-time cleanup. Treat every rule in the game as this tool's,
     except the default `Load | All | Route Ports | This Route`, so that rules
@@ -123,6 +129,14 @@ def make_plan(
     """
     plan = Plan()
     current = existing_rules(network)
+    if recursive_templates:
+        # Your own Onwards Ports rules came from route templates with Recursive Onwards Ports on.
+        # The export can't show it, so assume it. Rules this tool suggested are never recursive.
+        rec_routes = recursive_templates if isinstance(recursive_templates, (set, frozenset)) else None
+        current = {loc: [replace(r, recursive=True)
+                         if (r.filter == ONWARDS_PORTS and (rec_routes is None or loc[0] in rec_routes)
+                             and (loc[0], loc[1], loc[2], r.key()) not in record) else r
+                         for r in rs] for loc, rs in current.items()}
 
     # Split present rules into managed (recorded) and player (everything else).
     managed_present: dict[Loc, list[Rule]] = {}
@@ -140,8 +154,19 @@ def make_plan(
     elif compact:
         # Every Collect rule in the game (yours or ours, ship or no ship) widens Onwards Ports,
         # so the generator must judge Onwards rules by all of them.
-        wanted = generate_compact(routing, network, extra_collectors=collectors_of(current),
-                                  existing=current, future_proof=future_proof)
+        plain = {loc: [r for r in rs if not r.recursive] for loc, rs in current.items()}
+        wanted = generate_compact(routing, network, extra_collectors=collectors_of(current), existing=plain,
+                                  future_proof=future_proof,
+                                  extra_drops=_player_drops(network, player, collectors_of(current)))
+        # Recursive rules reach through every hub where someone collects, including the
+        # Collects suggested here, so plan again with those until nothing changes.
+        for _ in range(3 if recursive_templates else 0):
+            drops = _player_drops(network, player, collectors_of(merge(current, wanted)))
+            again = generate_compact(routing, network, extra_collectors=collectors_of(merge(current, wanted)),
+                                     existing=plain, future_proof=future_proof, extra_drops=drops)
+            if again == wanted:
+                break
+            wanted = again
     else:
         wanted = generate(routing, network)
     collectors = collectors_of(merge(player, wanted))  # who collects where, once all rules are in
@@ -169,6 +194,20 @@ def make_plan(
     _check_limits(network, player, wanted, plan)
     plan.warnings = sorted(set(plan.warnings))
     return plan
+
+
+def _player_drops(network, player, collectors) -> dict[str, set[str]]:
+    """Hub -> destinations the player's own Store rules drop off there (e.g. a recursive
+    template's Store), so the generator arranges for someone to collect them."""
+    out: dict[str, set[str]] = {}
+    for loc, rs in player.items():
+        if loc[1] is None:
+            continue
+        route = network.route(loc[0])
+        for r in rs:
+            if r.action == STORE:
+                out.setdefault(loc[1], set()).update(rule_destinations(r, route, network, collectors) or ())
+    return out
 
 
 def _split_optional_removals(routing, network, player, plan) -> None:

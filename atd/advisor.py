@@ -30,6 +30,9 @@ DEFAULTS = {
     "dry_run": False,
     "compact": True,  # short Route Ports rules; false = one rule per destination, direct routes first
     "overlay_only_with_game": True,  # hide the overlay unless Bering Tonnage is the active window
+    # Routes made with a template's Recursive Onwards Ports option: false, true (all) or a list of
+    # route names. The export doesn't show it, so the overlay has to be told.
+    "recursive_templates": False,
 }
 RETIRED = {"future_proof"}  # always on now; ignored if an old atd.toml still has it
 
@@ -72,7 +75,8 @@ def main(argv: list[str] | None = None) -> int:
 
     routing = plan_routes(net, s["max_transfers"], s["disabled_routes"], s["disabled_depots"],
                           extra_destinations=_cargo_destinations(export), direct_first=not s["compact"])
-    plan = make_plan(routing, net, record, s["auto_transfer"], set(s["disabled_routes"]), s["compact"])
+    plan = make_plan(routing, net, record, s["auto_transfer"], set(s["disabled_routes"]), s["compact"],
+                     recursive_templates=recursive_routes(net, s["recursive_templates"]))
 
     # Acceptance test 8 on live data: the generator's rules reproduce the routing decisions.
     if s["compact"]:
@@ -99,6 +103,14 @@ def main(argv: list[str] | None = None) -> int:
                                                 "game_day": export.meta.get("day")})
         print(f"\nRecorded {sum(map(len, plan.desired.values()))} managed rule(s) in {record_path}")
     return 1 if problems else 0
+
+
+def recursive_routes(net: Network, setting) -> bool | set[str]:
+    """The `recursive_templates` setting as make_plan wants it: False, True or route ids."""
+    if isinstance(setting, bool):
+        return setting
+    wanted = {str(x).strip().lower() for x in (setting or [])}
+    return {r.id for r in net.routes if (r.name or "").strip().lower() in wanted or r.id in wanted}
 
 
 def _cargo_destinations(export) -> set[str]:

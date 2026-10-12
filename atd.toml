@@ -7,3 +7,7 @@ disabled_routes = []      # route ids the advisor ignores and never touches, e.g
 dry_run = false
 compact = true            # short Route Ports rules; false = one rule per destination
 overlay_only_with_game = true   # hide the overlay unless Bering Tonnage is the active window
+# Routes you made with a template's "Recursive Onwards Ports" option. The game can't tell the overlay,
+# so list them: false, true (every route), or names, e.g. ["ROK", "HK-VN"]. Best for routes with one
+# hub (feeders): a recursive template drops everything at its one hub, even cargo for its other hub.
+recursive_templates = false

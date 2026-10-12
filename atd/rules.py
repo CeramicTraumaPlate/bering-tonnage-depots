@@ -86,7 +86,8 @@ def generate(plan: RoutingPlan, network: Network) -> dict[Loc, list[Rule]]:
 def generate_compact(plan: RoutingPlan, network: Network,
                      extra_collectors: dict[str, set[str]] | None = None,
                      existing: dict[Loc, list[Rule]] | None = None,
-                     future_proof: bool = True) -> dict[Loc, list[Rule]]:
+                     future_proof: bool = True,
+                     extra_drops: dict[str, set[str]] | None = None) -> dict[Loc, list[Rule]]:
     """Few, readable rules. Use with a plan made with direct_first=False.
 
     Cargo may be handed over at ANY depot one step closer to its destination
@@ -115,9 +116,9 @@ def generate_compact(plan: RoutingPlan, network: Network,
     existing = existing or {}
     if future_proof:
         net2, plan2 = with_future_feeders(plan, network)
-        rules = _generate(plan2, net2, extra_collectors, existing)
+        rules = _generate(plan2, net2, extra_collectors, existing, extra_drops)
         return {loc: rs for loc, rs in rules.items() if not is_stand_in(loc[0])}
-    return _generate(plan, network, extra_collectors, existing)
+    return _generate(plan, network, extra_collectors, existing, extra_drops)
 
 
 STAND_IN = "~"  # prefix of the stand-in routes and ports used by future_proof
@@ -139,22 +140,25 @@ def with_future_feeders(plan: RoutingPlan, network: Network) -> tuple[Network, R
     return net2, plan_routes(net2, **params)
 
 
-def _generate(plan, network, extra_collectors, existing):
+def _generate(plan, network, extra_collectors, existing, extra_drops=None):
     # Collect rules depend on where cargo is actually dropped off, which depends on the
     # Store rules, which can use Onwards Ports, which depends on who collects. Start from
     # "anything that could be dropped there" (always valid) and narrow it to what is
     # actually dropped there until nothing changes.
-    ctx = compact_context(plan, network, extra_collectors)
+    waiting = in_depots(plan, network)
+    for h, ds in (extra_drops or {}).items():  # dropped by the player's own Stores
+        if h in plan.transfer_depots:
+            waiting.setdefault(h, set()).update(d for d in ds if d != h and (h, d) in plan.depot_hops)
+    ctx = compact_context(plan, network, extra_collectors, waiting=waiting)
     first, actual = _generate_once(plan, network, existing, ctx)
     out = first
-    waiting = in_depots(plan, network)
     for _ in range(4):
         for h, ds in waiting.items():  # already in the depot, whatever rules put it there
             actual[h] |= ds
         narrowed = collect_wants(plan, ctx.ports, actual)
         if narrowed == ctx.collect_want:
             return out
-        ctx = compact_context(plan, network, extra_collectors, narrowed)
+        ctx = compact_context(plan, network, extra_collectors, narrowed, waiting=waiting)
         out, actual = _generate_once(plan, network, existing, ctx)
     return first  # didn't settle: the broad version is always valid
 
@@ -321,13 +325,14 @@ def collect_wants(plan: RoutingPlan, ports: dict[str, frozenset[str]],
 
 def compact_context(plan: RoutingPlan, network: Network,
                     extra_collectors: dict[str, set[str]] | None = None,
-                    collect_want: dict[tuple[str, str], set[str]] | None = None) -> CompactContext:
+                    collect_want: dict[tuple[str, str], set[str]] | None = None,
+                    waiting: dict[str, set[str]] | None = None) -> CompactContext:
     ports = {r.id: r.port_set for r in network.routes}
     universe = set(plan.destinations).union(*ports.values()) if ports else set(plan.destinations)
     potential: dict[str, set[str]] = defaultdict(set)
     for (rid, h), ds in plan.store_ok.items():
         potential[h] |= ds
-    for h, ds in in_depots(plan, network).items():
+    for h, ds in (in_depots(plan, network) if waiting is None else waiting).items():
         potential[h] |= ds
     if collect_want is None:
         collect_want = collect_wants(plan, ports, potential)
@@ -530,7 +535,7 @@ def rule_destinations(rule: Rule, route: Route, network: Network,
     """Destinations a rule matches (its filter minus its Except cargo), or None if unknown."""
     if not rule.parsed:
         return None
-    dests = filter_destinations(rule.filter, rule.target, route, network, collectors)
+    dests = filter_destinations(rule.filter, rule.target, route, network, collectors, rule.recursive)
     if dests is None or not rule.except_cargo:
         return dests
     excluded = filter_destinations(*rule.except_cargo, route, network, collectors)
@@ -538,7 +543,8 @@ def rule_destinations(rule: Rule, route: Route, network: Network,
 
 
 def filter_destinations(filt: str, target: str, route: Route, network: Network,
-                        collectors: dict[str, set[str]] | None = None) -> set[str] | None:
+                        collectors: dict[str, set[str]] | None = None,
+                        recursive: bool = False) -> set[str] | None:
     """Ports a filter + target matches, or None if the model can't tell."""
     if filt == PORT:
         return {target}
@@ -549,6 +555,8 @@ def filter_destinations(filt: str, target: str, route: Route, network: Network,
             return set(network.route(target).port_set)
         except KeyError:
             return None
+    if filt == ONWARDS_PORTS and recursive:
+        return onwards_closure(target, network, collectors or {})
     if filt == ONWARDS_PORTS:
         # Ports of routes with a Collect rule at the target's depot, excluding the target (v1.0.2).
         ports: set[str] = set()
@@ -556,6 +564,27 @@ def filter_destinations(filt: str, target: str, route: Route, network: Network,
             ports |= network.route(rid).port_set
         return ports - {target}
     return None  # Region and anything else: no data yet
+
+
+def onwards_closure(hub: str, network: Network, collectors: dict[str, set[str]]) -> set[str]:
+    """Recursive Onwards Ports | hub: ports of routes collecting at the hub, then of routes
+    collecting at any depot among those ports, and so on until the network is exhausted
+    (the developer's description, v1.0.4). The hub itself is left out."""
+    depots = {d.port for d in network.depots if d.enabled}
+    seen, queue, ports = {hub}, [hub], set()
+    while queue:
+        h = queue.pop()
+        for rid in sorted(collectors.get(h, ())):
+            try:
+                ps = network.route(rid).port_set
+            except KeyError:
+                continue
+            ports |= ps
+            for p in ps:
+                if p in depots and p not in seen:
+                    seen.add(p)
+                    queue.append(p)
+    return ports - {hub}
 
 
 def collectors_of(rules: dict[Loc, list[Rule]]) -> dict[str, set[str]]:

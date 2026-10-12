@@ -399,5 +399,42 @@ class Release104(unittest.TestCase):
             self.assertEqual(sum(1 for c in plan.add if c.loc[0] == rid), 3, rid)
 
 
+
+class RecursiveTemplates(unittest.TestCase):
+    def test_closure_follows_collect_rules_through_depots(self):
+        from atd.model import COLLECT
+        from atd.rules import collectors_of, existing_rules, onwards_closure
+        n = net({"A": ["a1", "h"], "B": ["h", "k"], "C": ["k", "c1"], "D": ["x", "d1"]}, depots=["h", "k", "x"])
+        for rid, port in (("A", "h"), ("B", "h"), ("B", "k"), ("C", "k")):
+            stop = next(s for s in n.route(rid).stops if s.port == port)
+            stop.rules = [Rule(COLLECT, ROUTE_PORTS, THIS_ROUTE)]
+        col = collectors_of(existing_rules(n))
+        self.assertEqual(onwards_closure("h", n, col), {"a1", "k", "c1"})  # D isn't connected
+
+    def test_new_game_with_recursive_feeders_day670(self):
+        """Every route made as a recursive Feeder: JP S only needs its Hakata rules and relays,
+        not Loads for every far port, and the plan settles."""
+        import sys
+        from atd.export_parser import load_export
+        from atd.advisor import recursive_routes
+        sys.path.insert(0, str(Path(__file__).parent))
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v2_104_day670_recursive.json").network
+        normal = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True)
+        rec = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True,
+                        recursive_templates=recursive_routes(n, True))
+        self.assertEqual((len(normal.add), len(rec.add)), (9, 5))
+        self.assertTrue(all(c.loc[0] == "route_1" for c in rec.add))  # all on JP S
+        n2 = apply(n, rec)
+        again = make_plan(plan_routes(n2, direct_first=False), n2, record_of(rec), compact=True,
+                          recursive_templates=recursive_routes(n2, True))
+        self.assertEqual((again.add, again.remove), ([], []))
+
+    def test_setting_by_route_name(self):
+        from atd.advisor import recursive_routes
+        n = net({"ROK": ["a", "h"], "JP S": ["h", "t"]})
+        self.assertEqual(recursive_routes(n, ["rok"]), {"ROK"})
+        self.assertIs(recursive_routes(n, False), False)
+
+
 if __name__ == "__main__":
     unittest.main()

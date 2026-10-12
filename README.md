@@ -93,6 +93,18 @@ Rules are kept to the minimum your network needs today. Where a self-updating ru
 - **A new hub** (a depot that becomes a meeting point) needs a few rules on the routes that can reach it, once.
 - **Rule limit:** 40 rules per route, stops and Global Rules together. The overlay warns from 32, and points out Load rules that a route template repeated on every stop: as Global Rules they take one each.
 
+## Recursive Onwards Ports (v1.0.4)
+
+Route templates (Feeder, Star) can be made with **Recursive Onwards Ports**: their Onwards Ports rules then reach every port connected through hubs where routes collect, not just one hub. The option only exists when you first make a route, and the route export doesn't show it, so tell the overlay in `atd.toml`:
+
+```toml
+recursive_templates = ["ROK", "HK-VN"]   # or true for every route, false for none
+```
+
+The overlay then counts on those routes' template rules to load and store cargo for far-away ports, and only suggests what's missing, mostly Stores and Collects where routes meet a second hub. On one save it needed 5 changes instead of 9; rebuilt as templates, a large network needed 25 instead of 40.
+
+Best for **feeders** (routes with one hub). A recursive template drops everything at its one hub, so on a route between two hubs, cargo for the other hub goes off at the template's hub first and is carried back: it arrives, but takes the long way.
+
 ## License
 
 MIT, see [LICENSE](LICENSE). Bering Tonnage is the property of its developer; this project only reads the route export the game provides.
