@@ -452,5 +452,16 @@ class SuggestedFixes(unittest.TestCase):
         self.assertNotIn(("route_7", "port_tokyo", STORE, ONWARDS_PORTS, "port_hakata"), got)
 
 
+    def test_template_rules_that_work_are_kept_day322(self):
+        """Hub-and-spoke rules from route templates that already work stay put: the plan only
+        adds, and does not replace them with its own equivalents."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v3_11_day322.json").network
+        plan = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True)
+        self.assertEqual((len(plan.add), len(plan.remove), len(plan.optional_remove)), (9, 0, 0))
+        self.assertEqual([w for w in plan.warnings if "player rule" in w], [])
+
+
 if __name__ == "__main__":
     unittest.main()

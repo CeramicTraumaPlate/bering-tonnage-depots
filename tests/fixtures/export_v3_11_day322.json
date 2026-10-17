@@ -1,0 +1,57 @@
+{
+  "format": "Bering Tonnage route data",
+  "export_version": 3,
+  "release": "1.1",
+  "save_version": 206,
+  "date": "2027-09-03",
+  "day": 322,
+  "start_region": "japan_pacific",
+  "ships": [
+    {"name": "MV Saltwind [ship_1]", "vessel": "Handysize, 700 TEU.", "route": "JP N [route_2], stop 1 of 3", "route_status": "Unloading",
+     "cargo_teu_by_destination": {"Hakata [port_hakata]": 3, "Kobe [port_kobe]": 34, "Nagoya [port_nagoya]": 4, "Sendai-Shiogama [port_sendai]": 119, "Shimizu [port_shimizu]": 8}},
+    {"name": "MV Grey Current [ship_2]", "vessel": "Handymax, 1,200 TEU.", "route": "JP S [route_1], stop 1 of 5", "route_status": "Unloading",
+     "cargo_teu_by_destination": {"Kobe [port_kobe]": 10, "Nagoya [port_nagoya]": 131, "Sendai-Shiogama [port_sendai]": 181, "Shimizu [port_shimizu]": 237, "Tokyo [port_tokyo]": 339, "Tomakomai [port_tomakomai]": 134}},
+    {"name": "Tone [ship_3]", "vessel": "Handymax, 1,200 TEU.", "route": "JP W [route_3], stop 4 of 4", "route_status": "In Transit",
+     "cargo_teu_by_destination": {"Hakata [port_hakata]": 34, "Tomakomai [port_tomakomai]": 190}}
+  ],
+  "routes": [
+    {
+      "name": "JP S [route_1]",
+      "ships": ["MV Grey Current [ship_2]"],
+      "legs": ["All legs at 100% speed, 890 km/day, fuel $13,017 per sailing day."],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Mooring $228/day. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Shimizu [port_shimizu], Japan. Mooring $125/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Nagoya [port_nagoya], Japan. Mooring $156/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Kobe [port_kobe], Japan. Mooring $182/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "5. Hakata [port_hakata], Japan. Mooring $136/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    },
+    {
+      "name": "JP N [route_2]",
+      "ships": ["MV Saltwind [ship_1]"],
+      "legs": ["All legs at 100% speed, 890 km/day, fuel $10,117 per sailing day."],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Mooring $133/day. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Sendai-Shiogama [port_sendai], Japan. Mooring $70/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Tomakomai [port_tomakomai], Japan. Mooring $60/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    },
+    {
+      "name": "JP W [route_3]",
+      "ships": ["Tone [ship_3]"],
+      "legs": ["All legs at 100% speed, 890 km/day, fuel $13,017 per sailing day."],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $136/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $132/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Niigata [port_niigata], Japan. Mooring $108/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "4. Tomakomai [port_tomakomai], Japan. Mooring $103/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ]
+    }
+  ],
+  "depots": [
+    {"port": "Hakata [port_hakata]", "country": "Japan", "level": 2, "capacity_teu": 2000, "stored_teu": 0},
+    {"port": "Tokyo [port_tokyo]", "country": "Japan", "level": 2, "capacity_teu": 2000, "stored_teu": 945,
+     "stored_teu_by_destination": {"Hakata [port_hakata]": 337, "Kobe [port_kobe]": 45, "Nagoya [port_nagoya]": 119, "Shimizu [port_shimizu]": 444}}
+  ]
+}
