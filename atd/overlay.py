@@ -26,7 +26,7 @@ from pathlib import Path
 from .advisor import load_settings, recursive_routes
 from . import nudges
 from .export_parser import parse_export
-from .planner import is_other_game, load_record, make_plan, record_meta, save_record, seen_routes_of
+from .planner import is_other_game, load_record, make_plan, record_meta, save_record
 from .routing import plan_routes
 from .model import ONWARDS_PORTS, THIS_ROUTE
 from .rules import collectors_of, existing_rules, merge, render, rule_destinations, stop_locations
@@ -158,13 +158,11 @@ class Overlay:
                              f"(the old one is kept as records/{kept.name})")
         plan = make_plan(routing, net, load_record(self.record_path), s["auto_transfer"],
                          set(s["disabled_routes"]), s["compact"], adopt=adopt,
-                         recursive_templates=recursive_routes(net, s["recursive_templates"]),
-                         seen_routes=seen_routes_of(record_meta(self.record_path)))
+                         recursive_templates=recursive_routes(net, s["recursive_templates"]))
         self.record_path.parent.mkdir(parents=True, exist_ok=True)
         save_record(self.record_path, plan.record, {"save": self.save, "release": export.release,
                                                      "game_day": export.meta.get("day"),
-                                                     "start_region": export.meta.get("start_region"),
-                                                     "seen_routes": plan.seen_routes})
+                                                     "start_region": export.meta.get("start_region")})
 
         names = {r.id: r.name or r.id for r in net.routes}
         lines: list[tuple[str, str]] = []

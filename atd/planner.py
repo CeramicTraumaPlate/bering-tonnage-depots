@@ -47,8 +47,6 @@ class Plan:
     # Player rules that only do what a conflict warning complains about: suggested for removal.
     suggest_remove: list[Change] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
-    # Every route this run has seen, saved so the next run can tell which routes are new.
-    seen_routes: list[str] = field(default_factory=list)
 
 
 # --------------------------------------------------------------------------- record
@@ -61,12 +59,6 @@ def load_record(path: Path) -> set[tuple]:
     if data.get("record_version") not in (1, RECORD_VERSION):
         raise ValueError(f"{path}: unknown record version {data.get('record_version')}")
     return {_entry_from_json(e) for e in data["managed"]}
-
-
-def seen_routes_of(meta: dict) -> set[str] | None:
-    """Routes a saved record says earlier runs saw, or None for a record that predates the list."""
-    seen = meta.get("seen_routes")
-    return set(seen) if isinstance(seen, list) else None
 
 
 def record_meta(path: Path) -> dict:
@@ -127,7 +119,6 @@ def make_plan(
     adopt: bool = False,
     future_proof: bool = True,
     recursive_templates: bool | set[str] = False,
-    seen_routes: set[str] | None = None,
 ) -> Plan:
     """compact=True expects a routing plan made with direct_first=False.
 
@@ -137,15 +128,8 @@ def make_plan(
     adopt=True: one-time cleanup. Treat every rule in the game as this tool's,
     except the default `Load | All | Route Ports | This Route`, so that rules
     from earlier suggestions are listed for removal instead of warned about.
-
-    seen_routes: the routes earlier runs saw (None when nothing was saved yet). A route not
-    among them is new: the rules a route template gave it are adopted like `adopt`, so they
-    are planned around instead of warned about. Routes seen before are never adopted again,
-    so rules you add to them later stay yours.
     """
     plan = Plan()
-    plan.seen_routes = sorted(r.id for r in network.routes)
-    new_routes = {r.id for r in network.routes} - seen_routes if seen_routes is not None else set()
     current = existing_rules(network)
     if recursive_templates:
         # Your own Onwards Ports rules came from route templates with Recursive Onwards Ports on.
@@ -164,7 +148,7 @@ def make_plan(
             is_default = (r.action, r.filter, r.target, r.except_at, r.except_cargo) == (
                 LOAD, ROUTE_PORTS, THIS_ROUTE, (), None)
             is_managed = r.parsed and ((loc[0], loc[1], loc[2], r.key()) in record
-                                       or ((adopt or loc[0] in new_routes) and not is_default))
+                                       or (adopt and not is_default))
             (managed_present if is_managed else player).setdefault(loc, []).append(r)
 
     if not auto_transfer:
