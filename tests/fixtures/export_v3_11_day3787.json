@@ -1,0 +1,129 @@
+{
+  "format": "Bering Tonnage route data",
+  "export_version": 3,
+  "release": "1.1",
+  "save_version": 206,
+  "date": "2037-02-27",
+  "day": 3787,
+  "start_region": "japan_pacific",
+  "ships": [
+    {"name": "MV Saltwind [ship_1]", "vessel": "Handysize, 700 TEU.", "route": "JP N [route_2], stop 3 of 3", "route_status": "In Transit"},
+    {"name": "MV Grey Current [ship_2]", "vessel": "Handymax, 1,200 TEU.", "route": "JP S [route_1], stop 1 of 5", "route_status": "Loading"},
+    {"name": "Chikuma [ship_3]", "vessel": "Handysize, 900 TEU.", "route": "JP W [route_3], stop 1 of 4", "route_status": "Maintenance"},
+    {"name": "Daejeon II [ship_4]", "vessel": "Handymax, 1,800 TEU.", "route": "JP S [route_1], stop 5 of 5", "route_status": "Loading"},
+    {"name": "Jeonbuk II [ship_5]", "vessel": "Handysize, 300 TEU.", "route": "JP W [route_3], stop 1 of 4", "route_status": "Loading"},
+    {"name": "Tone [ship_6]", "vessel": "Handymax, 1,200 TEU.", "route": "JP W [route_3], stop 2 of 4", "route_status": "Maintenance"},
+    {"name": "MV Argon [ship_7]", "vessel": "Handysize, 300 TEU.", "route": "JP N [route_2], stop 3 of 3", "route_status": "In Transit"},
+    {"name": "Satsuma [ship_8]", "vessel": "Handymax, 1,600 TEU.", "route": "ROK [route_4], stop 1 of 4", "route_status": "Unloading"},
+    {"name": "Ningbo [ship_9]", "vessel": "Panamax, 5,200 TEU.", "route": "CAN-HKT [route_5], stop 3 of 5", "route_status": "Unloading"},
+    {"name": "Guiyang [ship_10]", "vessel": "Handysize, 850 TEU.", "route": "CAN-HKT [route_5], stop 5 of 5", "route_status": "Ready to Depart"},
+    {"name": "Guiyang II [ship_11]", "vessel": "Handysize, 850 TEU.", "route": "SEA [route_6], stop 7 of 8", "route_status": "Maintenance"},
+    {"name": "Daejeon [ship_12]", "vessel": "Handymax, 2,400 TEU.", "route": "SEA [route_6], stop 1 of 8", "route_status": "In Transit"},
+    {"name": "Daejeon III [ship_13]", "vessel": "Handymax, 2,400 TEU.", "route": "ROK [route_4], stop 2 of 4", "route_status": "Unloading"},
+    {"name": "Xiamen [ship_14]", "vessel": "Panamax, 3,900 TEU.", "route": "CAN-TYO [route_7], stop 1 of 5", "route_status": "Loading"}
+  ],
+  "routes": [
+    {
+      "name": "JP S [route_1]",
+      "ships": ["MV Grey Current [ship_2]", "Daejeon II [ship_4]"],
+      "legs": ["All legs at 100% speed."],
+      "global_rules": [
+        "Load All for Onwards Ports: Hakata [port_hakata], except at Port: Hakata [port_hakata].",
+        "Load All for Onwards Ports: Guangzhou [port_guangzhou], except at Port: Hakata [port_hakata]."
+      ],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Hakata [port_hakata], except Onwards Ports: Tokyo [port_tokyo]. Load All for Route Ports: This Route.",
+        "2. Shimizu [port_shimizu], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Nagoya [port_nagoya], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Kobe [port_kobe], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "5. Hakata [port_hakata], Japan. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Onwards Ports: Tokyo [port_tokyo], except Onwards Ports: Hakata [port_hakata]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    },
+    {
+      "name": "JP N [route_2]",
+      "ships": ["MV Saltwind [ship_1]", "MV Argon [ship_7]"],
+      "legs": ["All legs at 100% speed."],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Sendai-Shiogama [port_sendai], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Tomakomai [port_tomakomai], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]. Load All for Onwards Ports: Hakata [port_hakata]."
+      ]
+    },
+    {
+      "name": "JP W [route_3]",
+      "ships": ["Chikuma [ship_3]", "Jeonbuk II [ship_5]", "Tone [ship_6]"],
+      "legs": ["All legs at 100% speed."],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Fushiki-Toyama [port_fushiki_toyama], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Niigata [port_niigata], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Tomakomai [port_tomakomai], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    },
+    {
+      "name": "ROK [route_4]",
+      "ships": ["Satsuma [ship_8]", "Daejeon III [ship_13]"],
+      "legs": ["All legs at 100% speed."],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Wait 40% Full.",
+        "2. Busan [port_busan], South Korea. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Jeju [port_jeju], South Korea. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Incheon [port_incheon], South Korea. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    },
+    {
+      "name": "CAN-HKT [route_5]",
+      "ships": ["Ningbo [ship_9]", "Guiyang [ship_10]"],
+      "legs": ["All legs at 100% speed."],
+      "global_rules": [
+        "Load All for Onwards Ports: Guangzhou [port_guangzhou], except at Port: Guangzhou [port_guangzhou]."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Guangzhou [port_guangzhou], except Onwards Ports: Hakata [port_hakata]. Collect All for Onwards Ports: Guangzhou [port_guangzhou], except Onwards Ports: Guangzhou [port_guangzhou]. Load All for Route Ports: This Route.",
+        "2. Naha [port_naha], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Kaohsiung [port_kaohsiung], Taiwan. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Hong Kong [port_hong_kong], Hong Kong. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "5. Guangzhou [port_guangzhou], China. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Collect All for Route Ports: JP W [route_3]. Collect All for Onwards Ports: Hakata [port_hakata], except Route Ports: JP N [route_2]. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    },
+    {
+      "name": "CAN-TYO [route_7]",
+      "ships": ["Xiamen [ship_14]"],
+      "legs": ["All legs at 100% speed, 810 km/day, fuel $24,040 per sailing day."],
+      "global_rules": [
+        "Load All for Onwards Ports: Guangzhou [port_guangzhou], except at Port: Guangzhou [port_guangzhou].",
+        "Load All for Route Ports: This Route."
+      ],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Mooring $741/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Guangzhou [port_guangzhou], except Onwards Ports: Tokyo [port_tokyo]. Load All for Route Ports: This Route.",
+        "2. Naha [port_naha], Japan. Mooring $410/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Kaohsiung [port_kaohsiung], Taiwan. Mooring $546/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Hong Kong [port_hong_kong], Hong Kong. Mooring $819/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "5. Guangzhou [port_guangzhou], China. Mooring $609/day. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Collect All for Onwards Ports: Hakata [port_hakata]. Collect All for Onwards Ports: Tokyo [port_tokyo]. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    },
+    {
+      "name": "SEA [route_6]",
+      "ships": ["Guiyang II [ship_11]", "Daejeon [ship_12]"],
+      "legs": ["All legs at 100% speed."],
+      "stops": [
+        "1. Guangzhou [port_guangzhou], China. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Zhanjiang [port_zhanjiang], China. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Haikou [port_haikou], China. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Hai Phong [port_hai_phong], Vietnam. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "5. Da Nang [port_da_nang], Vietnam. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "6. Ho Chi Minh City [port_ho_chi_minh], Vietnam. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "7. Sihanoukville [port_sihanoukville], Cambodia. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "8. Laem Chabang [port_laem_chabang], Thailand. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]. Load All for Onwards Ports: Hakata [port_hakata]. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ]
+    }
+  ],
+  "depots": [
+    {"port": "Guangzhou [port_guangzhou]", "country": "China", "level": 3, "capacity_teu": 10000, "stored_teu": 1539,
+     "stored_teu_by_destination": {"Hai Phong [port_hai_phong]": 353, "Ho Chi Minh City [port_ho_chi_minh]": 737, "Laem Chabang [port_laem_chabang]": 103, "Sendai-Shiogama [port_sendai]": 112, "Sihanoukville [port_sihanoukville]": 38, "Tokyo [port_tokyo]": 196}},
+    {"port": "Hakata [port_hakata]", "country": "Japan", "level": 3, "capacity_teu": 10000, "stored_teu": 1762,
+     "stored_teu_by_destination": {"Busan [port_busan]": 34, "Fushiki-Toyama [port_fushiki_toyama]": 294, "Guangzhou [port_guangzhou]": 24, "Hai Phong [port_hai_phong]": 5, "Ho Chi Minh City [port_ho_chi_minh]": 132, "Hong Kong [port_hong_kong]": 2, "Kaohsiung [port_kaohsiung]": 112, "Kobe [port_kobe]": 3, "Laem Chabang [port_laem_chabang]": 84, "Nagoya [port_nagoya]": 5, "Naha [port_naha]": 148, "Niigata [port_niigata]": 249, "Shimizu [port_shimizu]": 28, "Tomakomai [port_tomakomai]": 642}},
+    {"port": "Tokyo [port_tokyo]", "country": "Japan", "level": 3, "capacity_teu": 10000, "stored_teu": 5270,
+     "stored_teu_by_destination": {"Busan [port_busan]": 3125, "Fushiki-Toyama [port_fushiki_toyama]": 238, "Hakata [port_hakata]": 220, "Jeju [port_jeju]": 21, "Kobe [port_kobe]": 85, "Nagoya [port_nagoya]": 74, "Niigata [port_niigata]": 313, "Sendai-Shiogama [port_sendai]": 654, "Shimizu [port_shimizu]": 457, "Tomakomai [port_tomakomai]": 83}}
+  ]
+}

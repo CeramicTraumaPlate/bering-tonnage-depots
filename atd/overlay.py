@@ -240,6 +240,12 @@ class Overlay:
             if any(k in w for k in ("could not be read", "wording",
                                     "a player rule loads", "a player rule stores")):
                 lines.append((f"⚠ {_short(w.replace('a player rule', 'one of your own rules'))}\n", "warn"))
+        if plan.suggest_remove:
+            names_ = {r.id: r.name or r.id for r in net.routes}
+            lines.append(("Suggested fix: remove these rules of yours (they only do what is warned about above)\n", "h"))
+            for c in plan.suggest_remove:
+                where = "Global Rules" if c.loc[1] is None else net.name(c.loc[1]).split(" [")[0]
+                lines.append((f"   − {names_.get(c.loc[0], c.loc[0])} · {where}: {_short(render(c.rule, net))}\n", "warn item"))
         if plan.optional_remove:
             names_ = {r.id: r.name or r.id for r in net.routes}
             lines.append((f"Optional tidy-up: {len(plan.optional_remove)} rule(s) no longer needed but harmless\n", "dim"))

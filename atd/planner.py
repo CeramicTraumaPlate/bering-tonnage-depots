@@ -44,6 +44,8 @@ class Plan:
     skipped_for_limit: dict[str, list[str]] = field(default_factory=dict)  # route -> dests
     # Our rules that are no longer needed but do no harm if left in: removing them is optional.
     optional_remove: list[Change] = field(default_factory=list)
+    # Player rules that only do what a conflict warning complains about: suggested for removal.
+    suggest_remove: list[Change] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
 
@@ -320,18 +322,48 @@ def _check_conflicts(routing, network, player, plan, collectors, compact=False) 
                     f"{route.name or rid} @ {network.name(p)}: a player rule loads "
                     f"{_names(network, extra_load)}, which the plan leaves to another route"
                 )
+                _suggest_removals(routing, network, player, plan, collectors, route, loc, LOAD,
+                                  extra_load | {p}, compact)
             extra_store = eff.sets[STORE] - {p} - ok_store - waiting
             if extra_store:
                 plan.warnings.append(
                     f"{route.name or rid} @ {network.name(p)}: a player rule stores "
                     f"{_names(network, extra_store)}, which the plan does not store here"
                 )
+                _suggest_removals(routing, network, player, plan, collectors, route, loc, STORE,
+                                  extra_store | {p}, compact)
             unreadable = eff.unknown
             if unreadable:
                 plan.warnings.append(
                     f"{route.name or rid} @ {network.name(p)}: {len(unreadable)} player rule(s) "
                     f"could not be read; this stop may not behave as planned"
                 )
+
+
+def _suggest_removals(routing, network, player, plan, collectors, route, loc, action, extra, compact) -> None:
+    """Name the player rules behind a conflict warning and suggest removing them.
+
+    When rules can be self-checked (compact), a rule is suggested if taking it out adds no
+    failure, even if it also does something wanted. Otherwise only a rule whose every
+    destination is in `extra` is suggested: removing one that does more could break the plan.
+    """
+    rules = list(player.get(loc, ())) + [g for g in player.get((route.id, None, 0), ())
+                                          if loc[1] not in g.except_at]
+    base = len(verify_compact(routing, network, merge(player, plan.desired))) if compact else 0
+    for r in rules:
+        if r.action != action:
+            continue
+        dests = rule_destinations(r, route, network, collectors)
+        if not dests or not dests & extra or not (compact or dests <= extra):
+            continue
+        owner = loc if r in player.get(loc, ()) else (route.id, None, 0)
+        if any(c.loc == owner and c.rule is r for c in plan.suggest_remove):
+            continue
+        if compact:
+            trial = {k: [x for x in v if not (k == owner and x is r)] for k, v in player.items()}
+            if len(verify_compact(routing, network, merge(trial, plan.desired))) > base:  # breaks more
+                continue
+        plan.suggest_remove.append(Change(owner, r))
 
 
 def _check_limits(network, player, wanted, plan) -> None:

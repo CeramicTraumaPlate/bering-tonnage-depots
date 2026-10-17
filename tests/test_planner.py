@@ -436,5 +436,21 @@ class RecursiveTemplates(unittest.TestCase):
         self.assertIs(recursive_routes(n, False), False)
 
 
+class SuggestedFixes(unittest.TestCase):
+    def test_conflict_warning_names_rule_to_remove_day3787(self):
+        """CAN-TYO's Store | Onwards Ports | Guangzhou at Tokyo parks Vietnam cargo where the plan
+        doesn't: the warning comes with that rule as a suggested removal."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        from atd.model import ONWARDS_PORTS
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v3_11_day3787.json").network
+        plan = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True)
+        self.assertTrue([w for w in plan.warnings if "CAN-TYO @ Tokyo" in w and "stores" in w])
+        got = {(c.loc[0], c.loc[1], c.rule.action, c.rule.filter, c.rule.target) for c in plan.suggest_remove}
+        self.assertIn(("route_7", "port_tokyo", STORE, ONWARDS_PORTS, "port_guangzhou"), got)
+        # Rules the plan relies on are not suggested
+        self.assertNotIn(("route_7", "port_tokyo", STORE, ONWARDS_PORTS, "port_hakata"), got)
+
+
 if __name__ == "__main__":
     unittest.main()
