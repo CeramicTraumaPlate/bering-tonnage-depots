@@ -1,0 +1,1262 @@
+{
+  "format": "Bering Tonnage route data",
+  "export_version": 3,
+  "release": "1.1",
+  "save_version": 206,
+  "date": "2037-05-27",
+  "day": 3876,
+  "start_region": "japan_pacific",
+  "economic_difficulty": "medium",
+  "company": {
+    "rank": "Elite Carrier",
+    "balance": 8425107,
+    "brand_reputation": 3,
+    "licenses": [
+      "jp",
+      "kr",
+      "sg",
+      "hk",
+      "tw",
+      "cn_south",
+      "cn_east",
+      "cn_yellow",
+      "kp",
+      "vn",
+      "kh",
+      "th",
+      "us_west",
+      "ca",
+      "ph",
+      "to",
+      "pf",
+      "ws",
+      "fj",
+      "vu",
+      "nc",
+      "sb",
+      "pg",
+      "fk"
+    ]
+  },
+  "finance": {
+    "currency": "USD",
+    "notes": [
+      "All durations are game days. Null means unavailable, not zero.",
+      "Operational statistics cover each entity's recorded lifetime, including previous ships, speeds and rules. Older saves may lack early history. Use revenue and days from the same operational_stats object, not the separate legacy total_revenue counter. Average load is distance-weighted while sailing.",
+      "Current costs quote each ship's present state, not historical spending or a whole-route daily average. Fuel is zero when not sailing; mooring is zero when not docked. Registry continues while a route is idle. Costs exclude maintenance, canal fees, fulfilment fees, salaries, interest and discretionary purchases.",
+      "Leg costs quote fuel and speed outside ice at the configured leg speeds. Stop mooring quotes use the ship's full capacity, not its cargo load. Both are quoted only for a route that one ship sails. Neither quote includes leg distances or time spent sailing, loading, waiting or repairing.",
+      "Company daily accounts contain available records from the last 30 days; the current day is partial. These are company totals, not costs allocated to routes. Operating profit excludes loan interest, proceeds and repayments; net_after_interest deducts interest but still excludes financing principal and discretionary purchases.",
+      "loan_repayments is the total loan payment, including the interest already reported in loan_interest. Subtract that interest component to find principal repaid; do not subtract both fields when calculating cash flow.",
+      "Historical costs per route were not recorded. Route profitability requires an explicitly labelled estimate with assumptions about operating time, current versus past configuration and excluded costs. Do not report lifetime revenue minus current cost as measured profit."
+    ],
+    "company_daily_accounts": [
+      {
+        "day": 3847,
+        "cargo_revenue": 997561,
+        "mooring_fees": 3411,
+        "fleet_admin": 28770,
+        "fleet_fuel": 44587,
+        "partial": false,
+        "operating_profit": 920793,
+        "net_after_interest": 920793
+      },
+      {
+        "day": 3848,
+        "cargo_revenue": 829474,
+        "mooring_fees": 3487,
+        "fleet_admin": 28770,
+        "fleet_fuel": 38038,
+        "partial": false,
+        "operating_profit": 759179,
+        "net_after_interest": 759179
+      },
+      {
+        "day": 3849,
+        "cargo_revenue": 206770,
+        "mooring_fees": 1176,
+        "fleet_admin": 28770,
+        "fleet_fuel": 87776,
+        "partial": false,
+        "operating_profit": 89048,
+        "net_after_interest": 89048
+      },
+      {
+        "day": 3850,
+        "cargo_revenue": 355505,
+        "mooring_fees": 1477,
+        "fleet_admin": 28770,
+        "fleet_fuel": 109345,
+        "board_salaries": 46000,
+        "partial": false,
+        "operating_profit": 169913,
+        "net_after_interest": 169913
+      },
+      {
+        "day": 3851,
+        "cargo_revenue": 904049,
+        "mooring_fees": 777,
+        "fleet_admin": 28770,
+        "fleet_fuel": 122468,
+        "partial": false,
+        "operating_profit": 752034,
+        "net_after_interest": 752034
+      },
+      {
+        "day": 3852,
+        "cargo_revenue": 1127062,
+        "mooring_fees": 3190,
+        "fleet_admin": 28770,
+        "fleet_fuel": 108077,
+        "partial": false,
+        "operating_profit": 987025,
+        "net_after_interest": 987025
+      },
+      {
+        "day": 3853,
+        "cargo_revenue": 120347,
+        "mooring_fees": 3383,
+        "fleet_admin": 28770,
+        "fleet_fuel": 43171,
+        "partial": false,
+        "operating_profit": 45023,
+        "net_after_interest": 45023
+      },
+      {
+        "day": 3854,
+        "cargo_revenue": 207105,
+        "mooring_fees": 2085,
+        "fleet_admin": 28770,
+        "fleet_fuel": 39477,
+        "partial": false,
+        "operating_profit": 136773,
+        "net_after_interest": 136773
+      },
+      {
+        "day": 3855,
+        "cargo_revenue": 613464,
+        "mooring_fees": 353,
+        "fleet_admin": 28770,
+        "fleet_fuel": 124585,
+        "partial": false,
+        "operating_profit": 459756,
+        "net_after_interest": 459756
+      },
+      {
+        "day": 3856,
+        "cargo_revenue": 718694,
+        "mooring_fees": 616,
+        "fleet_admin": 28770,
+        "fleet_fuel": 112581,
+        "partial": false,
+        "operating_profit": 576727,
+        "net_after_interest": 576727
+      },
+      {
+        "day": 3857,
+        "cargo_revenue": 1818144,
+        "mooring_fees": 980,
+        "fleet_admin": 28770,
+        "fleet_fuel": 111496,
+        "partial": false,
+        "operating_profit": 1676898,
+        "net_after_interest": 1676898
+      },
+      {
+        "day": 3858,
+        "cargo_revenue": 364155,
+        "mooring_fees": 3305,
+        "fleet_admin": 28770,
+        "fleet_fuel": 62510,
+        "partial": false,
+        "operating_profit": 269570,
+        "net_after_interest": 269570
+      },
+      {
+        "day": 3859,
+        "cargo_revenue": 556554,
+        "mooring_fees": 3003,
+        "fleet_admin": 28770,
+        "fleet_fuel": 37708,
+        "partial": false,
+        "operating_profit": 487073,
+        "net_after_interest": 487073
+      },
+      {
+        "day": 3860,
+        "cargo_revenue": 334561,
+        "mooring_fees": 1612,
+        "fleet_admin": 28770,
+        "fleet_fuel": 55047,
+        "partial": false,
+        "operating_profit": 249132,
+        "net_after_interest": 249132
+      },
+      {
+        "day": 3861,
+        "cargo_revenue": 403285,
+        "mooring_fees": 1605,
+        "fleet_admin": 28770,
+        "fleet_fuel": 91108,
+        "partial": false,
+        "operating_profit": 281802,
+        "net_after_interest": 281802
+      },
+      {
+        "day": 3862,
+        "cargo_revenue": 695845,
+        "mooring_fees": 1784,
+        "fleet_admin": 28770,
+        "fleet_fuel": 101374,
+        "partial": false,
+        "operating_profit": 563917,
+        "net_after_interest": 563917
+      },
+      {
+        "day": 3863,
+        "cargo_revenue": 765630,
+        "mooring_fees": 1687,
+        "fleet_admin": 28770,
+        "fleet_fuel": 88658,
+        "partial": false,
+        "operating_profit": 646515,
+        "net_after_interest": 646515
+      },
+      {
+        "day": 3864,
+        "cargo_revenue": 896949,
+        "mooring_fees": 3135,
+        "fleet_admin": 28770,
+        "fleet_fuel": 53491,
+        "partial": false,
+        "operating_profit": 811553,
+        "net_after_interest": 811553
+      },
+      {
+        "day": 3865,
+        "cargo_revenue": 596327,
+        "mooring_fees": 2449,
+        "fleet_admin": 28770,
+        "fleet_fuel": 36838,
+        "partial": false,
+        "operating_profit": 528270,
+        "net_after_interest": 528270
+      },
+      {
+        "day": 3866,
+        "cargo_revenue": 668059,
+        "mooring_fees": 2599,
+        "fleet_admin": 28770,
+        "fleet_fuel": 110822,
+        "partial": false,
+        "operating_profit": 525868,
+        "net_after_interest": 525868
+      },
+      {
+        "day": 3867,
+        "cargo_revenue": 135733,
+        "mooring_fees": 2014,
+        "fleet_admin": 28770,
+        "fleet_fuel": 76600,
+        "partial": false,
+        "operating_profit": 28349,
+        "net_after_interest": 28349
+      },
+      {
+        "day": 3868,
+        "cargo_revenue": 601624,
+        "mooring_fees": 1191,
+        "fleet_admin": 28770,
+        "fleet_fuel": 101245,
+        "partial": false,
+        "operating_profit": 470418,
+        "net_after_interest": 470418
+      },
+      {
+        "day": 3869,
+        "cargo_revenue": 902519,
+        "mooring_fees": 2589,
+        "fleet_admin": 28770,
+        "fleet_fuel": 120451,
+        "partial": false,
+        "operating_profit": 750709,
+        "net_after_interest": 750709
+      },
+      {
+        "day": 3870,
+        "cargo_revenue": 415272,
+        "mooring_fees": 2760,
+        "fleet_admin": 28770,
+        "fleet_fuel": 66940,
+        "partial": false,
+        "operating_profit": 316802,
+        "net_after_interest": 316802
+      },
+      {
+        "day": 3871,
+        "cargo_revenue": 469804,
+        "mooring_fees": 1275,
+        "fleet_admin": 28770,
+        "fleet_fuel": 110143,
+        "partial": false,
+        "operating_profit": 329616,
+        "net_after_interest": 329616
+      },
+      {
+        "day": 3872,
+        "cargo_revenue": 260915,
+        "mooring_fees": 1974,
+        "fleet_admin": 28770,
+        "fleet_fuel": 95672,
+        "partial": false,
+        "operating_profit": 134499,
+        "net_after_interest": 134499
+      },
+      {
+        "day": 3873,
+        "cargo_revenue": 95721,
+        "mooring_fees": 2310,
+        "fleet_admin": 28770,
+        "fleet_fuel": 73609,
+        "maintenance": 183476,
+        "partial": false,
+        "operating_profit": -192444,
+        "net_after_interest": -192444
+      },
+      {
+        "day": 3874,
+        "cargo_revenue": 624862,
+        "mooring_fees": 6600,
+        "fleet_admin": 28770,
+        "fleet_fuel": 89117,
+        "partial": false,
+        "operating_profit": 500375,
+        "net_after_interest": 500375
+      },
+      {
+        "day": 3875,
+        "cargo_revenue": 273647,
+        "mooring_fees": 6755,
+        "fleet_admin": 28770,
+        "fleet_fuel": 62874,
+        "partial": false,
+        "operating_profit": 175248,
+        "net_after_interest": 175248
+      },
+      {
+        "day": 3876,
+        "cargo_revenue": 337788,
+        "mooring_fees": 7363,
+        "fleet_admin": 28770,
+        "fleet_fuel": 73928,
+        "partial": true,
+        "operating_profit": 227727,
+        "net_after_interest": 227727
+      }
+    ]
+  },
+  "fleet_maintenance": "Ships below 60% condition are repaired to 100% at the nearest shipyard. Monthly repair budget unlimited.",
+  "ships": [
+    {
+      "name": "MV Saltwind [ship_1]",
+      "vessel": "Handysize, 700 TEU, built 2016 by Haruna Zosen Co., Ltd. LNG propulsion. Flag Japan.",
+      "status": "Docked at Tomakomai [port_tomakomai]. Speed 100%. Condition 80%.",
+      "route": "JP N [route_2], stop 3 of 3",
+      "route_status": "Loading",
+      "cargo_teu": 621,
+      "cargo_teu_by_destination": {
+        "Hakata [port_hakata]": 162,
+        "Kobe [port_kobe]": 55,
+        "Nagoya [port_nagoya]": 46,
+        "Sendai-Shiogama [port_sendai]": 10,
+        "Shimizu [port_shimizu]": 319,
+        "Tokyo [port_tokyo]": 29
+      },
+      "operational_stats": {
+        "revenue": 152035996,
+        "delivered_teu": 444405,
+        "delivery_ops": 34156,
+        "dispatches": 1811,
+        "arrivals": 1807,
+        "route_stops": 1741,
+        "observed_days": 3875.07,
+        "active_days": 3875,
+        "sailing_days": 1828.47,
+        "distance_km": 1627336.32,
+        "teu_km": 975020646.83,
+        "capacity_teu_km": 1139135425.56,
+        "revenue_per_active_day": 39235.08,
+        "revenue_per_observed_day": 39234.41,
+        "revenue_per_delivered_teu": 342.11,
+        "average_load_percent": 85.59,
+        "uptime_percent": 100
+      },
+      "current_costs": {
+        "registry_per_day": 1170,
+        "fuel_per_day": 0,
+        "mooring_per_day": 60,
+        "total_per_day": 1230
+      }
+    },
+    {
+      "name": "MV Grey Current [ship_2]",
+      "vessel": "Handymax, 1,200 TEU, built 2026 by Haruna Zosen Co., Ltd. LNG propulsion. Flag Japan.",
+      "status": "Docked at Tokyo [port_tokyo]. Speed 100%. Condition 79%.",
+      "route": "JP S [route_1], stop 1 of 5",
+      "route_status": "Unloading",
+      "cargo_teu": 33,
+      "cargo_teu_by_destination": {
+        "Sendai-Shiogama [port_sendai]": 33
+      },
+      "operational_stats": {
+        "revenue": 175988107,
+        "delivered_teu": 629711,
+        "delivery_ops": 48259,
+        "dispatches": 2193,
+        "arrivals": 2193,
+        "route_stops": 2153,
+        "observed_days": 3875.07,
+        "active_days": 3875,
+        "sailing_days": 1354.12,
+        "distance_km": 1194420.05,
+        "teu_km": 1124256226.57,
+        "capacity_teu_km": 1433304060,
+        "revenue_per_active_day": 45416.27,
+        "revenue_per_observed_day": 45415.49,
+        "revenue_per_delivered_teu": 279.47,
+        "average_load_percent": 78.44,
+        "uptime_percent": 100
+      },
+      "current_costs": {
+        "registry_per_day": 2350,
+        "fuel_per_day": 0,
+        "mooring_per_day": 228,
+        "total_per_day": 2578
+      }
+    },
+    {
+      "name": "MS Venture [ship_3]",
+      "vessel": "Handysize, 900 TEU, built 2019 by Haruna Zosen Co., Ltd. LNG propulsion. Flag Hong Kong.",
+      "status": "Docked at Hakata [port_hakata]. Speed 100%. Condition 80%.",
+      "route": "JP W [route_3], stop 1 of 4",
+      "route_status": "Unloading",
+      "cargo_teu": 485,
+      "cargo_teu_by_destination": {
+        "Busan [port_busan]": 29,
+        "Fushiki-Toyama [port_fushiki_toyama]": 185,
+        "Hong Kong [port_hong_kong]": 6,
+        "Jeju [port_jeju]": 8,
+        "Kaohsiung [port_kaohsiung]": 1,
+        "Naha [port_naha]": 148,
+        "Niigata [port_niigata]": 95,
+        "Qingdao [port_qingdao]": 13
+      },
+      "operational_stats": {
+        "revenue": 85267238,
+        "delivered_teu": 349565,
+        "delivery_ops": 27116,
+        "dispatches": 1931,
+        "arrivals": 1926,
+        "route_stops": 1853,
+        "observed_days": 3374.82,
+        "active_days": 3337.83,
+        "sailing_days": 1840.53,
+        "distance_km": 1638074.67,
+        "teu_km": 857987812.5,
+        "capacity_teu_km": 1474267200,
+        "revenue_per_active_day": 25545.68,
+        "revenue_per_observed_day": 25265.74,
+        "revenue_per_delivered_teu": 243.92,
+        "average_load_percent": 58.2,
+        "uptime_percent": 98.9
+      },
+      "current_costs": {
+        "registry_per_day": 260,
+        "fuel_per_day": 0,
+        "mooring_per_day": 102,
+        "total_per_day": 362
+      }
+    },
+    {
+      "name": "利根丸 [ship_4]",
+      "vessel": "Handymax, 1,200 TEU, built 2028 by Haruna Zosen Co., Ltd. LNG propulsion. Flag Brunei.",
+      "status": "Docked at Kure [shipyard_kure]. Speed 100%. Condition 60%. Shipyard work in progress.",
+      "route": "ROK [route_4], stop 1 of 4",
+      "route_status": "Maintenance",
+      "cargo_teu": 156,
+      "cargo_teu_by_destination": {
+        "Busan [port_busan]": 22,
+        "Fushiki-Toyama [port_fushiki_toyama]": 3,
+        "Hong Kong [port_hong_kong]": 39,
+        "Kaohsiung [port_kaohsiung]": 32,
+        "Lianyungang [port_lianyungang]": 1,
+        "Qingdao [port_qingdao]": 18,
+        "Tianjin [port_tianjin]": 25,
+        "Tomakomai [port_tomakomai]": 16
+      },
+      "operational_stats": {
+        "revenue": 84960066,
+        "delivered_teu": 232092,
+        "delivery_ops": 17846,
+        "dispatches": 1059,
+        "arrivals": 1058,
+        "route_stops": 1042,
+        "observed_days": 3039.43,
+        "active_days": 3022.23,
+        "sailing_days": 686.5,
+        "distance_km": 513353.48,
+        "teu_km": 187013427.53,
+        "capacity_teu_km": 616024180,
+        "revenue_per_active_day": 28111.68,
+        "revenue_per_observed_day": 27952.6,
+        "revenue_per_delivered_teu": 366.06,
+        "average_load_percent": 30.36,
+        "uptime_percent": 99.43
+      },
+      "current_costs": {
+        "registry_per_day": 520,
+        "fuel_per_day": 0,
+        "mooring_per_day": 4080,
+        "total_per_day": 4600
+      }
+    },
+    {
+      "name": "전북 II [ship_5]",
+      "vessel": "Handysize, 300 TEU, built 2029 by Hangang Maritime Works. LNG propulsion. Flag India.",
+      "status": "Sailing to Shimizu [port_shimizu]. Speed 100%. Condition 71%.",
+      "route": "JP S [route_1], stop 2 of 5",
+      "route_status": "In Transit",
+      "cargo_teu": 300,
+      "cargo_teu_by_destination": {
+        "Hakata [port_hakata]": 24,
+        "Kobe [port_kobe]": 26,
+        "Nagoya [port_nagoya]": 175,
+        "Shimizu [port_shimizu]": 75
+      },
+      "operational_stats": {
+        "revenue": 55089779,
+        "delivered_teu": 243149,
+        "delivery_ops": 19451,
+        "dispatches": 2600,
+        "arrivals": 2597,
+        "route_stops": 2539,
+        "observed_days": 2742.43,
+        "active_days": 2722.18,
+        "sailing_days": 1555.75,
+        "distance_km": 1410182.47,
+        "teu_km": 405197877.23,
+        "capacity_teu_km": 423054740.5,
+        "revenue_per_active_day": 20237.35,
+        "revenue_per_observed_day": 20087.92,
+        "revenue_per_delivered_teu": 226.57,
+        "average_load_percent": 95.78,
+        "uptime_percent": 99.26
+      },
+      "current_costs": {
+        "registry_per_day": 530,
+        "fuel_per_day": 4083,
+        "mooring_per_day": 0,
+        "total_per_day": 4613
+      }
+    },
+    {
+      "name": "薩摩丸 [ship_6]",
+      "vessel": "Handymax, 1,600 TEU, built 2030 by Kuroshio Dockyard Ltd. LNG propulsion. Flag China.",
+      "status": "Docked at Naha [port_naha]. Speed 100%. Condition 96%.",
+      "route": "HKT-NAH [route_5], stop 2 of 2",
+      "route_status": "Waiting",
+      "cargo_teu": 563,
+      "cargo_teu_by_destination": {
+        "Busan [port_busan]": 37,
+        "Fushiki-Toyama [port_fushiki_toyama]": 273,
+        "Hakata [port_hakata]": 81,
+        "Hong Kong [port_hong_kong]": 13,
+        "Jeju [port_jeju]": 3,
+        "Kaohsiung [port_kaohsiung]": 7,
+        "Niigata [port_niigata]": 74,
+        "Qingdao [port_qingdao]": 1,
+        "Tianjin [port_tianjin]": 3,
+        "Tomakomai [port_tomakomai]": 71
+      },
+      "operational_stats": {
+        "revenue": 22944202,
+        "delivered_teu": 63960,
+        "delivery_ops": 4864,
+        "dispatches": 152,
+        "arrivals": 151,
+        "route_stops": 141,
+        "observed_days": 2366.43,
+        "active_days": 2344.97,
+        "sailing_days": 181.23,
+        "distance_km": 154048.33,
+        "teu_km": 111038687.5,
+        "capacity_teu_km": 246477333.33,
+        "revenue_per_active_day": 9784.45,
+        "revenue_per_observed_day": 9695.69,
+        "revenue_per_delivered_teu": 358.73,
+        "average_load_percent": 45.05,
+        "uptime_percent": 99.09
+      },
+      "current_costs": {
+        "registry_per_day": 550,
+        "fuel_per_day": 0,
+        "mooring_per_day": 168,
+        "total_per_day": 718
+      }
+    },
+    {
+      "name": "最上丸 [ship_7]",
+      "vessel": "Panamax, 3,400 TEU, built 2032 by Haruna Zosen Co., Ltd. LNG propulsion. Flag Seychelles.",
+      "status": "Docked at Hakata [port_hakata]. Speed 50%. Condition 70%.",
+      "route": "CN N [route_6], stop 1 of 5",
+      "route_status": "Waiting",
+      "cargo_teu": 778,
+      "cargo_teu_by_destination": {
+        "Dalian [port_dalian]": 116,
+        "Qingdao [port_qingdao]": 576,
+        "Tianjin [port_tianjin]": 86
+      },
+      "operational_stats": {
+        "revenue": 6968606,
+        "delivered_teu": 20927,
+        "delivery_ops": 971,
+        "dispatches": 152,
+        "arrivals": 152,
+        "route_stops": 151,
+        "observed_days": 1806.43,
+        "active_days": 1773.12,
+        "sailing_days": 197.18,
+        "distance_km": 103376.25,
+        "teu_km": 162205159.5,
+        "capacity_teu_km": 351479250,
+        "revenue_per_active_day": 3930.15,
+        "revenue_per_observed_day": 3857.66,
+        "revenue_per_delivered_teu": 333,
+        "average_load_percent": 46.15,
+        "uptime_percent": 98.16
+      },
+      "current_costs": {
+        "registry_per_day": 2060,
+        "fuel_per_day": 0,
+        "mooring_per_day": 387,
+        "total_per_day": 2447
+      }
+    },
+    {
+      "name": "제주 III [ship_8]",
+      "vessel": "Panamax, 3,200 TEU, built 2033 by Sejong Ocean Systems. LNG propulsion. Flag New Caledonia.",
+      "status": "Sailing to Kaohsiung [port_kaohsiung]. Speed 100%. Condition 73%.",
+      "route": "CAN-HKT [route_7], stop 2 of 4",
+      "route_status": "In Transit",
+      "cargo_teu": 1811,
+      "cargo_teu_by_destination": {
+        "Guangzhou [port_guangzhou]": 21,
+        "Hong Kong [port_hong_kong]": 182,
+        "Kaohsiung [port_kaohsiung]": 1608
+      },
+      "operational_stats": {
+        "revenue": 47469624,
+        "delivered_teu": 145587,
+        "delivery_ops": 7012,
+        "dispatches": 420,
+        "arrivals": 418,
+        "route_stops": 404,
+        "observed_days": 1280.43,
+        "active_days": 1258.32,
+        "sailing_days": 641.32,
+        "distance_km": 519466.5,
+        "teu_km": 1076902276.5,
+        "capacity_teu_km": 1662292800,
+        "revenue_per_active_day": 37724.7,
+        "revenue_per_observed_day": 37073.09,
+        "revenue_per_delivered_teu": 326.06,
+        "average_load_percent": 64.78,
+        "uptime_percent": 98.27
+      },
+      "current_costs": {
+        "registry_per_day": 2090,
+        "fuel_per_day": 21582,
+        "mooring_per_day": 0,
+        "total_per_day": 23672
+      }
+    },
+    {
+      "name": "厦门 [ship_9]",
+      "vessel": "Panamax, 3,900 TEU, built 2034 by Bohai Dragon Shipcraft. LNG propulsion. Flag United States.",
+      "status": "Docked at Hai Phong [port_hai_phong]. Speed 70%. Condition 73%.",
+      "route": "SEA [route_8], stop 2 of 6",
+      "route_status": "Loading",
+      "cargo_teu": 1503,
+      "cargo_teu_by_destination": {
+        "Da Nang [port_da_nang]": 416,
+        "Ho Chi Minh City [port_ho_chi_minh]": 541,
+        "Laem Chabang [port_laem_chabang]": 376,
+        "Sihanoukville [port_sihanoukville]": 170
+      },
+      "operational_stats": {
+        "revenue": 21398329,
+        "delivered_teu": 61027,
+        "delivery_ops": 2502,
+        "dispatches": 307,
+        "arrivals": 307,
+        "route_stops": 298,
+        "observed_days": 979.43,
+        "active_days": 958.1,
+        "sailing_days": 792.63,
+        "distance_km": 390328.14,
+        "teu_km": 294067767.18,
+        "capacity_teu_km": 1522279745.56,
+        "revenue_per_active_day": 22334.13,
+        "revenue_per_observed_day": 21847.66,
+        "revenue_per_delivered_teu": 350.64,
+        "average_load_percent": 19.32,
+        "uptime_percent": 97.82
+      },
+      "current_costs": {
+        "registry_per_day": 10140,
+        "fuel_per_day": 0,
+        "mooring_per_day": 382,
+        "total_per_day": 10522
+      }
+    },
+    {
+      "name": "贵阳 [ship_10]",
+      "vessel": "Handysize, 850 TEU, built 2035 by Pearl River Vessel Works. LNG propulsion. Flag Aruba.",
+      "status": "Docked at Tokyo [port_tokyo]. Speed 100%. Condition 70%.",
+      "route": "JP S [route_1], stop 1 of 5",
+      "route_status": "Loading",
+      "cargo_teu": 333,
+      "cargo_teu_by_destination": {
+        "Kobe [port_kobe]": 28,
+        "Nagoya [port_nagoya]": 179,
+        "Shimizu [port_shimizu]": 126
+      },
+      "operational_stats": {
+        "revenue": 16206035,
+        "delivered_teu": 84418,
+        "delivery_ops": 6552,
+        "dispatches": 477,
+        "arrivals": 477,
+        "route_stops": 466,
+        "observed_days": 682.43,
+        "active_days": 665.08,
+        "sailing_days": 293.28,
+        "distance_km": 261022.17,
+        "teu_km": 155930566.17,
+        "capacity_teu_km": 221868841.67,
+        "revenue_per_active_day": 24366.92,
+        "revenue_per_observed_day": 23747.43,
+        "revenue_per_delivered_teu": 191.97,
+        "average_load_percent": 70.28,
+        "uptime_percent": 97.46
+      },
+      "current_costs": {
+        "registry_per_day": 260,
+        "fuel_per_day": 0,
+        "mooring_per_day": 161,
+        "total_per_day": 421
+      }
+    },
+    {
+      "name": "哈尔滨 [ship_11]",
+      "vessel": "Panamax, 5,000 TEU, built 2036 by Pearl River Vessel Works. LNG propulsion. Flag Faroe Islands.",
+      "status": "Docked at Shenzhen [port_shenzhen]. Speed 100%. Condition 76%.",
+      "route": "CN S [route_9], stop 3 of 6",
+      "route_status": "Unloading",
+      "cargo_teu": 3567,
+      "cargo_teu_by_destination": {
+        "Guangzhou [port_guangzhou]": 32,
+        "Haikou [port_haikou]": 176,
+        "Laem Chabang [port_laem_chabang]": 69,
+        "Shenzhen [port_shenzhen]": 2070,
+        "Singapore [port_singapore]": 328,
+        "Xiamen [port_xiamen]": 869,
+        "Zhanjiang [port_zhanjiang]": 23
+      },
+      "operational_stats": {
+        "revenue": 43707969,
+        "delivered_teu": 267686,
+        "delivery_ops": 8170,
+        "dispatches": 177,
+        "arrivals": 177,
+        "route_stops": 176,
+        "observed_days": 437.43,
+        "active_days": 405.02,
+        "sailing_days": 94.12,
+        "distance_km": 76234.5,
+        "teu_km": 356208907.5,
+        "capacity_teu_km": 381172500,
+        "revenue_per_active_day": 107916.47,
+        "revenue_per_observed_day": 99919.15,
+        "revenue_per_delivered_teu": 163.28,
+        "average_load_percent": 93.45,
+        "uptime_percent": 92.59
+      },
+      "current_costs": {
+        "registry_per_day": 4600,
+        "fuel_per_day": 0,
+        "mooring_per_day": 900,
+        "total_per_day": 5500
+      }
+    },
+    {
+      "name": "南宁 [ship_12]",
+      "vessel": "Panamax, 6,400 TEU, built 2036 by Pearl River Vessel Works. LNG propulsion. Flag Chile.",
+      "status": "Docked at Guangzhou [port_guangzhou]. Speed 100%. Condition 64%.",
+      "route": "SIN-CAN [route_10], stop 1 of 2",
+      "route_status": "Ready to Depart",
+      "cargo_teu": 3637,
+      "cargo_teu_by_destination": {
+        "Singapore [port_singapore]": 3637
+      },
+      "operational_stats": {
+        "revenue": 15612304,
+        "delivered_teu": 32633,
+        "delivery_ops": 771,
+        "dispatches": 15,
+        "arrivals": 15,
+        "route_stops": 14,
+        "observed_days": 113.43,
+        "active_days": 90.35,
+        "sailing_days": 49,
+        "distance_km": 39690,
+        "teu_km": 135846234,
+        "capacity_teu_km": 254016000,
+        "revenue_per_active_day": 172798.05,
+        "revenue_per_observed_day": 137634.18,
+        "revenue_per_delivered_teu": 478.42,
+        "average_load_percent": 53.48,
+        "uptime_percent": 79.65
+      },
+      "current_costs": {
+        "registry_per_day": 4240,
+        "fuel_per_day": 0,
+        "mooring_per_day": 1000,
+        "total_per_day": 5240
+      }
+    }
+  ],
+  "routes": [
+    {
+      "name": "JP S [route_1]",
+      "ships": [
+        "MV Grey Current [ship_2]",
+        "전북 II [ship_5]",
+        "贵阳 [ship_10]"
+      ],
+      "legs": [
+        "All legs at 100% speed."
+      ],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Shimizu [port_shimizu], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Nagoya [port_nagoya], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "4. Kobe [port_kobe], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "5. Hakata [port_hakata], Japan. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ],
+      "total_revenue": 247283921,
+      "total_delivered_teu": 957278,
+      "operational_stats": {
+        "revenue": 247283921,
+        "delivered_teu": 957278,
+        "delivery_ops": 74262,
+        "dispatches": 5270,
+        "arrivals": 5267,
+        "route_stops": 5158,
+        "observed_days": 3875,
+        "active_days": 3875,
+        "sailing_days": 2405.77,
+        "distance_km": 2865624.69,
+        "teu_km": 1685384669.97,
+        "capacity_teu_km": 2078227642.17,
+        "revenue_per_active_day": 63815.19,
+        "revenue_per_observed_day": 63815.19,
+        "revenue_per_delivered_teu": 258.32,
+        "average_load_percent": 81.1,
+        "uptime_percent": 100
+      }
+    },
+    {
+      "name": "JP N [route_2]",
+      "ships": [
+        "MV Saltwind [ship_1]"
+      ],
+      "legs": [
+        "All legs at 100% speed, 890 km/day, fuel $10,117 per sailing day."
+      ],
+      "stops": [
+        "1. Tokyo [port_tokyo], Japan. Mooring $133/day. Store All for Onwards Ports: Tokyo [port_tokyo], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Sendai-Shiogama [port_sendai], Japan. Mooring $70/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo].",
+        "3. Tomakomai [port_tomakomai], Japan. Mooring $60/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Tokyo [port_tokyo]."
+      ],
+      "total_revenue": 152035996,
+      "total_delivered_teu": 444405,
+      "operational_stats": {
+        "revenue": 152035996,
+        "delivered_teu": 444405,
+        "delivery_ops": 34156,
+        "dispatches": 1811,
+        "arrivals": 1807,
+        "route_stops": 1741,
+        "observed_days": 3875,
+        "active_days": 3875,
+        "sailing_days": 1828.47,
+        "distance_km": 1627336.32,
+        "teu_km": 975020646.83,
+        "capacity_teu_km": 1139135425.56,
+        "revenue_per_active_day": 39235.08,
+        "revenue_per_observed_day": 39235.08,
+        "revenue_per_delivered_teu": 342.11,
+        "average_load_percent": 85.59,
+        "uptime_percent": 100
+      }
+    },
+    {
+      "name": "JP W [route_3]",
+      "ships": [
+        "MS Venture [ship_3]"
+      ],
+      "legs": [
+        "All legs at 100% speed, 890 km/day, fuel $13,007 per sailing day."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $102/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Fushiki-Toyama [port_fushiki_toyama], Japan. Mooring $99/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Niigata [port_niigata], Japan. Mooring $81/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "4. Tomakomai [port_tomakomai], Japan. Mooring $77/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ],
+      "total_revenue": 85267238,
+      "total_delivered_teu": 349565,
+      "operational_stats": {
+        "revenue": 85267238,
+        "delivered_teu": 349565,
+        "delivery_ops": 27116,
+        "dispatches": 1931,
+        "arrivals": 1926,
+        "route_stops": 1853,
+        "observed_days": 3344.18,
+        "active_days": 3337.83,
+        "sailing_days": 1840.53,
+        "distance_km": 1638074.67,
+        "teu_km": 857987812.5,
+        "capacity_teu_km": 1474267200,
+        "revenue_per_active_day": 25545.68,
+        "revenue_per_observed_day": 25497.18,
+        "revenue_per_delivered_teu": 243.92,
+        "average_load_percent": 58.2,
+        "uptime_percent": 99.81
+      }
+    },
+    {
+      "name": "ROK [route_4]",
+      "ships": [
+        "利根丸 [ship_4]"
+      ],
+      "legs": [
+        "All legs at 100% speed, 890 km/day, fuel $13,017 per sailing day."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $136/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Wait 40% Full.",
+        "2. Busan [port_busan], South Korea. Mooring $204/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Jeju [port_jeju], South Korea. Mooring $106/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "4. Incheon [port_incheon], South Korea. Mooring $164/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ],
+      "total_revenue": 84960066,
+      "total_delivered_teu": 232092,
+      "operational_stats": {
+        "revenue": 84960066,
+        "delivered_teu": 232092,
+        "delivery_ops": 17846,
+        "dispatches": 1059,
+        "arrivals": 1058,
+        "route_stops": 1042,
+        "observed_days": 3094.62,
+        "active_days": 3022.23,
+        "sailing_days": 686.5,
+        "distance_km": 513353.48,
+        "teu_km": 187013427.53,
+        "capacity_teu_km": 616024180,
+        "revenue_per_active_day": 28111.68,
+        "revenue_per_observed_day": 27454.15,
+        "revenue_per_delivered_teu": 366.06,
+        "average_load_percent": 30.36,
+        "uptime_percent": 97.66
+      }
+    },
+    {
+      "name": "HKT-NAH [route_5]",
+      "ships": [
+        "薩摩丸 [ship_6]"
+      ],
+      "legs": [
+        "All legs at 100% speed, 850 km/day, fuel $14,090 per sailing day."
+      ],
+      "global_rules": [
+        "Wait 40% Full."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $182/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Naha [port_naha], Japan. Mooring $168/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ],
+      "total_revenue": 22944202,
+      "total_delivered_teu": 63960,
+      "operational_stats": {
+        "revenue": 22944202,
+        "delivered_teu": 63960,
+        "delivery_ops": 4864,
+        "dispatches": 152,
+        "arrivals": 151,
+        "route_stops": 141,
+        "observed_days": 2380.9,
+        "active_days": 2344.97,
+        "sailing_days": 181.23,
+        "distance_km": 154048.33,
+        "teu_km": 111038687.5,
+        "capacity_teu_km": 246477333.33,
+        "revenue_per_active_day": 9784.45,
+        "revenue_per_observed_day": 9636.78,
+        "revenue_per_delivered_teu": 358.73,
+        "average_load_percent": 45.05,
+        "uptime_percent": 98.49
+      }
+    },
+    {
+      "name": "CN N [route_6]",
+      "ships": [
+        "最上丸 [ship_7]"
+      ],
+      "legs": [
+        "Stop 1 to stop 2 at 70% speed, 567 km/day, fuel $9,372 per sailing day.",
+        "Other legs at 50% speed, 405 km/day, fuel $4,873 per sailing day."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $387/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Wait 35% Full.",
+        "2. Dalian [port_dalian], China. Mooring $575/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Tianjin [port_tianjin], China. Mooring $478/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "4. Qingdao [port_qingdao], China. Mooring $573/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "5. Lianyungang [port_lianyungang], China. Mooring $385/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ],
+      "total_revenue": 6968606,
+      "total_delivered_teu": 20927,
+      "operational_stats": {
+        "revenue": 6968606,
+        "delivered_teu": 20927,
+        "delivery_ops": 971,
+        "dispatches": 152,
+        "arrivals": 152,
+        "route_stops": 151,
+        "observed_days": 1773.12,
+        "active_days": 1773.12,
+        "sailing_days": 197.18,
+        "distance_km": 103376.25,
+        "teu_km": 162205159.5,
+        "capacity_teu_km": 351479250,
+        "revenue_per_active_day": 3930.15,
+        "revenue_per_observed_day": 3930.15,
+        "revenue_per_delivered_teu": 333,
+        "average_load_percent": 46.15,
+        "uptime_percent": 100
+      }
+    },
+    {
+      "name": "CN S [route_9]",
+      "ships": [
+        "哈尔滨 [ship_11]"
+      ],
+      "legs": [
+        "All legs at 100% speed, 810 km/day, fuel $33,722 per sailing day."
+      ],
+      "stops": [
+        "1. Guangzhou [port_guangzhou], China. Mooring $781/day. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Hong Kong [port_hong_kong], Hong Kong. Mooring $1,050/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "3. Shenzhen [port_shenzhen], China. Mooring $900/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "4. Xiamen [port_xiamen], China. Mooring $703/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "5. Zhanjiang [port_zhanjiang], China. Mooring $490/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "6. Haikou [port_haikou], China. Mooring $491/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]."
+      ],
+      "total_revenue": 43707969,
+      "total_delivered_teu": 267686,
+      "operational_stats": {
+        "revenue": 43707969,
+        "delivered_teu": 267686,
+        "delivery_ops": 8170,
+        "dispatches": 177,
+        "arrivals": 177,
+        "route_stops": 176,
+        "observed_days": 405.02,
+        "active_days": 405.02,
+        "sailing_days": 94.12,
+        "distance_km": 76234.5,
+        "teu_km": 356208907.5,
+        "capacity_teu_km": 381172500,
+        "revenue_per_active_day": 107916.47,
+        "revenue_per_observed_day": 107916.47,
+        "revenue_per_delivered_teu": 163.28,
+        "average_load_percent": 93.45,
+        "uptime_percent": 100
+      }
+    },
+    {
+      "name": "CAN-HKT [route_7]",
+      "ships": [
+        "제주 III [ship_8]"
+      ],
+      "legs": [
+        "All legs at 100% speed, 810 km/day, fuel $21,582 per sailing day."
+      ],
+      "stops": [
+        "1. Hakata [port_hakata], Japan. Mooring $365/day. Store All for Onwards Ports: Hakata [port_hakata], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Kaohsiung [port_kaohsiung], Taiwan. Mooring $448/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "3. Hong Kong [port_hong_kong], Hong Kong. Mooring $672/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata].",
+        "4. Guangzhou [port_guangzhou], China. Mooring $500/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Hakata [port_hakata]."
+      ],
+      "total_revenue": 47469624,
+      "total_delivered_teu": 145587,
+      "operational_stats": {
+        "revenue": 47469624,
+        "delivered_teu": 145587,
+        "delivery_ops": 7012,
+        "dispatches": 420,
+        "arrivals": 418,
+        "route_stops": 404,
+        "observed_days": 1258.32,
+        "active_days": 1258.32,
+        "sailing_days": 641.32,
+        "distance_km": 519466.5,
+        "teu_km": 1076902276.5,
+        "capacity_teu_km": 1662292800,
+        "revenue_per_active_day": 37724.7,
+        "revenue_per_observed_day": 37724.7,
+        "revenue_per_delivered_teu": 326.06,
+        "average_load_percent": 64.78,
+        "uptime_percent": 100
+      }
+    },
+    {
+      "name": "SEA [route_8]",
+      "ships": [
+        "厦门 [ship_9]"
+      ],
+      "legs": [
+        "All legs at 70% speed, 567 km/day, fuel $9,825 per sailing day."
+      ],
+      "stops": [
+        "1. Guangzhou [port_guangzhou], China. Mooring $609/day. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Hai Phong [port_hai_phong], Vietnam. Mooring $382/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "3. Da Nang [port_da_nang], Vietnam. Mooring $368/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "4. Ho Chi Minh City [port_ho_chi_minh], Vietnam. Mooring $308/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "5. Sihanoukville [port_sihanoukville], Cambodia. Mooring $301/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou].",
+        "6. Laem Chabang [port_laem_chabang], Thailand. Mooring $381/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]."
+      ],
+      "total_revenue": 21398329,
+      "total_delivered_teu": 61027,
+      "operational_stats": {
+        "revenue": 21398329,
+        "delivered_teu": 61027,
+        "delivery_ops": 2502,
+        "dispatches": 307,
+        "arrivals": 307,
+        "route_stops": 298,
+        "observed_days": 961.92,
+        "active_days": 958.1,
+        "sailing_days": 792.63,
+        "distance_km": 390328.14,
+        "teu_km": 294067767.18,
+        "capacity_teu_km": 1522279745.56,
+        "revenue_per_active_day": 22334.13,
+        "revenue_per_observed_day": 22245.51,
+        "revenue_per_delivered_teu": 350.64,
+        "average_load_percent": 19.32,
+        "uptime_percent": 99.6
+      }
+    },
+    {
+      "name": "SIN-CAN [route_10]",
+      "ships": [
+        "南宁 [ship_12]"
+      ],
+      "legs": [
+        "All legs at 100% speed, 810 km/day, fuel $39,451 per sailing day."
+      ],
+      "stops": [
+        "1. Guangzhou [port_guangzhou], China. Mooring $1,000/day. Store All for Onwards Ports: Guangzhou [port_guangzhou], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Singapore [port_singapore], Singapore. Mooring $1,408/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Guangzhou [port_guangzhou]."
+      ],
+      "total_revenue": 15612304,
+      "total_delivered_teu": 32633,
+      "operational_stats": {
+        "revenue": 15612304,
+        "delivered_teu": 32633,
+        "delivery_ops": 771,
+        "dispatches": 15,
+        "arrivals": 15,
+        "route_stops": 14,
+        "observed_days": 171.48,
+        "active_days": 90.35,
+        "sailing_days": 49,
+        "distance_km": 39690,
+        "teu_km": 135846234,
+        "capacity_teu_km": 254016000,
+        "revenue_per_active_day": 172798.05,
+        "revenue_per_observed_day": 91042.69,
+        "revenue_per_delivered_teu": 478.42,
+        "average_load_percent": 53.48,
+        "uptime_percent": 52.69
+      }
+    }
+  ],
+  "depots": [
+    {
+      "port": "Guangzhou [port_guangzhou]",
+      "country": "China",
+      "level": 5,
+      "capacity_teu": 200000,
+      "stored_teu": 1694,
+      "stored_teu_by_destination": {
+        "Da Nang [port_da_nang]": 386,
+        "Hai Phong [port_hai_phong]": 43,
+        "Ho Chi Minh City [port_ho_chi_minh]": 75,
+        "Laem Chabang [port_laem_chabang]": 316,
+        "Shenzhen [port_shenzhen]": 523,
+        "Sihanoukville [port_sihanoukville]": 37,
+        "Xiamen [port_xiamen]": 314
+      }
+    },
+    {
+      "port": "Hakata [port_hakata]",
+      "country": "Japan",
+      "level": 3,
+      "capacity_teu": 10000,
+      "stored_teu": 3695,
+      "stored_teu_by_destination": {
+        "Busan [port_busan]": 2781,
+        "Fushiki-Toyama [port_fushiki_toyama]": 5,
+        "Incheon [port_incheon]": 80,
+        "Jeju [port_jeju]": 11,
+        "Kaohsiung [port_kaohsiung]": 17,
+        "Naha [port_naha]": 739,
+        "Niigata [port_niigata]": 62
+      }
+    },
+    {
+      "port": "Naha [port_naha]",
+      "country": "Japan",
+      "level": 1,
+      "capacity_teu": 500,
+      "stored_teu": 48,
+      "stored_teu_by_destination": {
+        "Tomakomai [port_tomakomai]": 48
+      }
+    },
+    {
+      "port": "Tokyo [port_tokyo]",
+      "country": "Japan",
+      "level": 4,
+      "capacity_teu": 50000,
+      "stored_teu": 10622,
+      "stored_teu_by_destination": {
+        "Sendai-Shiogama [port_sendai]": 5457,
+        "Tomakomai [port_tomakomai]": 5165
+      }
+    }
+  ]
+}

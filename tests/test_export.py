@@ -121,5 +121,25 @@ class AdvisorOnRealExport(unittest.TestCase):
             self.assertEqual(list(Path(d).iterdir()), [])
 
 
+class ParserV3(unittest.TestCase):
+    """Release 1.1 (export_version 3): a route lists several "ships", each with a route_status."""
+
+    def setUp(self):
+        self.export = load_export(Path(__file__).parent / "fixtures" / "export_v3_11_day3876.json")
+        self.net = self.export.network
+
+    def test_routes_with_ships_are_active(self):
+        self.assertTrue(self.export.tested)
+        self.assertTrue(all(r.active for r in self.net.routes))
+
+    def test_cargo_and_capacity_add_up_over_ships(self):
+        # JP S has three ships: 1,200 + 300 + 850 TEU; two carry cargo for Nagoya.
+        self.assertEqual(self.export.ship_capacity["route_1"], 2350)
+        self.assertEqual(self.export.ship_cargo["route_1"]["port_nagoya"], 175 + 179)
+
+    def test_wait_rules_are_not_unreadable(self):
+        self.assertFalse(any("wording" in n for n in self.export.notes))
+
+
 if __name__ == "__main__":
     unittest.main()

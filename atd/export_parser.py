@@ -13,9 +13,9 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .model import ACTIONS, FILTERS, THIS_ROUTE, Depot, Network, Route, Rule, Stop
+from .model import ACTIONS, FILTERS, THIS_ROUTE, WAIT, Depot, Network, Route, Rule, Stop
 
-TESTED = {("1.0.3", 2), ("1.0.4", 2)}  # (release, export_version) pairs this parser was checked against
+TESTED = {("1.0.3", 2), ("1.0.4", 2), ("1.1", 3)}  # (release, export_version) pairs this parser was checked against
 
 INACTIVE_STATUSES = {"unassigned", "unavailable", "paused", "retiring", "laid up"}
 
@@ -57,6 +57,13 @@ def parse_export(data: dict) -> Export:
     names: dict[str, str] = {}
     notes: list[str] = []
 
+    # export_version 3 (1.1): a route lists "ships"; each ship has its own "route_status".
+    ship_status: dict[str, list[str]] = {}
+    for s in data.get("ships", []):
+        m = re.search(_ID, s.get("route") or "")
+        if m:
+            ship_status.setdefault(m.group(1), []).append((s.get("route_status") or "").strip().lower())
+
     routes = []
     slowest_leg: dict[str, int] = {}
     for r in data.get("routes", []):
@@ -65,8 +72,11 @@ def parse_export(data: dict) -> Export:
         for text in r.get("stops", []):
             port, rules = _parse_stop(text, names)
             stops.append(Stop(port, rules))
-        status = (r.get("status") or "").strip()
-        active = bool(r.get("ship")) and status.lower() not in INACTIVE_STATUSES
+        if "ships" in r:
+            active = any(st not in INACTIVE_STATUSES for st in ship_status.get(rid, [""] * len(r["ships"])))
+        else:  # export_version 2: one "ship" and a route "status"
+            status = (r.get("status") or "").strip()
+            active = bool(r.get("ship")) and status.lower() not in INACTIVE_STATUSES
         glob = [_parse_rule(t, names) for t in r.get("global_rules", []) or []]
         routes.append(Route(rid, stops, active, name, glob))
         speeds = [int(x) for leg in r.get("legs", []) or [] for x in re.findall(r"(\d+)% speed", leg)]
@@ -86,14 +96,16 @@ def parse_export(data: dict) -> Export:
     for s in data.get("ships", []):
         m = re.search(_ID, s.get("route") or "")
         if m:
-            ship_cargo[m.group(1)] = {_split_named(k, names)[1]: v
-                                      for k, v in (s.get("cargo_teu_by_destination") or {}).items()}
+            cargo = ship_cargo.setdefault(m.group(1), {})
+            for k, v in (s.get("cargo_teu_by_destination") or {}).items():
+                d = _split_named(k, names)[1]
+                cargo[d] = cargo.get(d, 0) + v
             cap = re.search(r"([\d,]+) TEU", s.get("vessel") or "")
             if cap:
                 ship_capacity[m.group(1)] = ship_capacity.get(m.group(1), 0) + int(cap.group(1).replace(",", ""))
 
     unparsed = sum(1 for r in routes for rule in r.global_rules + [x for s in r.stops for x in s.rules]
-                   if not rule.parsed)
+                   if not rule.parsed and rule.action != WAIT)
     if unparsed:
         notes.append(f"{unparsed} rule(s) used wording the parser doesn't know yet; treated as player rules")
 

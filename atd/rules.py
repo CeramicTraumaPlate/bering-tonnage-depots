@@ -13,7 +13,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass, field
 
-from .model import (COLLECT, LOAD, ONWARDS_PORTS, PORT, ROUTE_PORTS, STORE, THIS_ROUTE,
+from .model import (COLLECT, LOAD, ONWARDS_PORTS, PORT, ROUTE_PORTS, STORE, THIS_ROUTE, WAIT,
                     Network, Route, Rule)
 from .routing import RoutingPlan
 
@@ -522,6 +522,8 @@ def evaluate_stop(route: Route, loc: Loc, rules: dict[Loc, list[Rule]], network:
     if collectors is None:
         collectors = collectors_of(rules)
     for rule in candidates:
+        if rule.action == WAIT:  # holds the ship, moves no cargo
+            continue
         dests = rule_destinations(rule, route, network, collectors)
         if dests is None:
             unknown.append(rule)
