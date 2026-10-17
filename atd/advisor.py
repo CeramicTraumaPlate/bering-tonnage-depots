@@ -17,7 +17,7 @@ from pathlib import Path
 from . import __version__
 from .export_parser import load_export
 from .model import COLLECT, Network
-from .planner import Plan, load_record, make_plan, save_record
+from .planner import Plan, load_record, make_plan, record_meta, save_record, seen_routes_of
 from .routing import RoutingPlan, plan_routes
 from .rules import (collectors_of, evaluate_stop, existing_rules, generate, generate_compact, merge, render,
                     stop_locations, verify, verify_compact)
@@ -79,7 +79,8 @@ def main(argv: list[str] | None = None) -> int:
     routing = plan_routes(net, s["max_transfers"], s["disabled_routes"], s["disabled_depots"],
                           extra_destinations=_cargo_destinations(export), direct_first=not s["compact"])
     plan = make_plan(routing, net, record, s["auto_transfer"], set(s["disabled_routes"]), s["compact"],
-                     recursive_templates=recursive_routes(net, s["recursive_templates"]))
+                     recursive_templates=recursive_routes(net, s["recursive_templates"]),
+                     seen_routes=seen_routes_of(record_meta(record_path)))
 
     # Acceptance test 8 on live data: the generator's rules reproduce the routing decisions.
     if s["compact"]:
@@ -103,7 +104,8 @@ def main(argv: list[str] | None = None) -> int:
     if read_only_reason is None:
         record_path.parent.mkdir(parents=True, exist_ok=True)
         save_record(record_path, plan.record, {"save": args.save, "release": export.release,
-                                                "game_day": export.meta.get("day")})
+                                                "game_day": export.meta.get("day"),
+                                                "seen_routes": plan.seen_routes})
         print(f"\nRecorded {sum(map(len, plan.desired.values()))} managed rule(s) in {record_path}")
     return 1 if problems else 0
 

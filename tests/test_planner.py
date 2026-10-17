@@ -451,6 +451,25 @@ class SuggestedFixes(unittest.TestCase):
         # Rules the plan relies on are not suggested
         self.assertNotIn(("route_7", "port_tokyo", STORE, ONWARDS_PORTS, "port_hakata"), got)
 
+    def test_route_new_to_the_tool_has_its_template_rules_adopted_day3787(self):
+        """A route the tool hasn't seen yet brings template rules (CAN-TYO's): they are planned
+        around, not warned about. Routes seen before keep their rules as the player's."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v3_11_day3787.json").network
+        routing = plan_routes(n, direct_first=False)
+        everything = {r.id for r in n.routes}
+        seen_all = make_plan(routing, n, set(), compact=True, seen_routes=everything)
+        self.assertTrue([w for w in seen_all.warnings if "player rule" in w])
+        new_route = make_plan(routing, n, set(), compact=True, seen_routes=everything - {"route_7"})
+        self.assertEqual([w for w in new_route.warnings if "player rule" in w], [])
+        self.assertEqual(new_route.seen_routes, sorted(everything))
+        removed = {(c.loc[0], c.loc[1], c.rule.filter, c.rule.target) for c in new_route.remove}
+        self.assertIn(("route_7", "port_tokyo", "Onwards Ports", "port_guangzhou"), removed)
+        # No saved list (records from before this existed): nothing is adopted
+        legacy = make_plan(routing, n, set(), compact=True, seen_routes=None)
+        self.assertTrue([w for w in legacy.warnings if "player rule" in w])
+
 
 if __name__ == "__main__":
     unittest.main()
