@@ -245,8 +245,8 @@ def _generate_once(plan, network, existing, ctx):
             keep = [((r.filter, r.target, r.except_cargo), _key_ports((r.filter, r.target, r.except_cargo), own, ctx))
                     for r in existing.get((rid, None, 0), ())
                     if r.action == LOAD and r.parsed and r.except_at == (h,)]
-            for f, t, _ in _cover(want, plain, allowed=allowed, preferred=keep, no_port=is_stand_in):
-                glob.append(Rule(LOAD, f, t, except_at=(h,)))
+            for f, t, exc in _cover(want, store_cands, allowed=allowed, preferred=keep, no_port=is_stand_in):
+                glob.append(Rule(LOAD, f, t, except_at=(h,), except_cargo=exc))
         out[(rid, None, 0)] = glob
 
         # Depot stops: Store, then Collect, on every visit.

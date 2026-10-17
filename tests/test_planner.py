@@ -462,6 +462,22 @@ class SuggestedFixes(unittest.TestCase):
         self.assertEqual((len(plan.add), len(plan.remove), len(plan.optional_remove)), (9, 0, 0))
         self.assertEqual([w for w in plan.warnings if "player rule" in w], [])
 
+    def test_loads_use_excepted_filters_to_save_rules_day2709(self):
+        """Eight single-Port Loads that one `Route Ports | <route>` Load with an Except covers
+        are written as that one rule (day 2709: 66 rules from a clean slate, now 50)."""
+        import copy
+        from pathlib import Path
+        from atd.export_parser import load_export
+        n = copy.deepcopy(load_export(Path(__file__).parent / "fixtures" / "export_v2_day2709.json").network)
+        for r in n.routes:
+            r.global_rules = [Rule(LOAD, ROUTE_PORTS, THIS_ROUTE)]
+            for s in r.stops:
+                s.rules = []
+        plan = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True)
+        n = apply(n, plan)
+        self.assertLessEqual(sum(len(s.rules) for r in n.routes for s in r.stops)
+                             + sum(len(r.global_rules) for r in n.routes), 50)
+
 
 if __name__ == "__main__":
     unittest.main()
