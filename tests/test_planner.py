@@ -490,8 +490,8 @@ class SuggestedFixes(unittest.TestCase):
         self.assertEqual([c for c in plan.add if c.rule.action == COLLECT and uses(c.rule)], [])
         flagged = {w.split(" @ ")[0] for w in plan.warnings if "loops forever" in w}
         self.assertEqual(flagged, {"JP S", "CAN-HKT", "CAN-TYO"})
-        self.assertTrue(all(c.rule.action == COLLECT for c in plan.suggest_remove if c.loc[0] in ("route_1", "route_5", "route_7")
-                            and c.rule.filter == ONWARDS_PORTS))
+        suggested = {c.loc[0] for c in plan.suggest_remove if c.rule.action == COLLECT and c.rule.filter == ONWARDS_PORTS}
+        self.assertEqual(suggested, {"route_1", "route_5", "route_7"})
         # Not a recursive route: nothing changes
         plain = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True, recursive_templates=False)
         self.assertEqual([w for w in plain.warnings if "loops forever" in w], [])
