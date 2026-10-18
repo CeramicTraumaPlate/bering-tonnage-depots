@@ -87,7 +87,8 @@ def generate_compact(plan: RoutingPlan, network: Network,
                      extra_collectors: dict[str, set[str]] | None = None,
                      existing: dict[Loc, list[Rule]] | None = None,
                      future_proof: bool = True,
-                     extra_drops: dict[str, set[str]] | None = None) -> dict[Loc, list[Rule]]:
+                     extra_drops: dict[str, set[str]] | None = None,
+                     no_onwards_collect: frozenset[str] | set[str] = frozenset()) -> dict[Loc, list[Rule]]:
     """Few, readable rules. Use with a plan made with direct_first=False.
 
     Cargo may be handed over at ANY depot one step closer to its destination
@@ -112,13 +113,18 @@ def generate_compact(plan: RoutingPlan, network: Network,
     that doesn't exist, so wherever the game's filters allow it, today's rules already
     hand on, store and collect cargo for routes added at any hub later. The stand-ins
     never appear in the output.
+
+    no_onwards_collect: routes that must not get a Collect that uses Onwards Ports (as its filter
+    or its Except). A route with Recursive Onwards Ports on that collects Onwards Ports cargo at
+    one of its depots for another depot it calls at sends the game into an infinite loop (the
+    developers' bug, confirmed on Discord). Such a Collect is written as Route Ports/Port rules.
     """
     existing = existing or {}
     if future_proof:
         net2, plan2 = with_future_feeders(plan, network)
-        rules = _generate(plan2, net2, extra_collectors, existing, extra_drops)
+        rules = _generate(plan2, net2, extra_collectors, existing, extra_drops, no_onwards_collect)
         return {loc: rs for loc, rs in rules.items() if not is_stand_in(loc[0])}
-    return _generate(plan, network, extra_collectors, existing, extra_drops)
+    return _generate(plan, network, extra_collectors, existing, extra_drops, no_onwards_collect)
 
 
 STAND_IN = "~"  # prefix of the stand-in routes and ports used by future_proof
@@ -140,7 +146,7 @@ def with_future_feeders(plan: RoutingPlan, network: Network) -> tuple[Network, R
     return net2, plan_routes(net2, **params)
 
 
-def _generate(plan, network, extra_collectors, existing, extra_drops=None):
+def _generate(plan, network, extra_collectors, existing, extra_drops=None, no_onwards_collect=frozenset()):
     # Collect rules depend on where cargo is actually dropped off, which depends on the
     # Store rules, which can use Onwards Ports, which depends on who collects. Start from
     # "anything that could be dropped there" (always valid) and narrow it to what is
@@ -150,7 +156,7 @@ def _generate(plan, network, extra_collectors, existing, extra_drops=None):
         if h in plan.transfer_depots:
             waiting.setdefault(h, set()).update(d for d in ds if d != h and (h, d) in plan.depot_hops)
     ctx = compact_context(plan, network, extra_collectors, waiting=waiting)
-    first, actual = _generate_once(plan, network, existing, ctx)
+    first, actual = _generate_once(plan, network, existing, ctx, no_onwards_collect)
     out = first
     for _ in range(4):
         for h, ds in waiting.items():  # already in the depot, whatever rules put it there
@@ -159,11 +165,11 @@ def _generate(plan, network, extra_collectors, existing, extra_drops=None):
         if narrowed == ctx.collect_want:
             return out
         ctx = compact_context(plan, network, extra_collectors, narrowed, waiting=waiting)
-        out, actual = _generate_once(plan, network, existing, ctx)
+        out, actual = _generate_once(plan, network, existing, ctx, no_onwards_collect)
     return first  # didn't settle: the broad version is always valid
 
 
-def _generate_once(plan, network, existing, ctx):
+def _generate_once(plan, network, existing, ctx, no_onwards_collect=frozenset()):
     out: dict[Loc, list[Rule]] = {}
     actual: dict[str, set[str]] = defaultdict(set)  # depot -> dests actually dropped off there
     # A stand-in route can't be named, and a stand-in port can't get a Port rule.
@@ -263,6 +269,9 @@ def _generate_once(plan, network, existing, ctx):
             cands = [((ROUTE_PORTS, THIS_ROUTE, None), own)] + sorted(plain + excepted, key=_self_updating_rank)
             keep = [((x.filter, x.target, x.except_cargo), _key_ports((x.filter, x.target, x.except_cargo), own, ctx))
                     for x in existing.get(loc, ()) if x.action == COLLECT and x.parsed]
+            if rid in no_onwards_collect:
+                cands = [c for c in cands if not _uses_onwards(c[0])]
+                keep = [k for k in keep if not _uses_onwards(k[0])]
             # Collecting anything this route is exactly one step on for is also safe, so broad
             # (self-updating) rules can cover what's wanted here.
             closer = {d for d in ctx.potential.get(h, ()) if d != h and plan.depot_hops.get((h, d)) is not None
@@ -425,6 +434,12 @@ def verify_compact(plan: RoutingPlan, network: Network, rules: dict[Loc, list[Ru
             if not [rid for rid in takers if plan.hops.get((rid, d)) == step]:
                 problems.append(f"{h} Collect: nobody picks up {d}")
     return problems
+
+
+def _uses_onwards(key) -> bool:
+    """True if a (filter, target, except_cargo) key uses Onwards Ports as its filter or its Except."""
+    f, _, exc = key
+    return f == ONWARDS_PORTS or bool(exc and exc[0] == ONWARDS_PORTS)
 
 
 def _self_updating_rank(cand) -> tuple[int, int]:

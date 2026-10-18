@@ -237,7 +237,7 @@ class Overlay:
                               "each changed stop and on Global Rules, and paste into " + names.get(rid, rid) + "\n",
                               "gloss"))
         for w in plan.warnings + export.notes:
-            if any(k in w for k in ("could not be read", "wording",
+            if any(k in w for k in ("could not be read", "wording", "loops forever",
                                     "a player rule loads", "a player rule stores")):
                 lines.append((f"⚠ {_short(w.replace('a player rule', 'one of your own rules'))}\n", "warn"))
         if plan.suggest_remove:

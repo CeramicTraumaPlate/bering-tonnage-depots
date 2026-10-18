@@ -478,6 +478,24 @@ class SuggestedFixes(unittest.TestCase):
         self.assertLessEqual(sum(len(s.rules) for r in n.routes for s in r.stops)
                              + sum(len(r.global_rules) for r in n.routes), 50)
 
+    def test_recursive_routes_never_get_onwards_collects_day3787(self):
+        """Developers' bug: Recursive Onwards Ports plus a Collect on Onwards Ports for another
+        depot the route calls at loops forever. The plan never writes one, and flags yours."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        from atd.model import COLLECT, ONWARDS_PORTS
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v3_11_day3787.json").network
+        plan = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True, recursive_templates=True)
+        uses = lambda r: r.filter == ONWARDS_PORTS or (r.except_cargo and r.except_cargo[0] == ONWARDS_PORTS)
+        self.assertEqual([c for c in plan.add if c.rule.action == COLLECT and uses(c.rule)], [])
+        flagged = {w.split(" @ ")[0] for w in plan.warnings if "loops forever" in w}
+        self.assertEqual(flagged, {"JP S", "CAN-HKT", "CAN-TYO"})
+        self.assertTrue(all(c.rule.action == COLLECT for c in plan.suggest_remove if c.loc[0] in ("route_1", "route_5", "route_7")
+                            and c.rule.filter == ONWARDS_PORTS))
+        # Not a recursive route: nothing changes
+        plain = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True, recursive_templates=False)
+        self.assertEqual([w for w in plain.warnings if "loops forever" in w], [])
+
 
 if __name__ == "__main__":
     unittest.main()

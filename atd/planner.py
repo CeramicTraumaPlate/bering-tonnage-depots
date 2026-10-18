@@ -15,7 +15,7 @@ from pathlib import Path
 
 from dataclasses import replace
 
-from .model import LOAD, ONWARDS_PORTS, PORT, ROUTE_PORTS, STORE, THIS_ROUTE, Network, Rule
+from .model import COLLECT, LOAD, ONWARDS_PORTS, PORT, ROUTE_PORTS, STORE, THIS_ROUTE, Network, Rule
 from .routing import RoutingPlan
 from .rules import (Loc, collectors_of, evaluate_stop, existing_rules, generate, generate_compact, merge,
                     rule_destinations, stop_locations, verify_compact)
@@ -140,6 +140,10 @@ def make_plan(
                              and (loc[0], loc[1], loc[2], r.key()) not in record) else r
                          for r in rs] for loc, rs in current.items()}
 
+    # Routes with Recursive Onwards Ports on must not Collect Onwards Ports cargo (game bug: infinite loop).
+    loop_routes = ({r.id for r in network.routes} if recursive_templates is True
+                   else set(recursive_templates) if recursive_templates else set())
+
     # Split present rules into managed (recorded) and player (everything else).
     managed_present: dict[Loc, list[Rule]] = {}
     player: dict[Loc, list[Rule]] = {}
@@ -159,13 +163,15 @@ def make_plan(
         plain = {loc: [r for r in rs if not r.recursive] for loc, rs in current.items()}
         wanted = generate_compact(routing, network, extra_collectors=collectors_of(current), existing=plain,
                                   future_proof=future_proof,
-                                  extra_drops=_player_drops(network, player, collectors_of(current)))
+                                  extra_drops=_player_drops(network, player, collectors_of(current)),
+                                  no_onwards_collect=loop_routes)
         # Recursive rules reach through every hub where someone collects, including the
         # Collects suggested here, so plan again with those until nothing changes.
         for _ in range(3 if recursive_templates else 0):
             drops = _player_drops(network, player, collectors_of(merge(current, wanted)))
             again = generate_compact(routing, network, extra_collectors=collectors_of(merge(current, wanted)),
-                                     existing=plain, future_proof=future_proof, extra_drops=drops)
+                                     existing=plain, future_proof=future_proof, extra_drops=drops,
+                                     no_onwards_collect=loop_routes)
             if again == wanted:
                 break
             wanted = again
@@ -193,6 +199,7 @@ def make_plan(
         _split_optional_removals(routing, network, player, plan)
 
     _check_conflicts(routing, network, player, plan, collectors, compact)
+    _check_recursive_loops(network, player, plan, loop_routes)
     _check_limits(network, player, wanted, plan)
     plan.warnings = sorted(set(plan.warnings))
     return plan
@@ -338,6 +345,25 @@ def _check_conflicts(routing, network, player, plan, collectors, compact=False) 
                     f"{route.name or rid} @ {network.name(p)}: {len(unreadable)} player rule(s) "
                     f"could not be read; this stop may not behave as planned"
                 )
+
+
+def _check_recursive_loops(network, player, plan, loop_routes) -> None:
+    """Player Collects that send the game into an infinite loop (a game bug): a route with
+    Recursive Onwards Ports on that collects Onwards Ports cargo at one of its depots for
+    another depot it calls at. Say so and suggest removing the rule."""
+    for loc, rules in sorted(player.items(), key=_loc_sort):
+        rid, port = loc[0], loc[1]
+        if rid not in loop_routes or port is None:
+            continue
+        route = network.route(rid)
+        for r in rules:
+            if (r.action == COLLECT and r.filter == ONWARDS_PORTS and r.target != port
+                    and r.target in route.port_set):
+                plan.warnings.append(
+                    f"{route.name or rid} @ {network.name(port)}: a player rule collects Onwards Ports "
+                    f"for {network.name(r.target)} on a route with Recursive Onwards Ports on; this "
+                    f"loops forever in the game (a game bug) and can crash it. Remove the rule")
+                plan.suggest_remove.append(Change(loc, r))
 
 
 def _suggest_removals(routing, network, player, plan, collectors, route, loc, action, extra, compact) -> None:
