@@ -20,6 +20,7 @@ import argparse
 import ctypes
 import json
 import os
+import time
 import tkinter as tk
 from pathlib import Path
 
@@ -37,6 +38,17 @@ FOCUS_POLL_MS = 250
 STARTUP_SHOW_MS = 3000
 GAME_EXE = "bering-tonnage.exe"
 EXPORT_MARK = '"Bering Tonnage route data"'
+
+_last_fg = {"pid": 0, "exe": "", "title": ""}
+
+
+def _log(msg: str) -> None:
+    """Print a timestamped line to the console window (there is none when started with pythonw)."""
+    try:
+        print(time.strftime("%H:%M:%S"), msg, flush=True)
+    except Exception:
+        pass
+
 
 BG, FG, DIM, ACCENT, OK, WARN = "#14202b", "#e6edf3", "#7d8b99", "#5aa9e6", "#5cc98b", "#e6b450"
 
@@ -107,6 +119,10 @@ class Overlay:
     def follow_game(self):
         """Show only while Bering Tonnage (or this overlay) is the foreground window."""
         want = _foreground_is_game()
+        if want != self.visible:
+            fg = _last_fg
+            _log(f"{'showing' if want else 'hiding'}: foreground window is {fg['exe'] or '?'} "
+                 f"(pid {fg['pid']}) \"{fg['title']}\"; the game is {GAME_EXE}")
         if want and not self.visible:
             self.root.deiconify()
             self.root.attributes("-topmost", True)
@@ -125,8 +141,12 @@ class Overlay:
         if clip and clip != self.last_clip and EXPORT_MARK in clip[:400]:
             self.last_clip = clip
             try:
-                self.update(json.loads(clip))
+                data = json.loads(clip)
+                _log(f"export read: release {data.get('release')}, day {data.get('day')}")
+                self.update(data)
             except Exception as e:  # keep running whatever the export holds
+                import traceback
+                _log("couldn't read the export:\n" + traceback.format_exc())
                 self.status.config(text="couldn't read export", fg=WARN)
                 self._show([(f"{type(e).__name__}: {e}", "warn")])
         self.root.after(POLL_MS, self.poll)
@@ -357,7 +377,11 @@ def _foreground_is_game() -> bool:
         return False
     pid = wintypes.DWORD()
     user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+    title = ctypes.create_unicode_buffer(128)
+    user32.GetWindowTextW(hwnd, title, 128)
+    _last_fg.update(pid=pid.value, title=title.value)
     if pid.value == os.getpid():
+        _last_fg["exe"] = "this overlay"
         return True
     name = _exe_by_pid.get(pid.value)
     if name is None:
@@ -372,6 +396,7 @@ def _foreground_is_game() -> bool:
         if len(_exe_by_pid) > 256:
             _exe_by_pid.clear()
         _exe_by_pid[pid.value] = name
+    _last_fg["exe"] = name
     return name == GAME_EXE
 
 
@@ -384,12 +409,17 @@ def main(argv=None):
     kernel32.CreateMutexW.restype = ctypes.c_void_p
     mutex = kernel32.CreateMutexW(None, False, "BeringTonnageDepotsOverlay")
     if mutex and ctypes.get_last_error() == 183:  # ERROR_ALREADY_EXISTS
+        _log("Another overlay is already running (check for a pythonw.exe in Task Manager); not starting a second.")
         return 0
     try:
         ctypes.windll.shcore.SetProcessDpiAwareness(1)  # crisp text on scaled displays
     except Exception:
         pass
-    Overlay(args.save).root.mainloop()
+    _log(f"Depots overlay started (save '{args.save}'). Leave this window open; close it to quit the overlay.")
+    overlay = Overlay(args.save)
+    _log(f"settings: {overlay.settings}")
+    overlay.root.mainloop()
+    _log("overlay closed")
 
 
 if __name__ == "__main__":
