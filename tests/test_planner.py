@@ -496,6 +496,16 @@ class SuggestedFixes(unittest.TestCase):
         plain = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True, recursive_templates=False)
         self.assertEqual([w for w in plain.warnings if "loops forever" in w], [])
 
+    def test_release_111_export_reads_and_plans_day498(self):
+        """1.1.1 exports add a per-route "template" field; everything else reads as in 1.1."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        e = load_export(Path(__file__).parent / "fixtures" / "export_v3_111_day498.json")
+        self.assertTrue(e.tested)
+        self.assertEqual([x.raw for r in e.network.routes for s in r.stops for x in s.rules if not x.parsed], [])
+        plan = make_plan(plan_routes(e.network, direct_first=False), e.network, set(), compact=True)
+        self.assertEqual((len(plan.add), len(plan.remove)), (9, 0))
+
 
 if __name__ == "__main__":
     unittest.main()

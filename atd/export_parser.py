@@ -15,7 +15,7 @@ from pathlib import Path
 
 from .model import ACTIONS, FILTERS, THIS_ROUTE, WAIT, Depot, Network, Route, Rule, Stop
 
-TESTED = {("1.0.3", 2), ("1.0.4", 2), ("1.1", 3)}  # (release, export_version) pairs this parser was checked against
+TESTED = {("1.0.3", 2), ("1.0.4", 2), ("1.1", 3), ("1.1.1", 3)}  # (release, export_version) pairs this parser was checked against
 
 INACTIVE_STATUSES = {"unassigned", "unavailable", "paused", "retiring", "laid up"}
 
