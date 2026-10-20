@@ -327,6 +327,7 @@ def _check_conflicts(routing, network, player, plan, collectors, compact=False) 
     # (the nudges say that route has no ship), so it isn't a rule conflict.
     served = {p for r in network.routes if r.active for p in r.port_set}
     waiting = {p for r in network.routes if not r.active for p in r.port_set} - served
+    no_recursive = {loc: [r for r in rs if not r.recursive] for loc, rs in player.items()}
     for rid in routing.routes:
         route = network.route(rid)
         deliverable = {d for d in routing.destinations if (rid, d) in routing.hops}
@@ -334,6 +335,10 @@ def _check_conflicts(routing, network, player, plan, collectors, compact=False) 
         for loc in stop_locations(route):
             p = loc[1]
             eff = evaluate_stop(route, loc, player, network, collectors)
+            # A recursive template's rules can't be edited one by one, and the plan already collects
+            # what they drop off (its own Collects, via _player_drops): not a conflict to report.
+            if any(r.recursive for rs in player.values() for r in rs):
+                eff = evaluate_stop(route, loc, no_recursive, network, collectors)
             if compact:
                 ok_load = deliverable
                 ok_store = set(routing.store_ok.get((rid, p), ())) | (set(eff.sets[STORE]) - carried)
@@ -398,10 +403,6 @@ def _suggest_removals(routing, network, player, plan, collectors, route, loc, ac
             continue
         dests = rule_destinations(r, route, network, collectors)
         if not dests or not dests & extra or not (compact or dests <= extra):
-            continue
-        if r.recursive:  # the game won't let a recursive template's rules be deleted one by one
-            plan.warnings[-1] += (f" (that rule comes from Recursive Onwards Ports, which can't be edited rule by rule: "
-                                  f"turn Recursive off on {route.name or route.id} to change it)")
             continue
         owner = loc if r in player.get(loc, ()) else (route.id, None, 0)
         if any(c.loc == owner and c.rule is r for c in plan.suggest_remove):
