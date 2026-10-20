@@ -532,6 +532,20 @@ class SuggestedFixes(unittest.TestCase):
         self.assertTrue([w for w in old.warnings if "loops forever" in w])
         self.assertEqual([w for w in new.warnings if "loops forever" in w], [])
 
+    def test_nine_route_network_needs_four_transfers_day5353(self):
+        """Colombo to Tokyo is five depots in a chain: with the default limit of 3 cargo from the India
+        routes (and to them) has no way on; with 5 the plan reaches every port."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v3_111_day5353.json").network
+        gaps = {limit: sum(map(len, plan_routes(n, max_transfers=limit, direct_first=False).unreachable.values()))
+                for limit in (3, 5)}
+        self.assertEqual(gaps[5], 0)
+        self.assertGreater(gaps[3], 0)
+        plan = make_plan(plan_routes(n, max_transfers=5, direct_first=False), n, set(), compact=True,
+                         recursive_templates=True, game_release="1.1.1")
+        self.assertEqual((len(plan.add), len(plan.remove)), (6, 0))
+
 
 if __name__ == "__main__":
     unittest.main()
