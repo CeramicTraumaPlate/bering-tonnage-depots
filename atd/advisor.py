@@ -79,7 +79,8 @@ def main(argv: list[str] | None = None) -> int:
     routing = plan_routes(net, s["max_transfers"], s["disabled_routes"], s["disabled_depots"],
                           extra_destinations=_cargo_destinations(export), direct_first=not s["compact"])
     plan = make_plan(routing, net, record, s["auto_transfer"], set(s["disabled_routes"]), s["compact"],
-                     recursive_templates=recursive_routes(net, s["recursive_templates"]))
+                     recursive_templates=recursive_routes(net, s["recursive_templates"]),
+                     game_release=export.release)
 
     # Acceptance test 8 on live data: the generator's rules reproduce the routing decisions.
     if s["compact"]:

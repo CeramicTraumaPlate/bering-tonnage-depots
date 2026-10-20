@@ -517,6 +517,21 @@ class SuggestedFixes(unittest.TestCase):
         self.assertEqual(plan.suggest_remove, [])
         self.assertTrue([w for w in plan.warnings if "turn Recursive off on JP S" in w])
 
+    def test_loop_ban_lifts_from_release_111_day3787(self):
+        """The developers fixed the recursive Collect loop in 1.1.1: from then on such Collects are
+        allowed and your own are not flagged. Older and unknown releases keep the ban."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        from atd.planner import has_recursive_loop_bug
+        self.assertEqual([has_recursive_loop_bug(r) for r in (None, "1.0.4", "1.1", "1.1.1", "1.2")],
+                         [True, True, True, False, False])
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v3_11_day3787.json").network
+        routing = plan_routes(n, direct_first=False)
+        old = make_plan(routing, n, set(), compact=True, recursive_templates=True, game_release="1.1")
+        new = make_plan(routing, n, set(), compact=True, recursive_templates=True, game_release="1.1.1")
+        self.assertTrue([w for w in old.warnings if "loops forever" in w])
+        self.assertEqual([w for w in new.warnings if "loops forever" in w], [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -158,7 +158,8 @@ class Overlay:
                              f"(the old one is kept as records/{kept.name})")
         plan = make_plan(routing, net, load_record(self.record_path), s["auto_transfer"],
                          set(s["disabled_routes"]), s["compact"], adopt=adopt,
-                         recursive_templates=recursive_routes(net, s["recursive_templates"]))
+                         recursive_templates=recursive_routes(net, s["recursive_templates"]),
+                         game_release=export.release)
         self.record_path.parent.mkdir(parents=True, exist_ok=True)
         save_record(self.record_path, plan.record, {"save": self.save, "release": export.release,
                                                      "game_day": export.meta.get("day"),

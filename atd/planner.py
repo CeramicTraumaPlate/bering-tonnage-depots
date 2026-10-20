@@ -69,6 +69,16 @@ def record_meta(path: Path) -> dict:
     return {k: v for k, v in data.items() if k not in ("managed", "record_version")}
 
 
+def has_recursive_loop_bug(release: str | None) -> bool:
+    """True for game releases before 1.1.1 (and unknown ones), where Recursive Onwards Ports plus an
+    Onwards Ports Collect for another depot of the route loops forever."""
+    try:
+        parts = tuple(int(x) for x in str(release).split("."))
+    except ValueError:
+        return True
+    return parts < (1, 1, 1)
+
+
 def is_other_game(meta: dict, export_meta: dict) -> bool:
     """True if a record clearly belongs to a different game than this export.
 
@@ -119,6 +129,7 @@ def make_plan(
     adopt: bool = False,
     future_proof: bool = True,
     recursive_templates: bool | set[str] = False,
+    game_release: str | None = None,
 ) -> Plan:
     """compact=True expects a routing plan made with direct_first=False.
 
@@ -128,6 +139,10 @@ def make_plan(
     adopt=True: one-time cleanup. Treat every rule in the game as this tool's,
     except the default `Load | All | Route Ports | This Route`, so that rules
     from earlier suggestions are listed for removal instead of warned about.
+
+    game_release: the export's release. Before 1.1.1 a recursive route that collects Onwards Ports
+    cargo for another of its depots loops forever in the game, so such Collects are never written;
+    1.1.1 fixed it. An unknown release is treated as having the bug.
     """
     plan = Plan()
     current = existing_rules(network)
@@ -143,6 +158,8 @@ def make_plan(
     # Routes with Recursive Onwards Ports on must not Collect Onwards Ports cargo (game bug: infinite loop).
     loop_routes = ({r.id for r in network.routes} if recursive_templates is True
                    else set(recursive_templates) if recursive_templates else set())
+    if not has_recursive_loop_bug(game_release):
+        loop_routes = set()
 
     # Split present rules into managed (recorded) and player (everything else).
     managed_present: dict[Loc, list[Rule]] = {}

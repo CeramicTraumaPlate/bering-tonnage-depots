@@ -103,7 +103,7 @@ recursive_templates = ["ROK", "HK-VN"]   # or true for every route, false for no
 
 The overlay then counts on those routes' template rules to load and store cargo for far-away ports, and only suggests what's missing, mostly Stores and Collects where routes meet a second hub. On one save it needed 5 changes instead of 9; rebuilt as templates, a large network needed 25 instead of 40.
 
-A route marked recursive never gets a Collect on Onwards Ports (the game loops forever when a recursive route collects Onwards Ports for another depot it calls at; a game bug the developers are fixing), and the overlay flags any of your own rules that do.
+On game releases before 1.1.1 a route marked recursive never gets a Collect on Onwards Ports (the game looped forever when a recursive route collected Onwards Ports for another depot it calls at; fixed in 1.1.1), and the overlay flags any of your own rules that do.
 
 Best for **feeders** (routes with one hub). A recursive template drops everything at its one hub, so on a route between two hubs, cargo for the other hub goes off at the template's hub first and is carried back: it arrives, but takes the long way.
 
