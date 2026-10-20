@@ -506,6 +506,17 @@ class SuggestedFixes(unittest.TestCase):
         plan = make_plan(plan_routes(e.network, direct_first=False), e.network, set(), compact=True)
         self.assertEqual((len(plan.add), len(plan.remove)), (9, 0))
 
+    def test_recursive_template_rules_are_not_suggested_for_removal_day498(self):
+        """With Recursive Onwards Ports on, the template's Store can't be deleted one rule at a
+        time: the warning says to turn Recursive off instead, and no removal is suggested."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        n = load_export(Path(__file__).parent / "fixtures" / "export_v3_111_day498.json").network
+        plan = make_plan(plan_routes(n, direct_first=False), n, set(), compact=True, recursive_templates=True)
+        self.assertEqual(len(plan.add), 5)
+        self.assertEqual(plan.suggest_remove, [])
+        self.assertTrue([w for w in plan.warnings if "turn Recursive off on JP S" in w])
+
 
 if __name__ == "__main__":
     unittest.main()
