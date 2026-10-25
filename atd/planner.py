@@ -69,6 +69,21 @@ def record_meta(path: Path) -> dict:
     return {k: v for k, v in data.items() if k not in ("managed", "record_version")}
 
 
+def game_rules(network: Network, record: set[tuple], recursive_templates: bool | set[str] = False
+               ) -> dict[Loc, list[Rule]]:
+    """The rules in the game, as the planner reads them: with `recursive_templates`, your own
+    Onwards Ports rules came from route templates with Recursive Onwards Ports on. The export can't
+    show it, so assume it. Rules this tool suggested (in `record`) are never recursive."""
+    current = existing_rules(network)
+    if not recursive_templates:
+        return current
+    rec_routes = recursive_templates if isinstance(recursive_templates, (set, frozenset)) else None
+    return {loc: [replace(r, recursive=True)
+                  if (r.filter == ONWARDS_PORTS and (rec_routes is None or loc[0] in rec_routes)
+                      and (loc[0], loc[1], loc[2], r.key()) not in record) else r
+                  for r in rs] for loc, rs in current.items()}
+
+
 def has_recursive_loop_bug(release: str | None) -> bool:
     """True for game releases before 1.1.1 (and unknown ones), where Recursive Onwards Ports plus an
     Onwards Ports Collect for another depot of the route loops forever."""
@@ -145,15 +160,7 @@ def make_plan(
     1.1.1 fixed it. An unknown release is treated as having the bug.
     """
     plan = Plan()
-    current = existing_rules(network)
-    if recursive_templates:
-        # Your own Onwards Ports rules came from route templates with Recursive Onwards Ports on.
-        # The export can't show it, so assume it. Rules this tool suggested are never recursive.
-        rec_routes = recursive_templates if isinstance(recursive_templates, (set, frozenset)) else None
-        current = {loc: [replace(r, recursive=True)
-                         if (r.filter == ONWARDS_PORTS and (rec_routes is None or loc[0] in rec_routes)
-                             and (loc[0], loc[1], loc[2], r.key()) not in record) else r
-                         for r in rs] for loc, rs in current.items()}
+    current = game_rules(network, record, recursive_templates)
 
     # Routes with Recursive Onwards Ports on must not Collect Onwards Ports cargo (game bug: infinite loop).
     loop_routes = ({r.id for r in network.routes} if recursive_templates is True

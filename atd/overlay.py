@@ -27,7 +27,7 @@ from pathlib import Path
 from .advisor import load_settings, recursive_routes
 from . import nudges
 from .export_parser import parse_export
-from .planner import is_other_game, load_record, make_plan, record_meta, save_record
+from .planner import game_rules, is_other_game, load_record, make_plan, record_meta, save_record
 from .routing import plan_routes
 from .model import ONWARDS_PORTS, THIS_ROUTE
 from .rules import collectors_of, existing_rules, merge, render, rule_destinations, stop_locations
@@ -176,10 +176,13 @@ class Overlay:
             self.record_path.replace(kept)
             new_game_note = (f"New game or older save detected: started a fresh memory file "
                              f"(the old one is kept as records/{kept.name})")
-        plan = make_plan(routing, net, load_record(self.record_path), s["auto_transfer"],
+        record = load_record(self.record_path)
+        recursive = recursive_routes(net, s["recursive_templates"])
+        plan = make_plan(routing, net, record, s["auto_transfer"],
                          set(s["disabled_routes"]), s["compact"], adopt=adopt,
-                         recursive_templates=recursive_routes(net, s["recursive_templates"]),
-                         game_release=export.release)
+                         recursive_templates=recursive, game_release=export.release)
+        # The rules as the planner read them (recursive templates marked), for the checks below.
+        in_game = game_rules(net, record, recursive)
         self.record_path.parent.mkdir(parents=True, exist_ok=True)
         save_record(self.record_path, plan.record, {"save": self.save, "release": export.release,
                                                      "game_day": export.meta.get("day"),
@@ -203,11 +206,11 @@ class Overlay:
                 for c in changes:
                     groups.setdefault(c.loc, []).append((kind, c.rule))
             # Who collects where once these rules are in: that's what Onwards Ports means.
-            collectors = collectors_of(merge(existing_rules(net), plan.desired))
+            collectors = collectors_of(merge(in_game, plan.desired))
             # Collect rules that pick up depot cargo nobody collects now: these go first.
             frees: dict[tuple, int] = {}  # (loc, rule key) -> TEU freed
-            stuck = nudges.uncollected_depot_cargo(net)
-            all_rules = merge(existing_rules(net), plan.desired)
+            stuck = nudges.uncollected_depot_cargo(net, in_game)
+            all_rules = merge(in_game, plan.desired)
             for c in plan.add:
                 if c.rule.action == "Collect" and c.loc[1] in stuck:
                     route = net.route(c.loc[0])
@@ -274,7 +277,8 @@ class Overlay:
                 where = "Global Rules" if c.loc[1] is None else net.name(c.loc[1]).split(" [")[0]
                 lines.append((f"   − {names_.get(c.loc[0], c.loc[0])} · {where}: {_short(render(c.rule, net))}\n", "dim"))
         lines.append(("Network\n", "h"))
-        for n in nudges.check_network(net, s, routing, export.ship_cargo, export.ship_capacity, export.slowest_leg):
+        for n in nudges.check_network(net, s, routing, export.ship_cargo, export.ship_capacity, export.slowest_leg,
+                                      rules=in_game):
             icon, tag = {nudges.OK: ("✓", "okline"), nudges.WARN: ("⚠", "warn")}.get(n.level, ("•", "dim"))
             lines.append((f"{icon} {_short(n.text)}\n", tag))
         lines.append((f"Transfer depots: {hubs}\n", "dim"))

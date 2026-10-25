@@ -1,0 +1,82 @@
+{
+  "format": "Bering Tonnage route data",
+  "export_version": 3,
+  "release": "1.1.1",
+  "save_version": 206,
+  "date": "2037-12-29",
+  "day": 4085,
+  "start_region": "la_plata",
+  "ships": [
+    {"name": "MV Saltwind [ship_1]", "vessel": "Handysize, 900 TEU.", "route": "BR S [route_2], stop 4 of 5", "route_status": "In Transit",
+     "cargo_teu_by_destination": {"Belém [port_belem]": 18, "Paranaguá [port_paranagua]": 186, "Punta Arenas [port_punta_arenas]": 15, "Rio de Janeiro [port_rio_de_janeiro]": 3, "San Vicente [port_san_vicente]": 17, "Santos [port_santos]": 661}},
+    {"name": "MV Grey Current [ship_2]", "vessel": "Handymax, 1,400 TEU.", "route": "ARG [route_1], stop 1 of 5", "route_status": "Unloading",
+     "cargo_teu_by_destination": {"Bahía Blanca [port_bahia_blanca]": 39, "Buenos Aires [port_buenos_aires]": 43, "Paranaguá [port_paranagua]": 1, "Puerto Madryn [port_puerto_madryn]": 106, "Quequén [port_quequen]": 295, "Santos [port_santos]": 55}},
+    {"name": "Santa María [ship_3]", "vessel": "Handysize, 900 TEU.", "route": "BR N [route_3], stop 3 of 4", "route_status": "In Transit",
+     "cargo_teu_by_destination": {"Belém [port_belem]": 178, "Rio Grande [port_rio_grande]": 30, "Salvador [port_salvador]": 180, "Santos [port_santos]": 217}},
+    {"name": "San Jorge [ship_4]", "vessel": "Handymax, 1,900 TEU.", "route": "CHL [route_4], stop 1 of 4", "route_status": "In Transit",
+     "cargo_teu_by_destination": {"Punta Arenas [port_punta_arenas]": 8, "San Vicente [port_san_vicente]": 43}}
+  ],
+  "routes": [
+    {
+      "name": "ARG [route_1]", "template": "feeder",
+      "ships": ["MV Grey Current [ship_2]"],
+      "legs": ["Stop 1 to stop 2 at 70% speed, 595 km/day, fuel $5,928 per sailing day.", "Other legs at 100% speed, 850 km/day, fuel $14,504 per sailing day."],
+      "global_rules": ["Load All for Onwards Ports: Ushuaia [port_ushuaia], except at Port: Ushuaia [port_ushuaia]."],
+      "stops": [
+        "1. Buenos Aires [port_buenos_aires], Argentina. Mooring $92/day. Store All for Onwards Ports: Buenos Aires [port_buenos_aires], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Ushuaia [port_ushuaia]. Load All for Route Ports: This Route.",
+        "2. Quequén [port_quequen], Argentina. Mooring $90/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires].",
+        "3. Bahía Blanca [port_bahia_blanca], Argentina. Mooring $93/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires].",
+        "4. Puerto Madryn [port_puerto_madryn], Argentina. Mooring $77/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires].",
+        "5. Ushuaia [port_ushuaia], Argentina. Mooring $79/day. Store All for Onwards Ports: Ushuaia [port_ushuaia], except Route Ports: This Route. Collect All for Onwards Ports: Santos [port_santos]. Collect All for Onwards Ports: Buenos Aires [port_buenos_aires]. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires]."
+      ]
+    },
+    {
+      "name": "BR S [route_2]", "template": "feeder",
+      "ships": ["MV Saltwind [ship_1]"],
+      "legs": ["All legs at 100% speed, 890 km/day, fuel $13,007 per sailing day."],
+      "global_rules": ["Load All for Onwards Ports: Santos [port_santos], except at Port: Santos [port_santos]."],
+      "stops": [
+        "1. Buenos Aires [port_buenos_aires], Argentina. Mooring $59/day. Store All for Onwards Ports: Buenos Aires [port_buenos_aires], except Route Ports: This Route. Store All for Onwards Ports: Ushuaia [port_ushuaia], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Santos [port_santos]. Load All for Route Ports: This Route.",
+        "2. Montevideo [port_montevideo], Uruguay. Mooring $57/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires]. Load All for Onwards Ports: Ushuaia [port_ushuaia].",
+        "3. Rio Grande [port_rio_grande], Brazil. Mooring $49/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires]. Load All for Onwards Ports: Ushuaia [port_ushuaia].",
+        "4. Paranaguá [port_paranagua], Brazil. Mooring $66/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires]. Load All for Onwards Ports: Ushuaia [port_ushuaia].",
+        "5. Santos [port_santos], Brazil. Mooring $108/day. Store All for Onwards Ports: Santos [port_santos], except Route Ports: This Route. Collect All for Onwards Ports: Ushuaia [port_ushuaia]. Collect All for Onwards Ports: Buenos Aires [port_buenos_aires]. Collect All for Onwards Ports: Ushuaia [port_ushuaia], except Onwards Ports: Santos [port_santos]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Load All for Onwards Ports: Buenos Aires [port_buenos_aires]. Load All for Onwards Ports: Ushuaia [port_ushuaia]. Load All for Onwards Ports: Ushuaia [port_ushuaia], except Onwards Ports: Santos [port_santos]."
+      ]
+    },
+    {
+      "name": "BR N [route_3]", "template": "feeder",
+      "ships": ["Santa María [ship_3]"],
+      "legs": ["Stop 1 to stop 2 at 70% speed, 623 km/day, fuel $5,316 per sailing day.", "Other legs at 60% speed, 534 km/day, fuel $3,829 per sailing day."],
+      "stops": [
+        "1. Santos [port_santos], Brazil. Mooring $108/day. Store All for Onwards Ports: Santos [port_santos], except Route Ports: This Route. Store All for Onwards Ports: Ushuaia [port_ushuaia], except Route Ports: This Route. Store All for Onwards Ports: Buenos Aires [port_buenos_aires], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. Rio de Janeiro [port_rio_de_janeiro], Brazil. Mooring $56/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Santos [port_santos]. Load All for Onwards Ports: Ushuaia [port_ushuaia]. Load All for Onwards Ports: Buenos Aires [port_buenos_aires].",
+        "3. Salvador [port_salvador], Brazil. Mooring $60/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Santos [port_santos]. Load All for Onwards Ports: Ushuaia [port_ushuaia]. Load All for Onwards Ports: Buenos Aires [port_buenos_aires].",
+        "4. Belém [port_belem], Brazil. Mooring $54/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Santos [port_santos]. Load All for Onwards Ports: Ushuaia [port_ushuaia]. Load All for Onwards Ports: Buenos Aires [port_buenos_aires]."
+      ]
+    },
+    {
+      "name": "CHL [route_4]", "template": "feeder",
+      "ships": ["San Jorge [ship_4]"],
+      "legs": ["All legs at 100% speed, 850 km/day, fuel $18,306 per sailing day."],
+      "global_rules": [
+        "Load All for Onwards Ports: Buenos Aires [port_buenos_aires], except at Port: Ushuaia [port_ushuaia].",
+        "Load All for Onwards Ports: Ushuaia [port_ushuaia], except at Port: Ushuaia [port_ushuaia]."
+      ],
+      "stops": [
+        "1. Antofagasta [port_antofagasta], Chile. Mooring $105/day. Store All for Onwards Ports: Antofagasta [port_antofagasta], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+        "2. San Vicente [port_san_vicente], Chile. Mooring $105/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Antofagasta [port_antofagasta].",
+        "3. Punta Arenas [port_punta_arenas], Chile. Mooring $101/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Antofagasta [port_antofagasta].",
+        "4. Ushuaia [port_ushuaia], Argentina. Mooring $107/day. Store All for Onwards Ports: Buenos Aires [port_buenos_aires]. Store All for Onwards Ports: Santos [port_santos]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Load All for Onwards Ports: Antofagasta [port_antofagasta]."
+      ]
+    }
+  ],
+  "depots": [
+    {"port": "Antofagasta [port_antofagasta]", "country": "Chile", "level": 1, "capacity_teu": 500, "stored_teu": 0},
+    {"port": "Buenos Aires [port_buenos_aires]", "country": "Argentina", "level": 1, "capacity_teu": 500, "stored_teu": 13,
+     "stored_teu_by_destination": {"San Vicente [port_san_vicente]": 13}},
+    {"port": "Santos [port_santos]", "country": "Brazil", "level": 1, "capacity_teu": 500, "stored_teu": 74,
+     "stored_teu_by_destination": {"Bahía Blanca [port_bahia_blanca]": 1, "Paranaguá [port_paranagua]": 45, "Rio Grande [port_rio_grande]": 23, "San Vicente [port_san_vicente]": 5}},
+    {"port": "Ushuaia [port_ushuaia]", "country": "Argentina", "level": 1, "capacity_teu": 500, "stored_teu": 78,
+     "stored_teu_by_destination": {"Paranaguá [port_paranagua]": 7, "Rio Grande [port_rio_grande]": 7, "Santos [port_santos]": 64}}
+  ]
+}

@@ -26,9 +26,12 @@ class Nudge:
 def check_network(net: Network, settings: dict, routing: RoutingPlan | None = None,
                   ship_cargo: dict[str, dict[str, int]] | None = None,
                   ship_capacity: dict[str, int] | None = None,
-                  slowest_leg: dict[str, int] | None = None) -> list[Nudge]:
+                  slowest_leg: dict[str, int] | None = None,
+                  rules: dict | None = None) -> list[Nudge]:
     """ship_cargo: route id -> destination -> TEU aboard its ship (from the export).
-    ship_capacity / slowest_leg: route id -> TEU of its ship(s) / lowest leg speed in %."""
+    ship_capacity / slowest_leg: route id -> TEU of its ship(s) / lowest leg speed in %.
+    rules: the game's rules as the planner reads them (planner.game_rules: recursive templates
+    marked); defaults to the export's rules read as they are."""
     plan = routing or _plan(net, settings)
     extra = set(plan.destinations)
     mt = settings["max_transfers"]
@@ -80,10 +83,10 @@ def check_network(net: Network, settings: dict, routing: RoutingPlan | None = No
                                f"(e.g. {net.route(rid).name or rid} → {short(d)}). "
                                f"Routes added beyond them need a higher limit or a shortcut depot."))
 
-    out += _stuck_cargo(net, plan, ship_cargo or {}, short)
+    out += _stuck_cargo(net, plan, ship_cargo or {}, short, rules)
     out += rules_out_of_order(net, short)
-    out += _collect_without_drop(net, short)
-    out += _backlog(net, ship_capacity or {}, slowest_leg or {}, short)
+    out += _collect_without_drop(net, short, rules)
+    out += _backlog(net, ship_capacity or {}, slowest_leg or {}, short, rules)
 
     # Depots.
     for dep in net.depots:
@@ -96,10 +99,10 @@ def check_network(net: Network, settings: dict, routing: RoutingPlan | None = No
     return out
 
 
-def uncollected_depot_cargo(net: Network) -> dict[str, dict[str, int]]:
+def uncollected_depot_cargo(net: Network, rules: dict | None = None) -> dict[str, dict[str, int]]:
     """Depot port -> {destination: TEU} that no route collects there under the rules in the game now."""
     out: dict[str, dict[str, int]] = {}
-    rules = existing_rules(net)
+    rules = rules if rules is not None else existing_rules(net)
     collectors = collectors_of(rules)
     for dep in net.depots:
         collected: set[str] = set()
@@ -140,12 +143,12 @@ def _stop_no(route, loc) -> int:
     return next(i for i, l in enumerate(stop_locations(route), 1) if l == loc)
 
 
-def _collect_without_drop(net: Network, short) -> list[Nudge]:
+def _collect_without_drop(net: Network, short, rules: dict | None = None) -> list[Nudge]:
     """Community rule S5: a ship that collects cargo it never stores or delivers slowly fills up.
 
     Only cargo that can actually be in that depot counts (something on the network stores it there).
     """
-    rules = existing_rules(net)
+    rules = rules if rules is not None else existing_rules(net)
     collectors = collectors_of(rules)
     stored_at: dict[str, set[str]] = {}
     sets = {}
@@ -181,9 +184,10 @@ BACKLOG_SHIPLOADS = 3  # warn when cargo waiting for a route is more than this m
 SLOW_LEG = 50          # mention legs slower than this %
 
 
-def _backlog(net: Network, capacity: dict[str, int], slowest: dict[str, int], short) -> list[Nudge]:
+def _backlog(net: Network, capacity: dict[str, int], slowest: dict[str, int], short,
+             rules: dict | None = None) -> list[Nudge]:
     """Routes that can't keep up: far more cargo waiting for them in depots than one ship carries."""
-    rules = existing_rules(net)
+    rules = rules if rules is not None else existing_rules(net)
     collectors = collectors_of(rules)
     waiting: dict[str, dict[str, int]] = {}  # route -> depot -> TEU only it collects (shared: split evenly)
     for dep in net.depots:
@@ -217,11 +221,11 @@ def _backlog(net: Network, capacity: dict[str, int], slowest: dict[str, int], sh
     return out
 
 
-def _stuck_cargo(net: Network, plan: RoutingPlan, ship_cargo: dict, short) -> list[Nudge]:
+def _stuck_cargo(net: Network, plan: RoutingPlan, ship_cargo: dict, short, rules: dict | None = None) -> list[Nudge]:
     """Cargo the game is holding right now that nothing will move, judged by the rules in the game."""
     out = []
     served = {p for r in net.routes if r.active for p in r.port_set}
-    for port, stuck in sorted(uncollected_depot_cargo(net).items()):
+    for port, stuck in sorted(uncollected_depot_cargo(net, rules).items()):
         for d, teu in sorted(stuck.items(), key=lambda kv: -kv[1]):
             idle = [r.name or r.id for r in net.routes if not r.active and d in r.port_set]
             if idle and d not in served:  # expected: it goes on once that route has a ship

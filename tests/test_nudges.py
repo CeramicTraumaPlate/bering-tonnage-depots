@@ -112,5 +112,20 @@ class RuleOrderAndCollect(unittest.TestCase):
         self.assertEqual(_placement(Rule(COLLECT, ROUTE_PORTS, "B"), stop[:1]), "")
 
 
+class RecursiveTemplates(unittest.TestCase):
+    def test_collect_check_reads_recursive_rules_like_the_planner_laplata_day4085(self):
+        """ARG collects Belem cargo at Ushuaia; its template's recursive Store at Buenos Aires drops
+        it off there (BR S and BR N take it on). Read as recursive, there is nothing to warn about."""
+        from atd.planner import game_rules, load_record
+        fixtures = Path(__file__).parent / "fixtures"
+        n = load_export(fixtures / "export_v3_111_laplata_day4085.json").network
+        record = load_record(fixtures / "record_laplata_day4085.json")
+        settings = dict(DEFAULTS, recursive_templates=True, max_transfers=5)
+        plain = check_network(n, settings)
+        self.assertTrue([t for t in texts(plain, WARN) if "never drops it off" in t])
+        read_as_planner = check_network(n, settings, rules=game_rules(n, record, True))
+        self.assertEqual([t for t in texts(read_as_planner, WARN) if "never drops it off" in t], [])
+
+
 if __name__ == "__main__":
     unittest.main()

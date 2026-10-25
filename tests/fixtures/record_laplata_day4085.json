@@ -1,0 +1,216 @@
+{
+  "record_version": 2,
+  "save": "default",
+  "release": "1.1.1",
+  "game_day": 4085,
+  "start_region": "la_plata",
+  "managed": [
+    {
+      "route": "route_1",
+      "port": "port_buenos_aires",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_ushuaia",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_buenos_aires",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_santos",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_santos",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_buenos_aires",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_santos",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_ushuaia",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_santos",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "This Route",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_santos",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_santos",
+        "except_at": [],
+        "except_cargo": [
+          "Route Ports",
+          "This Route"
+        ]
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_ushuaia",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_buenos_aires",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_ushuaia",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_santos",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_ushuaia",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_ushuaia",
+        "except_at": [],
+        "except_cargo": [
+          "Route Ports",
+          "This Route"
+        ]
+      }
+    },
+    {
+      "route": "route_4",
+      "port": "port_ushuaia",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "This Route",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_4",
+      "port": "port_ushuaia",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_buenos_aires",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_4",
+      "port": "port_ushuaia",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_santos",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_ushuaia",
+        "except_at": [
+          "port_ushuaia"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_santos",
+        "except_at": [
+          "port_santos"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_4",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_buenos_aires",
+        "except_at": [
+          "port_ushuaia"
+        ],
+        "except_cargo": null
+      }
+    }
+  ]
+}
