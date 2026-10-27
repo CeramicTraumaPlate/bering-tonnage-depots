@@ -1,0 +1,284 @@
+{
+  "record_version": 2,
+  "save": "default",
+  "release": "1.1.1",
+  "game_day": 3027,
+  "start_region": "us_east_coast",
+  "managed": [
+    {
+      "route": "route_1",
+      "port": "port_baltimore",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_miami",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_baltimore",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_boston",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_boston",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_baltimore",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_boston",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_miami",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_boston",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_oakland",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": "port_boston",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_boston",
+        "except_at": [],
+        "except_cargo": [
+          "Route Ports",
+          "This Route"
+        ]
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_miami",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_baltimore",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_miami",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_boston",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_miami",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_oakland",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_miami",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Route Ports",
+        "target": "This Route",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_1",
+      "port": "port_miami",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_miami",
+        "except_at": [],
+        "except_cargo": [
+          "Route Ports",
+          "This Route"
+        ]
+      }
+    },
+    {
+      "route": "route_7",
+      "port": "port_oakland",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_seattle",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_7",
+      "port": "port_seattle",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_baltimore",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_7",
+      "port": "port_seattle",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_boston",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_7",
+      "port": "port_seattle",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_miami",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_7",
+      "port": "port_seattle",
+      "visit": 1,
+      "rule": {
+        "action": "Collect",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_oakland",
+        "except_at": [],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_7",
+      "port": "port_seattle",
+      "visit": 1,
+      "rule": {
+        "action": "Store",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_seattle",
+        "except_at": [],
+        "except_cargo": [
+          "Route Ports",
+          "This Route"
+        ]
+      }
+    },
+    {
+      "route": "route_1",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_miami",
+        "except_at": [
+          "port_miami"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_2",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_boston",
+        "except_at": [
+          "port_boston"
+        ],
+        "except_cargo": null
+      }
+    },
+    {
+      "route": "route_7",
+      "port": null,
+      "visit": 0,
+      "rule": {
+        "action": "Load",
+        "amount": "All",
+        "filter": "Onwards Ports",
+        "target": "port_seattle",
+        "except_at": [
+          "port_seattle"
+        ],
+        "except_cargo": null
+      }
+    }
+  ]
+}

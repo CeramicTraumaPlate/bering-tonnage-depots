@@ -202,8 +202,10 @@ def make_plan(
     else:
         wanted = generate(routing, network)
     collectors = collectors_of(merge(player, wanted))  # who collects where, once all rules are in
-    wanted = _apply_limits(wanted, player, routing, network, plan, collectors)
+    # Rules your own rules already cover take no room, so drop those before the limit.
     wanted = _drop_covered(wanted, player, network, plan, collectors)
+    present = {(loc, r.key()) for loc, rs in managed_present.items() for r in rs}
+    wanted = _apply_limits(wanted, player, routing, network, plan, collectors, present)
     plan.desired = wanted
     plan.record = merge(wanted, {loc: [r for r in rs if (loc, r.key()) not in
                                        {(loc, w.key()) for w in wanted.get(loc, ())}]
@@ -268,19 +270,30 @@ def _split_optional_removals(routing, network, player, plan) -> None:
     plan.remove = required
 
 
-def _apply_limits(wanted, player, routing, network, plan, collectors) -> dict[Loc, list[Rule]]:
-    """Over the route limit: keep the rules that cover the most destinations, drop the rest and name them."""
+def _apply_limits(wanted, player, routing, network, plan, collectors,
+                  present: set[tuple] = frozenset()) -> dict[Loc, list[Rule]]:
+    """Over the route limit: keep the rules that cover the most destinations, drop the rest and name them.
+
+    Only new rules need room: a rule already in the game (`present`, as (loc, key)) is never dropped.
+    Routes made from templates can hold far more than ROUTE_LIMIT rules (the game evidently doesn't
+    count every template rule), so a route already over the limit keeps everything it has.
+    """
     out: dict[Loc, list[Rule]] = {loc: list(rs) for loc, rs in wanted.items()}
     dropped_store: dict[str, set[str]] = {}
     for rid in sorted({loc[0] for loc in wanted}):
         route = network.route(rid)
-        budget = ROUTE_LIMIT - sum(len(rs) for loc, rs in player.items() if loc[0] == rid)
-        mine = [(loc, r) for loc, rs in sorted(wanted.items(), key=_loc_sort) if loc[0] == rid for r in rs]
-        if len(mine) <= budget:
+        in_game = sum(len(rs) for loc, rs in player.items() if loc[0] == rid)
+        in_game += sum(1 for loc, _ in present if loc[0] == rid)
+        budget = ROUTE_LIMIT - in_game
+        new = [(loc, r) for loc, rs in sorted(wanted.items(), key=_loc_sort) if loc[0] == rid for r in rs
+               if (loc, r.key()) not in present]
+        if not new or len(new) <= budget:
             continue
-        ranked = sorted(mine, key=lambda lr: (-len(rule_destinations(lr[1], route, network, collectors) or ()),
-                                              lr[1].key()))
+        ranked = sorted(new, key=lambda lr: (-len(rule_destinations(lr[1], route, network, collectors) or ()),
+                                             lr[1].key()))
         drop = ranked[max(budget, 0):]
+        plan.warnings.append(f"{route.name or rid}: no room for {len(drop)} suggested rule(s) under the "
+                             f"{ROUTE_LIMIT}-rule limit ({in_game} already on the route); they were left out")
         for loc, r in drop:
             out[loc] = [x for x in out[loc] if x is not r]
             if r.filter == PORT:

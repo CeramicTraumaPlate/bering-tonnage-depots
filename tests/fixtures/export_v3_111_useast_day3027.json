@@ -1,0 +1,552 @@
+{
+ "format": "Bering Tonnage route data",
+ "export_version": 3,
+ "release": "1.1.1",
+ "save_version": 206,
+ "date": "2035-02-08",
+ "day": 3027,
+ "start_region": "us_east_coast",
+ "ships": [
+  {
+   "name": "MV Saltwind [ship_1]",
+   "vessel": "Handysize, 900 TEU, built 2026 by Atlantic Seaboard Shipbuilding. LNG propulsion. Flag United States.",
+   "route": "US NE [route_2], stop 1 of 4",
+   "route_status": "In Transit",
+   "cargo_teu_by_destination": {
+    "Baltimore [port_baltimore]": 51,
+    "Charleston [port_charleston]": 20,
+    "Colon [port_colon]": 7,
+    "Jacksonville [port_jacksonville]": 3,
+    "Lisbon [port_lisbon]": 3,
+    "Los Angeles [port_los_angeles]": 108,
+    "Miami [port_miami]": 502,
+    "Philadelphia [port_philadelphia]": 95,
+    "Savannah [port_savannah]": 111
+   }
+  },
+  {
+   "name": "MV Grey Current [ship_2]",
+   "vessel": "Handymax, 1,600 TEU, built 2026 by Chesapeake Marine Systems. LNG propulsion. Flag United States.",
+   "route": "US SE [route_1], stop 1 of 5",
+   "route_status": "In Transit",
+   "cargo_teu_by_destination": {
+    "Baltimore [port_baltimore]": 127,
+    "Boston [port_boston]": 44,
+    "Charleston [port_charleston]": 113,
+    "Jacksonville [port_jacksonville]": 138,
+    "New York [port_new_york]": 79,
+    "Philadelphia [port_philadelphia]": 44,
+    "Savannah [port_savannah]": 115,
+    "Seattle [port_seattle]": 12
+   }
+  },
+  {
+   "name": "MV Resolute [ship_3]",
+   "vessel": "Handysize, 700 TEU, built 2027 by Chesapeake Marine Systems. LNG propulsion. Flag United States.",
+   "route": "Gulf [route_3], stop 8 of 8",
+   "route_status": "Maintenance",
+   "cargo_teu_by_destination": {
+    "Altamira [port_altamira]": 36,
+    "Baltimore [port_baltimore]": 5,
+    "Charleston [port_charleston]": 2,
+    "Colon [port_colon]": 40,
+    "Ensenada [port_ensenada]": 6,
+    "Houston [port_houston]": 16,
+    "Jacksonville [port_jacksonville]": 23,
+    "Los Angeles [port_los_angeles]": 53,
+    "Miami [port_miami]": 7,
+    "New York [port_new_york]": 52,
+    "Progreso [port_progreso]": 28,
+    "Savannah [port_savannah]": 2,
+    "Seattle [port_seattle]": 1,
+    "St. John's [port_st_johns_ca]": 1,
+    "Tampa [port_tampa]": 18,
+    "Vancouver [port_vancouver]": 11
+   }
+  },
+  {
+   "name": "SS Harbinger [ship_4]",
+   "vessel": "Handymax, 1,700 TEU, built 2028 by Great Lakes Marine Corp.. LNG propulsion. Flag United States.",
+   "route": "US SE [route_1], stop 1 of 5",
+   "route_status": "In Transit",
+   "cargo_teu_by_destination": {
+    "Anchorage [port_anchorage]": 5,
+    "Baltimore [port_baltimore]": 36,
+    "Boston [port_boston]": 21,
+    "Charleston [port_charleston]": 106,
+    "Jacksonville [port_jacksonville]": 80,
+    "New York [port_new_york]": 181,
+    "Oakland [port_oakland]": 2,
+    "Philadelphia [port_philadelphia]": 34,
+    "Savannah [port_savannah]": 79
+   }
+  },
+  {
+   "name": "MT Summit [ship_5]",
+   "vessel": "Handysize, 300 TEU, built 2029 by Great Lakes Marine Corp.. LNG propulsion. Flag United States.",
+   "route": "US NE [route_2], stop 3 of 4",
+   "route_status": "In Transit",
+   "cargo_teu_by_destination": {
+    "Boston [port_boston]": 6,
+    "Houston [port_houston]": 1,
+    "Jacksonville [port_jacksonville]": 2,
+    "Los Angeles [port_los_angeles]": 10,
+    "Miami [port_miami]": 10,
+    "New York [port_new_york]": 229
+   }
+  },
+  {
+   "name": "MT Summit II [ship_6]",
+   "vessel": "Handysize, 300 TEU, built 2030 by Great Lakes Marine Corp.. LNG propulsion. Flag Belize.",
+   "route": "CA E [route_4], stop 6 of 6",
+   "route_status": "Loading",
+   "cargo_teu_by_destination": {
+    "Bilbao [port_bilbao]": 3,
+    "Bordeaux [port_bordeaux]": 9,
+    "Charleston [port_charleston]": 2,
+    "Houston [port_houston]": 12,
+    "Lisbon [port_lisbon]": 2,
+    "Los Angeles [port_los_angeles]": 76,
+    "New York [port_new_york]": 94,
+    "Saint John [port_saint_john]": 1
+   }
+  },
+  {
+   "name": "MT Argonaut [ship_7]",
+   "vessel": "Panamax, 4,200 TEU, built 2031 by Great Lakes Marine Corp.. LNG propulsion. Flag United States.",
+   "route": "BAL-OAK [route_5], stop 3 of 3",
+   "route_status": "In Transit",
+   "cargo_teu_by_destination": {
+    "Anchorage [port_anchorage]": 14,
+    "Baltimore [port_baltimore]": 12,
+    "Charleston [port_charleston]": 5,
+    "Dutch Harbor [port_dutch_harbor]": 10,
+    "Ensenada [port_ensenada]": 76,
+    "Honolulu [port_honolulu]": 12,
+    "Humboldt Bay [port_humboldt_bay]": 63,
+    "Kahului [port_kahului]": 68,
+    "Los Angeles [port_los_angeles]": 3238,
+    "New York [port_new_york]": 63,
+    "Oakland [port_oakland]": 30,
+    "Portland [port_portland]": 103,
+    "Prince Rupert [port_prince_rupert]": 88,
+    "Savannah [port_savannah]": 19,
+    "Seattle [port_seattle]": 245,
+    "Vancouver [port_vancouver]": 154
+   }
+  },
+  {
+   "name": "SS Harbinger II [ship_8]",
+   "vessel": "Handymax, 1,700 TEU, built 2032 by Great Lakes Marine Corp.. LNG propulsion. Flag United States.",
+   "route": "US SW [route_6], stop 1 of 3",
+   "route_status": "In Transit",
+   "cargo_teu_by_destination": {
+    "Honolulu [port_honolulu]": 178,
+    "Humboldt Bay [port_humboldt_bay]": 288,
+    "Los Angeles [port_los_angeles]": 3,
+    "Oakland [port_oakland]": 847,
+    "Portland [port_portland]": 202,
+    "Seattle [port_seattle]": 182
+   }
+  },
+  {
+   "name": "MV Pioneer [ship_9]",
+   "vessel": "Handysize, 900 TEU, built 2032 by Atlantic Seaboard Shipbuilding. LNG propulsion. Flag United States.",
+   "route": "US NW [route_7], stop 1 of 4",
+   "route_status": "Unloading",
+   "cargo_teu_by_destination": {
+    "Colon [port_colon]": 1,
+    "Honolulu [port_honolulu]": 12,
+    "Humboldt Bay [port_humboldt_bay]": 21,
+    "Kahului [port_kahului]": 9,
+    "Los Angeles [port_los_angeles]": 461,
+    "Miami [port_miami]": 21,
+    "New York [port_new_york]": 170,
+    "Portland [port_portland]": 28
+   }
+  },
+  {
+   "name": "MV Resolute II [ship_10]",
+   "vessel": "Handysize, 700 TEU, built 2033 by Chesapeake Marine Systems. LNG propulsion. Flag United States.",
+   "route": "Hawaii [route_8], stop 1 of 3",
+   "route_status": "In Transit",
+   "cargo_teu_by_destination": {
+    "Anchorage [port_anchorage]": 16,
+    "Dutch Harbor [port_dutch_harbor]": 10,
+    "Houston [port_houston]": 2,
+    "Humboldt Bay [port_humboldt_bay]": 14,
+    "Kahului [port_kahului]": 8,
+    "Kodiak [port_kodiak]": 15,
+    "Los Angeles [port_los_angeles]": 227,
+    "Oakland [port_oakland]": 21,
+    "Portland [port_portland]": 12,
+    "Seattle [port_seattle]": 24
+   }
+  },
+  {
+   "name": "MS Prosperity [ship_11]",
+   "vessel": "Handymax, 1,600 TEU, built 2034 by Chesapeake Marine Systems. LNG propulsion. Flag United States.",
+   "route": "Alaska [route_9], stop 4 of 6",
+   "route_status": "Ready to Depart",
+   "cargo_teu_by_destination": {
+    "Bordeaux [port_bordeaux]": 7,
+    "Brest [port_brest]": 26,
+    "Colon [port_colon]": 8,
+    "Dutch Harbor [port_dutch_harbor]": 23,
+    "Honolulu [port_honolulu]": 7,
+    "Houston [port_houston]": 93,
+    "Humboldt Bay [port_humboldt_bay]": 8,
+    "Kahului [port_kahului]": 6,
+    "Kodiak [port_kodiak]": 54,
+    "Los Angeles [port_los_angeles]": 340,
+    "Miami [port_miami]": 36,
+    "New Orleans [port_new_orleans]": 25,
+    "New York [port_new_york]": 70,
+    "Oakland [port_oakland]": 23,
+    "Portland [port_portland]": 16,
+    "Progreso [port_progreso]": 8,
+    "Seattle [port_seattle]": 20
+   }
+  },
+  {
+   "name": "MT Argonaut II [ship_12]",
+   "vessel": "Panamax, 4,200 TEU, built 2034 by Great Lakes Marine Corp.. LNG propulsion. Flag Faroe Islands.",
+   "route": "BAL-LIS [route_10], stop 1 of 2",
+   "route_status": "Waiting",
+   "cargo_teu_by_destination": {
+    "Lisbon [port_lisbon]": 171
+   }
+  }
+ ],
+ "routes": [
+  {
+   "name": "US SE [route_1]",
+   "template": "feeder",
+   "ships": [
+    "MV Grey Current [ship_2]",
+    "SS Harbinger [ship_4]"
+   ],
+   "legs": [
+    "All legs at 100% speed."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Miami [port_miami], except at Port: Miami [port_miami]."
+   ],
+   "stops": [
+    "1. Baltimore [port_baltimore], United States. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Miami [port_miami]. Load All for Route Ports: This Route.",
+    "2. Charleston [port_charleston], United States. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston].",
+    "3. Savannah [port_savannah], United States. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston].",
+    "4. Jacksonville [port_jacksonville], United States. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston].",
+    "5. Miami [port_miami], United States. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Baltimore [port_baltimore]. Collect All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Miami [port_miami]. Collect All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Miami [port_miami]. Collect All for Onwards Ports: Boston [port_boston], except Onwards Ports: Miami [port_miami]. Collect All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Miami [port_miami]. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Boston [port_boston]. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Boston [port_boston], except Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Colon [port_colon]."
+   ]
+  },
+  {
+   "name": "US NE [route_2]",
+   "template": "feeder",
+   "ships": [
+    "MV Saltwind [ship_1]",
+    "MT Summit [ship_5]"
+   ],
+   "legs": [
+    "All legs at 100% speed."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Boston [port_boston], except at Port: Boston [port_boston]."
+   ],
+   "stops": [
+    "1. Baltimore [port_baltimore], United States. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Boston [port_boston]. Load All for Route Ports: This Route.",
+    "2. Philadelphia [port_philadelphia], United States. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Miami [port_miami].",
+    "3. New York [port_new_york], United States. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Miami [port_miami].",
+    "4. Boston [port_boston], United States. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Collect All for Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Baltimore [port_baltimore]. Collect All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Boston [port_boston]. Collect All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Boston [port_boston]. Collect All for Onwards Ports: Miami [port_miami], except Onwards Ports: Boston [port_boston]. Collect All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Boston [port_boston]. Collect All for Onwards Ports: Miami [port_miami]. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Miami [port_miami], except Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Colon [port_colon]."
+   ]
+  },
+  {
+   "name": "Gulf [route_3]",
+   "template": "feeder",
+   "ships": [
+    "MV Resolute [ship_3]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 910 km/day, fuel $11,122 per sailing day."
+   ],
+   "stops": [
+    "1. Miami [port_miami], United States. Mooring $77/day. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Tampa [port_tampa], United States. Mooring $70/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Baltimore [port_baltimore].",
+    "3. New Orleans [port_new_orleans], United States. Mooring $69/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Baltimore [port_baltimore].",
+    "4. Houston [port_houston], United States. Mooring $112/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Baltimore [port_baltimore].",
+    "5. Corpus Christi [port_corpus_christi], United States. Mooring $79/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Baltimore [port_baltimore].",
+    "6. Altamira [port_altamira], Mexico. Mooring $36/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Baltimore [port_baltimore].",
+    "7. Veracruz [port_veracruz], Mexico. Mooring $37/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Baltimore [port_baltimore].",
+    "8. Progreso [port_progreso], Mexico. Mooring $45/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Baltimore [port_baltimore]."
+   ]
+  },
+  {
+   "name": "CA E [route_4]",
+   "template": "feeder",
+   "ships": [
+    "MT Summit II [ship_6]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 888 km/day, fuel $4,326 per sailing day."
+   ],
+   "stops": [
+    "1. Boston [port_boston], United States. Mooring $40/day. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Saint John [port_saint_john], Canada. Mooring $29/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Miami [port_miami].",
+    "3. Halifax [port_halifax], Canada. Mooring $31/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Miami [port_miami].",
+    "4. St. John's [port_st_johns_ca], Canada. Mooring $30/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Miami [port_miami].",
+    "5. Corner Brook [port_corner_brook], Canada. Mooring $29/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Miami [port_miami].",
+    "6. Montreal [port_montreal], Canada. Mooring $32/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Miami [port_miami]."
+   ]
+  },
+  {
+   "name": "BAL-OAK [route_5]",
+   "template": "trunk",
+   "ships": [
+    "MT Argonaut [ship_7]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 810 km/day, fuel $28,326 per sailing day."
+   ],
+   "stops": [
+    "1. Baltimore [port_baltimore], United States. Mooring $447/day. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Colon [port_colon], except Onwards Ports: Baltimore [port_baltimore]. Collect All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Baltimore [port_baltimore]. Load All for Route Ports: This Route. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Oakland [port_oakland]. Wait 50% Full.",
+    "2. Colon [port_colon], Panama. Mooring $361/day. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Colon [port_colon]. Collect All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Colon [port_colon]. Collect All for Onwards Ports: Baltimore [port_baltimore], except Onwards Ports: Colon [port_colon]. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Baltimore [port_baltimore].",
+    "3. Oakland [port_oakland], United States. Mooring $487/day. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Wait 50% Full. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Baltimore [port_baltimore], except Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Boston [port_boston], except Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Miami [port_miami], except Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Colon [port_colon], except Onwards Ports: Oakland [port_oakland]. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Boston [port_boston], except Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Miami [port_miami], except Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Colon [port_colon]."
+   ]
+  },
+  {
+   "name": "US SW [route_6]",
+   "template": "feeder",
+   "ships": [
+    "SS Harbinger II [ship_8]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 850 km/day, fuel $14,970 per sailing day."
+   ],
+   "stops": [
+    "1. Oakland [port_oakland], United States. Mooring $197/day. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Los Angeles [port_los_angeles], United States. Mooring $323/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "3. Ensenada [port_ensenada], Mexico. Mooring $155/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami]."
+   ]
+  },
+  {
+   "name": "US NW [route_7]",
+   "template": "feeder",
+   "ships": [
+    "MV Pioneer [ship_9]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 925 km/day, fuel $14,536 per sailing day."
+   ],
+   "global_rules": [
+    "Load All for Onwards Ports: Seattle [port_seattle], except at Port: Seattle [port_seattle]."
+   ],
+   "stops": [
+    "1. Oakland [port_oakland], United States. Mooring $104/day. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Onwards Ports: Seattle [port_seattle]. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Humboldt Bay [port_humboldt_bay], United States. Mooring $110/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "3. Portland [port_portland], United States. Mooring $104/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "4. Seattle [port_seattle], United States. Mooring $100/day. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Collect All for Onwards Ports: Baltimore [port_baltimore]. Collect All for Onwards Ports: Oakland [port_oakland]. Collect All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Seattle [port_seattle]. Collect All for Onwards Ports: Baltimore [port_baltimore], except Onwards Ports: Seattle [port_seattle]. Collect All for Onwards Ports: Boston [port_boston], except Onwards Ports: Seattle [port_seattle]. Collect All for Onwards Ports: Miami [port_miami], except Onwards Ports: Seattle [port_seattle]. Collect All for Onwards Ports: Boston [port_boston]. Collect All for Onwards Ports: Miami [port_miami]. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Baltimore [port_baltimore], except Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Boston [port_boston], except Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Miami [port_miami], except Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Colon [port_colon]. Load All for Route Ports: This Route."
+   ]
+  },
+  {
+   "name": "Hawaii [route_8]",
+   "template": "feeder",
+   "ships": [
+    "MV Resolute II [ship_10]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 910 km/day, fuel $11,122 per sailing day."
+   ],
+   "stops": [
+    "1. Oakland [port_oakland], United States. Mooring $81/day. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route. Wait 66% Full.",
+    "2. Kahului [port_kahului], United States. Mooring $101/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "3. Honolulu [port_honolulu], United States. Mooring $89/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami]."
+   ]
+  },
+  {
+   "name": "Alaska [route_9]",
+   "template": "feeder",
+   "ships": [
+    "MS Prosperity [ship_11]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 875 km/day, fuel $15,869 per sailing day."
+   ],
+   "stops": [
+    "1. Seattle [port_seattle], United States. Mooring $178/day. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Vancouver [port_vancouver], Canada. Mooring $179/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "3. Prince Rupert [port_prince_rupert], Canada. Mooring $159/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "4. Anchorage [port_anchorage], United States. Mooring $177/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "5. Kodiak [port_kodiak], United States. Mooring $184/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami].",
+    "6. Dutch Harbor [port_dutch_harbor], United States. Mooring $212/day. Load All for Route Ports: This Route. Load All for Onwards Ports: Seattle [port_seattle]. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Miami [port_miami]."
+   ]
+  },
+  {
+   "name": "BAL-LIS [route_10]",
+   "template": "trunk",
+   "ships": [
+    "MT Argonaut II [ship_12]"
+   ],
+   "legs": [
+    "All legs at 100% speed, 810 km/day, fuel $28,326 per sailing day."
+   ],
+   "global_rules": [
+    "Wait 50% Full."
+   ],
+   "stops": [
+    "1. Baltimore [port_baltimore], United States. Mooring $447/day. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Lisbon [port_lisbon], except Onwards Ports: Baltimore [port_baltimore]. Load All for Route Ports: This Route. Load All for Onwards Ports: Lisbon [port_lisbon].",
+    "2. Lisbon [port_lisbon], Portugal. Mooring $411/day. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Collect All for Route Ports: This Route. Collect All for Onwards Ports: Baltimore [port_baltimore], except Onwards Ports: Lisbon [port_lisbon]. Collect All for Onwards Ports: Boston [port_boston], except Onwards Ports: Lisbon [port_lisbon]. Collect All for Onwards Ports: Miami [port_miami], except Onwards Ports: Lisbon [port_lisbon]. Collect All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Lisbon [port_lisbon]. Collect All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Lisbon [port_lisbon]. Load All for Route Ports: This Route. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Boston [port_boston], except Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Miami [port_miami], except Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Oakland [port_oakland], except Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Seattle [port_seattle], except Onwards Ports: Lisbon [port_lisbon]."
+   ]
+  },
+  {
+   "name": "Biscay [route_11]",
+   "template": "feeder",
+   "legs": [
+    "All legs at 100% speed."
+   ],
+   "stops": [
+    "1. Lisbon [port_lisbon], Portugal. Store All for Onwards Ports: Lisbon [port_lisbon], except Route Ports: This Route. Store All for Onwards Ports: Baltimore [port_baltimore], except Route Ports: This Route. Store All for Onwards Ports: Boston [port_boston], except Route Ports: This Route. Store All for Onwards Ports: Colon [port_colon], except Route Ports: This Route. Store All for Onwards Ports: Miami [port_miami], except Route Ports: This Route. Store All for Onwards Ports: Oakland [port_oakland], except Route Ports: This Route. Store All for Onwards Ports: Seattle [port_seattle], except Route Ports: This Route. Collect All for Route Ports: This Route. Load All for Route Ports: This Route.",
+    "2. Leixões [port_leixoes], Portugal. Load All for Route Ports: This Route. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Seattle [port_seattle].",
+    "3. Bilbao [port_bilbao], Spain. Load All for Route Ports: This Route. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Seattle [port_seattle].",
+    "4. Bordeaux [port_bordeaux], France. Load All for Route Ports: This Route. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Seattle [port_seattle].",
+    "5. Brest [port_brest], France. Load All for Route Ports: This Route. Load All for Onwards Ports: Lisbon [port_lisbon]. Load All for Onwards Ports: Baltimore [port_baltimore]. Load All for Onwards Ports: Boston [port_boston]. Load All for Onwards Ports: Colon [port_colon]. Load All for Onwards Ports: Miami [port_miami]. Load All for Onwards Ports: Oakland [port_oakland]. Load All for Onwards Ports: Seattle [port_seattle]."
+   ]
+  }
+ ],
+ "depots": [
+  {
+   "port": "Baltimore [port_baltimore]",
+   "country": "United States",
+   "level": 3,
+   "capacity_teu": 10000,
+   "stored_teu": 1806,
+   "stored_teu_by_destination": {
+    "Anchorage [port_anchorage]": 22,
+    "Boston [port_boston]": 21,
+    "Charleston [port_charleston]": 267,
+    "Colon [port_colon]": 30,
+    "Dutch Harbor [port_dutch_harbor]": 3,
+    "Halifax [port_halifax]": 2,
+    "Houston [port_houston]": 5,
+    "Jacksonville [port_jacksonville]": 2,
+    "Kahului [port_kahului]": 4,
+    "Los Angeles [port_los_angeles]": 436,
+    "Miami [port_miami]": 411,
+    "New York [port_new_york]": 189,
+    "Philadelphia [port_philadelphia]": 50,
+    "Portland [port_portland]": 9,
+    "Prince Rupert [port_prince_rupert]": 13,
+    "Savannah [port_savannah]": 317,
+    "Seattle [port_seattle]": 17,
+    "Vancouver [port_vancouver]": 8
+   }
+  },
+  {
+   "port": "Boston [port_boston]",
+   "country": "United States",
+   "level": 2,
+   "capacity_teu": 2000,
+   "stored_teu": 240,
+   "stored_teu_by_destination": {
+    "Altamira [port_altamira]": 1,
+    "Houston [port_houston]": 66,
+    "Lisbon [port_lisbon]": 4,
+    "Los Angeles [port_los_angeles]": 47,
+    "Miami [port_miami]": 25,
+    "New York [port_new_york]": 90,
+    "Oakland [port_oakland]": 2,
+    "Savannah [port_savannah]": 2,
+    "Vancouver [port_vancouver]": 1,
+    "Veracruz [port_veracruz]": 2
+   }
+  },
+  {
+   "port": "Brest [port_brest]",
+   "country": "France",
+   "level": 1,
+   "capacity_teu": 500,
+   "stored_teu": 0
+  },
+  {
+   "port": "Colon [port_colon]",
+   "country": "Panama",
+   "level": 1,
+   "capacity_teu": 500,
+   "stored_teu": 0
+  },
+  {
+   "port": "Honolulu [port_honolulu]",
+   "country": "United States",
+   "level": 1,
+   "capacity_teu": 500,
+   "stored_teu": 0
+  },
+  {
+   "port": "Kahului [port_kahului]",
+   "country": "United States",
+   "level": 1,
+   "capacity_teu": 500,
+   "stored_teu": 0
+  },
+  {
+   "port": "Lisbon [port_lisbon]",
+   "country": "Portugal",
+   "level": 2,
+   "capacity_teu": 2000,
+   "stored_teu": 0
+  },
+  {
+   "port": "Miami [port_miami]",
+   "country": "United States",
+   "level": 2,
+   "capacity_teu": 2000,
+   "stored_teu": 1275,
+   "stored_teu_by_destination": {
+    "Altamira [port_altamira]": 108,
+    "Corpus Christi [port_corpus_christi]": 4,
+    "Houston [port_houston]": 968,
+    "New Orleans [port_new_orleans]": 4,
+    "Progreso [port_progreso]": 7,
+    "Veracruz [port_veracruz]": 184
+   }
+  },
+  {
+   "port": "Oakland [port_oakland]",
+   "country": "United States",
+   "level": 3,
+   "capacity_teu": 10000,
+   "stored_teu": 849,
+   "stored_teu_by_destination": {
+    "Colon [port_colon]": 16,
+    "Honolulu [port_honolulu]": 7,
+    "Houston [port_houston]": 98,
+    "Kahului [port_kahului]": 5,
+    "Lisbon [port_lisbon]": 14,
+    "Los Angeles [port_los_angeles]": 401,
+    "Miami [port_miami]": 92,
+    "Montreal [port_montreal]": 20,
+    "New York [port_new_york]": 155,
+    "Savannah [port_savannah]": 1,
+    "Veracruz [port_veracruz]": 40
+   }
+  },
+  {
+   "port": "Seattle [port_seattle]",
+   "country": "United States",
+   "level": 3,
+   "capacity_teu": 10000,
+   "stored_teu": 562,
+   "stored_teu_by_destination": {
+    "Altamira [port_altamira]": 9,
+    "Anchorage [port_anchorage]": 49,
+    "Dutch Harbor [port_dutch_harbor]": 66,
+    "Honolulu [port_honolulu]": 7,
+    "Houston [port_houston]": 176,
+    "Kahului [port_kahului]": 8,
+    "Kodiak [port_kodiak]": 45,
+    "Los Angeles [port_los_angeles]": 196,
+    "Prince Rupert [port_prince_rupert]": 5,
+    "Veracruz [port_veracruz]": 1
+   }
+  }
+ ]
+}

@@ -546,6 +546,25 @@ class SuggestedFixes(unittest.TestCase):
                          recursive_templates=True, game_release="1.1.1")
         self.assertEqual((len(plan.add), len(plan.remove)), (6, 0))
 
+    def test_rule_limit_never_drops_rules_already_in_the_game_useast_day3027(self):
+        """Template routes hold more than 40 rules in the game (Gulf: 65). The limit only applies to
+        new rules: the managed rules already on US SE, US NE and US NW are still needed (without them
+        Gulf cargo can't get past Baltimore), so they must not come up as optional removals."""
+        from pathlib import Path
+        from atd.export_parser import load_export
+        from atd.planner import load_record
+        fixtures = Path(__file__).parent / "fixtures"
+        n = load_export(fixtures / "export_v3_111_useast_day3027.json").network
+        record = load_record(fixtures / "record_useast_day3027.json")
+        plan = make_plan(plan_routes(n, max_transfers=5, direct_first=False), n, record, compact=True,
+                         recursive_templates=True, game_release="1.1.1")
+        self.assertEqual((len(plan.add), len(plan.remove)), (0, 0))
+        optional = {(c.loc[0], c.loc[1], c.rule.action, c.rule.filter, c.rule.target) for c in plan.optional_remove}
+        self.assertNotIn(("route_1", "port_baltimore", "Collect", "Onwards Ports", "port_miami"), optional)
+        self.assertNotIn(("route_1", None, "Load", "Onwards Ports", "port_miami"), optional)
+        self.assertLessEqual(len(optional), 3)
+        self.assertEqual([w for w in plan.warnings if "no room for" in w], [])
+
 
 if __name__ == "__main__":
     unittest.main()
